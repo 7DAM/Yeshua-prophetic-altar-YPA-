@@ -16,7 +16,7 @@ exports.handler = async (event) => {
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
         messages: [
-          { role: "system", content: "You are the Nexus AI Oracle for Yeshua Prophetic Altar. Speak with a futuristic, prophetic, and comforting tone. Guide users to prayer, teachings, and Apostle Joshua/Prophetess Lillian." },
+          { role: "system", content: "You are the Prophetic Concierge AI Oracle for Yeshua Prophetic Altar. Speak with a futuristic, prophetic, and comforting tone. Guide users to prayer, teachings, and Apostle Joshua/Prophetess Lillian." },
           { role: "user", content: message }
         ]
       })

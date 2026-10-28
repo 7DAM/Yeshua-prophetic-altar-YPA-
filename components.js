@@ -5,7 +5,7 @@ const headerTemplate = `
     <nav class="glass-nav" role="navigation" aria-label="Main Navigation">
         <div class="logo">
             <a href="index.html" style="text-decoration:none;color:inherit;">
-                YESHUA<span class="accent">.</span>NEXUS
+                   YESHUA <span class="accent">PROPHETIC</span> ALTAR
             </a>
         </div>
         <ul class="nav-links" id="navLinks">
@@ -30,7 +30,7 @@ const footerTemplate = `
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4>YESHUA<span class="accent">.</span>NEXUS</h4>
+                    <h4>YESHUA <span class="accent">PROPHETIC</span> ALTAR</h4>
                     <p>A digital apostolic altar broadcasting from Nairobi, Kenya to the nations.</p>
                 </div>
                 <div class="footer-col">
@@ -67,12 +67,12 @@ const aiWidgetTemplate = `
     <div id="ai-widget" class="hidden" role="dialog" aria-label="AI Concierge Chat" aria-modal="true">
         <div class="ai-header">
             <div class="ai-status">
-                <span class="pulse-dot" aria-hidden="true"></span> NEXUS AI ACTIVE
+                <span class="pulse-dot" aria-hidden="true"></span>    Prophetic Concierge AI ACTIVE
             </div>
             <button id="close-concierge" aria-label="Close Chat">&times;</button>
         </div>
         <div class="ai-body" id="chat-body" aria-live="polite">
-            <div class="chat-msg bot">Greetings. I am the Nexus Concierge. How may I assist your spiritual journey today?</div>
+            <div class="chat-msg bot">Greetings. I am the Prophetic Concierge. How may I assist your spiritual journey today?</div>
         </div>
         <div class="ai-input">
             <label for="user-input" class="sr-only">Ask the Oracle</label>

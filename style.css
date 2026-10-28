@@ -2,13 +2,13 @@
    1. ROOT VARIABLES
    ========================================== */
 :root {
-    --bg: #05050A;
-    --glass: rgba(255, 255, 255, 0.03);
-    --border: rgba(255, 255, 255, 0.1);
-    --cyan: #00f3ff;
-    --gold: #ffd700;
+    --bg: #0A0512;
+    --glass: rgba(138, 43, 226, 0.04);
+    --border: rgba(138, 43, 226, 0.15);
+    --purple: #8A2BE2;
+    --gold: #FFD700;
     --text: #e2e8f0;
-    --dark-alt: #0a0a12;
+    --dark-alt: #120A1E;
 }
 
 /* ==========================================
@@ -82,7 +82,7 @@ h1 {
     position: absolute;
     top: -100px;
     left: 0;
-    background: var(--cyan);
+    background: var(--purple);
     color: var(--bg);
     padding: 10px 20px;
     z-index: 1001;
@@ -95,12 +95,12 @@ h1 {
 }
 
 .accent {
-    color: var(--cyan);
+    color: var(--purple);
 }
 
 .glow {
-    color: var(--cyan);
-    text-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+    color: var(--purple);
+    text-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
 }
 
 /* ==========================================
@@ -141,8 +141,8 @@ h1 {
 }
 
 .nav-links a:hover {
-    color: var(--cyan);
-    text-shadow: 0 0 10px var(--cyan);
+    color: var(--purple);
+    text-shadow: 0 0 10px var(--purple);
 }
 
 .hamburger {
@@ -207,26 +207,26 @@ h1 {
 }
 
 .btn-neon {
-    background: var(--cyan);
+    background: var(--purple);
     color: var(--bg);
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
     text-decoration: none;
 }
 
 .btn-neon:hover {
-    box-shadow: 0 0 40px rgba(0, 243, 255, 0.8);
+    box-shadow: 0 0 40px rgba(138, 43, 226, 0.8);
     transform: translateY(-2px);
 }
 
 .btn-glass {
     background: var(--glass);
-    color: var(--cyan);
-    border: 1px solid var(--cyan);
+    color: var(--purple);
+    border: 1px solid var(--purple);
     backdrop-filter: blur(5px);
 }
 
 .btn-glass:hover {
-    background: rgba(0, 243, 255, 0.1);
+    background: rgba(138, 43, 226, 0.1);
 }
 
 /* ==========================================
@@ -293,12 +293,12 @@ h1 {
 
 .glass-card:hover {
     transform: translateY(-5px);
-    border-color: var(--cyan);
+    border-color: var(--purple);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .glass-card h3 {
-    color: var(--cyan);
+    color: var(--purple);
     margin-bottom: 20px;
     font-size: 1.2rem;
     display: flex;
@@ -338,7 +338,7 @@ h1 {
 }
 
 .text-link {
-    color: var(--cyan);
+    color: var(--purple);
     text-decoration: none;
     font-weight: 600;
     display: inline-block;
@@ -347,14 +347,14 @@ h1 {
 }
 
 .text-link:hover {
-    text-shadow: 0 0 10px var(--cyan);
+    text-shadow: 0 0 10px var(--purple);
 }
 
 /* ==========================================
    12. EVENT DATE STYLING
    ========================================== */
 .event-date {
-    color: var(--cyan);
+    color: var(--purple);
     font-size: 0.85rem;
     margin-bottom: 15px;
     display: flex;
@@ -421,8 +421,8 @@ h1 {
 .glass-form input:focus,
 .glass-form textarea:focus,
 .glass-form select:focus {
-    border-color: var(--cyan);
-    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+    border-color: var(--purple);
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.2);
 }
 
 .glass-form select {
@@ -446,9 +446,9 @@ h1 {
 }
 
 .success-msg {
-    background: rgba(0, 255, 100, 0.1);
-    border: 1px solid #0f0;
-    color: #0f0;
+    background: rgba(138, 43, 226, 0.1);
+    border: 1px solid var(--purple);
+    color: var(--purple);
     padding: 20px;
     border-radius: 8px;
     text-align: center;
@@ -465,11 +465,11 @@ h1 {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--cyan), var(--gold));
+    background: linear-gradient(135deg, var(--purple), var(--gold));
     border: none;
     font-size: 24px;
     cursor: pointer;
-    box-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
     z-index: 1000;
     animation: float 3s infinite;
     color: var(--bg);
@@ -506,7 +506,7 @@ h1 {
 
 .ai-status {
     font-size: 0.8rem;
-    color: var(--cyan);
+    color: var(--purple);
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -517,9 +517,9 @@ h1 {
 .pulse-dot {
     width: 8px;
     height: 8px;
-    background: #0f0;
+    background: var(--purple);
     border-radius: 50%;
-    box-shadow: 0 0 10px #0f0;
+    box-shadow: 0 0 10px var(--purple);
     animation: pulse 1.5s infinite;
 }
 
@@ -549,14 +549,14 @@ h1 {
 }
 
 .chat-msg.bot {
-    background: rgba(0, 243, 255, 0.1);
-    border: 1px solid rgba(0, 243, 255, 0.2);
+    background: rgba(138, 43, 226, 0.1);
+    border: 1px solid rgba(138, 43, 226, 0.2);
     align-self: flex-start;
     color: var(--text);
 }
 
 .chat-msg.user {
-    background: var(--cyan);
+    background: var(--purple);
     color: var(--bg);
     align-self: flex-end;
     font-weight: 500;
@@ -580,7 +580,7 @@ h1 {
 }
 
 .ai-input button {
-    background: var(--cyan);
+    background: var(--purple);
     color: var(--bg);
     border: none;
     width: 40px;
@@ -595,15 +595,15 @@ h1 {
     gap: 5px;
     padding: 12px;
     align-self: flex-start;
-    background: rgba(0, 243, 255, 0.1);
+    background: rgba(138, 43, 226, 0.1);
     border-radius: 10px;
-    border: 1px solid rgba(0, 243, 255, 0.2);
+    border: 1px solid rgba(138, 43, 226, 0.2);
 }
 
 .typing-indicator span {
     width: 8px;
     height: 8px;
-    background: var(--cyan);
+    background: var(--purple);
     border-radius: 50%;
     animation: typing 1.4s infinite;
 }
@@ -653,7 +653,7 @@ h1 {
 }
 
 .footer-col a:hover {
-    color: var(--cyan);
+    color: var(--purple);
 }
 
 .social-icons {
@@ -676,12 +676,12 @@ h1 {
 }
 
 .footer-bottom a:hover {
-    color: var(--cyan);
+    color: var(--purple);
 }
 
 #year {
     font-weight: bold;
-    color: var(--cyan);
+    color: var(--purple);
 }
 
 /* ==========================================

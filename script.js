@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(0, 243, 255, 0.4)';
+            ctx.fillStyle = 'rgba(138, 43, 226, 0.4)';
             particles.forEach(function (p) {
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
@@ -65,8 +65,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ==========================================
-    // 3. MOBILE NAVIGATION & ACCESSIBILITY
-    // ==========================================
+   // 3. MOBILE NAVIGATION & ACCESSIBILITY
+  // ==========================================
+ // Expert Fix: Delay by 150ms to ensure components.js 
+// has finished injecting the header HTML first.
+setTimeout(function () {
     const hamburgerBtn = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
 
@@ -85,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
+}, 150);
 
     // ==========================================
     // 4. DYNAMIC FOOTER YEAR
@@ -164,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             setTimeout(function () {
                 removeTypingIndicator();
-                let response = "I am processing your inquiry through the prophetic nexus. Please use the menu above or ask about prayer, vision, or teachings.";
+                let response = "I am processing your inquiry through the Prophetic Concierge. Please use the menu above or ask about prayer, vision, or teachings.";
                 const lowerText = text.toLowerCase();
 
                 if (lowerText.includes('prayer') || lowerText.includes('intercession') || lowerText.includes('help')) {
