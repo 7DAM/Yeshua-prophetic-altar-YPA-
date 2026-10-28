@@ -1,0 +1,789 @@
+/* ==========================================
+   1. ROOT VARIABLES
+   ========================================== */
+:root {
+    --bg: #05050A;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.1);
+    --cyan: #00f3ff;
+    --gold: #ffd700;
+    --text: #e2e8f0;
+    --dark-alt: #0a0a12;
+}
+
+/* ==========================================
+   2. RESET & BASE
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+/* ==========================================
+   3. TYPOGRAPHY
+   ========================================== */
+h1,
+h2,
+h3,
+h4,
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+/* ==========================================
+   4. UTILITY CLASSES
+   ========================================== */
+.hidden {
+    display: none !important;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--cyan);
+    color: var(--bg);
+    padding: 10px 20px;
+    z-index: 1001;
+    font-weight: bold;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+.accent {
+    color: var(--cyan);
+}
+
+.glow {
+    color: var(--cyan);
+    text-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+}
+
+/* ==========================================
+   5. NAVIGATION
+   ========================================== */
+.glass-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(5, 5, 10, 0.7);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-links a:hover {
+    color: var(--cyan);
+    text-shadow: 0 0 10px var(--cyan);
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* ==========================================
+   6. HERO SECTION
+   ========================================== */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.sub-text {
+    color: var(--gold);
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.hero-desc {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    color: #94a3b8;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.cta-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ==========================================
+   7. BUTTONS
+   ========================================== */
+.btn-neon,
+.btn-glass {
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.btn-neon {
+    background: var(--cyan);
+    color: var(--bg);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+    text-decoration: none;
+}
+
+.btn-neon:hover {
+    box-shadow: 0 0 40px rgba(0, 243, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+.btn-glass {
+    background: var(--glass);
+    color: var(--cyan);
+    border: 1px solid var(--cyan);
+    backdrop-filter: blur(5px);
+}
+
+.btn-glass:hover {
+    background: rgba(0, 243, 255, 0.1);
+}
+
+/* ==========================================
+   8. SECTIONS & CONTAINERS
+   ========================================== */
+.section {
+    padding: 100px 20px;
+    position: relative;
+}
+
+.dark-alt {
+    background: var(--dark-alt);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 60px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-desc {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    color: #94a3b8;
+}
+
+/* ==========================================
+   9. PAGE-SPECIFIC LAYOUTS
+   ========================================== */
+.page-content {
+    padding-top: 140px;
+    min-height: 80vh;
+}
+
+.page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ==========================================
+   10. CARDS & GRIDS
+   ========================================== */
+.glass-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    padding: 40px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--cyan);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card h3 {
+    color: var(--cyan);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.glass-card p {
+    color: #94a3b8;
+    line-height: 1.7;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* ==========================================
+   11. TEACHING / MEDIA CARDS
+   ========================================== */
+.teaching-card {
+    text-align: center;
+    padding: 50px 30px;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.text-link {
+    color: var(--cyan);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.text-link:hover {
+    text-shadow: 0 0 10px var(--cyan);
+}
+
+/* ==========================================
+   12. EVENT DATE STYLING
+   ========================================== */
+.event-date {
+    color: var(--cyan);
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+/* ==========================================
+   13. GIVING SECTION
+   ========================================== */
+.give-options {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.give-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    margin-top: 20px;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+}
+
+.give-btn i {
+    font-size: 1.2rem;
+}
+
+/* ==========================================
+   14. FORMS
+   ========================================== */
+.glass-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: var(--glass);
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.glass-form input,
+.glass-form textarea,
+.glass-form select {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: 0.3s;
+}
+
+.glass-form input:focus,
+.glass-form textarea:focus,
+.glass-form select:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+.glass-form select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.glass-form select option {
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* Honeypot - hidden from humans, catches bots */
+.bot-field {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.success-msg {
+    background: rgba(0, 255, 100, 0.1);
+    border: 1px solid #0f0;
+    color: #0f0;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ==========================================
+   15. AI WIDGET
+   ========================================== */
+.ai-float-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--cyan), var(--gold));
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+    z-index: 1000;
+    animation: float 3s infinite;
+    color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#ai-widget {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    height: 500px;
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.ai-header {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.ai-status {
+    font-size: 0.8rem;
+    color: var(--cyan);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #0f0;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #0f0;
+    animation: pulse 1.5s infinite;
+}
+
+#close-concierge {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.ai-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chat-msg {
+    padding: 12px;
+    border-radius: 10px;
+    max-width: 85%;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.chat-msg.bot {
+    background: rgba(0, 243, 255, 0.1);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    align-self: flex-start;
+    color: var(--text);
+}
+
+.chat-msg.user {
+    background: var(--cyan);
+    color: var(--bg);
+    align-self: flex-end;
+    font-weight: 500;
+}
+
+.ai-input {
+    padding: 15px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+}
+
+.ai-input input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 10px 15px;
+    color: white;
+    outline: none;
+}
+
+.ai-input button {
+    background: var(--cyan);
+    color: var(--bg);
+    border: none;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    display: flex;
+    gap: 5px;
+    padding: 12px;
+    align-self: flex-start;
+    background: rgba(0, 243, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 243, 255, 0.2);
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background: var(--cyan);
+    border-radius: 50%;
+    animation: typing 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* ==========================================
+   16. FOOTER
+   ========================================== */
+.footer {
+    background: #020205;
+    padding: 60px 20px 20px;
+    border-top: 1px solid var(--border);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h4 {
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col li {
+    margin-bottom: 10px;
+}
+
+.footer-col a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-col a:hover {
+    color: var(--cyan);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    font-size: 1.5rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: #64748b;
+    font-size: 0.8rem;
+}
+
+.footer-bottom a {
+    color: #64748b;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    color: var(--cyan);
+}
+
+#year {
+    font-weight: bold;
+    color: var(--cyan);
+}
+
+/* ==========================================
+   17. ANIMATIONS
+   ========================================== */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes typing {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+}
+
+/* ==========================================
+   18. RESPONSIVE BREAKPOINTS
+   ========================================== */
+@media (max-width: 900px) {
+
+    .grid-2,
+    .grid-3,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(5, 5, 10, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    /* Change hamburger to X icon when open */
+    .hamburger[aria-expanded="true"] .fa-bars::before {
+        content: "\f00d";
+    }
+
+    #ai-widget {
+        width: 90%;
+        right: 5%;
+        bottom: 90px;
+        height: 60vh;
+    }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact &amp; Prayer | Yeshua Nexus</title>
+    <meta name="description" content="Submit your prayer request or contact the Yeshua Prophetic Altar team securely.">
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    <div id="site-header"></div>
+
+    <main id="main-content" class="page-content">
+        <div class="container">
+            <h1 class="page-title">Secure Intercession Portal</h1>
+            <p class="section-desc">God is ever-present. Share your burden, and we will join you in seeking His guidance
+                and comfort.</p>
+
+            <form name="prayer" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="glass-form"
+                id="prayerForm">
+                <input type="hidden" name="form-name" value="prayer">
+                <p class="bot-field"><label>Do not fill this out if you are human: <input name="bot-field"></label></p>
+
+                <label for="name" class="sr-only">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+                <label for="email" class="sr-only">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+                <label for="subject" class="sr-only">Subject</label>
+                <select id="subject" name="subject" required>
+                    <option value="" disabled selected>Select a Subject</option>
+                    <option value="prayer">Prayer Request</option>
+                    <option value="counselling">Counselling</option>
+                    <option value="events">Event Registration</option>
+                    <option value="giving">Giving Enquiry</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="message" class="sr-only">Your Message</label>
+                <textarea id="message" name="message" rows="6" placeholder="Share your burden or enquiry..."
+                    required></textarea>
+
+                <button type="submit" class="btn-neon" id="submitBtn">Transmit Securely</button>
+
+                <div id="formSuccess" class="hidden success-msg" role="alert">
+                    <i class="fas fa-check-circle" aria-hidden="true"></i> Transmission Received. The Altar is praying
+                    for you.
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <div id="site-footer"></div>
+    <div id="ai-container"></div>
+
+    <script src="components.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
