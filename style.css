@@ -2184,3 +2184,30 @@ footer {
     }
 }
 
+.audio-playing {
+    animation: audioPulse 2s infinite;
+}
+
+@keyframes audioPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(212, 175, 55, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+.media-card {
+    transition: all 0.4s ease;
+    border: 1px solid var(--glass-border);
+}
+
+.media-card:hover {
+    border-color: var(--premium-gold);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+}

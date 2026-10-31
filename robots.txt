@@ -1,0 +1,8 @@
+# ==========================================
+# ROBOTS.TXT - SEO INGESTION PROTOCOL
+# ==========================================
+User-agent: *
+Allow: /
+
+# Sitemap location for crawlers
+Sitemap: https://yeshuapropheticaltar.org/sitemap.xml
