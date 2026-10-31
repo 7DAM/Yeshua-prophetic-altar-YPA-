@@ -617,6 +617,31 @@ h1 {
 }
 
 /* ==========================================
+   BRAND SOVEREIGNTY: REMOVE NETLIFY BADGE
+   ========================================== */
+/* Hide Netlify Badge & Identity Widget */
+#netlify-badge,
+.netlify-badge,
+div[id*="netlify"],
+iframe[src*="netlify"],
+.netlify-identity-widget {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    overflow: hidden !important;
+}
+
+/* Ensure Footer is Clean */
+footer {
+    position: relative;
+    z-index: 10;
+}
+
+/* ==========================================
    16. FOOTER
    ========================================== */
 .footer {
@@ -787,3 +812,1375 @@ h1 {
         height: 60vh;
     }
 }
+/* ==========================================
+   4D GLOBE STYLING
+   ========================================== */
+#globe-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.4;
+}
+
+.hero {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+/* Prayer Counter */
+.prayer-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    padding: 20px 40px;
+    border-radius: 50px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(10px);
+}
+
+.prayer-counter i {
+    font-size: 2rem;
+    color: var(--gold);
+}
+
+.prayer-counter #prayerCount {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--gold);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.counter-label {
+    font-size: 0.9rem;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Salvation Button */
+.btn-salvation {
+    background: linear-gradient(135deg, var(--gold), #FFA500);
+    color: var(--bg);
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    transition: 0.3s;
+}
+
+.btn-salvation:hover {
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+    transform: translateY(-2px);
+}
+
+/* Teaching Content */
+.teaching-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.large-text {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 40px;
+}
+
+.doctrine-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.doctrine-point {
+    text-align: center;
+    padding: 30px;
+    background: rgba(138, 43, 226, 0.05);
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    transition: 0.3s;
+}
+
+.doctrine-point:hover {
+    border-color: var(--cyan);
+    transform: translateY(-5px);
+}
+
+.doctrine-point i {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.doctrine-point h4 {
+    color: var(--cyan);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+/* Bible Study Card */
+.bible-study-card {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.bible-icon {
+    font-size: 5rem;
+    color: var(--gold);
+    margin-bottom: 30px;
+}
+
+.course-features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.feature i {
+    font-size: 2rem;
+    color: var(--cyan);
+}
+
+/* Scripture Search */
+.search-card {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.search-input-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.search-input-group input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+}
+
+.search-input-group input:focus {
+    outline: none;
+    border-color: var(--cyan);
+}
+
+.search-results {
+    min-height: 100px;
+}
+
+.verse-result {
+    background: rgba(138, 43, 226, 0.1);
+    border-left: 3px solid var(--gold);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    line-height: 1.6;
+}
+
+.verse-result i {
+    color: var(--gold);
+    margin-right: 10px;
+}
+
+.no-results {
+    color: #94a3b8;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Partnership */
+.partnership-card {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.partner-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.partner-logo {
+    text-align: center;
+}
+
+.partner-logo i {
+    font-size: 4rem;
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.partner-connector {
+    font-size: 3rem;
+    color: var(--cyan);
+}
+
+.partnership-desc {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.partnership-footer {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+.partnership-footer i {
+    color: var(--gold);
+    margin-right: 8px;
+}
+
+/* Calendar */
+.calendar-card {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.calendar-event {
+    background: rgba(138, 43, 226, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.calendar-event:hover {
+    border-color: var(--cyan);
+    transform: translateY(-5px);
+}
+
+.event-date-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--bg);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 900;
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 20px;
+}
+
+/* Live Stream */
+.stream-card {
+    text-align: center;
+    padding: 50px 30px;
+}
+
+.stream-icon {
+    font-size: 4rem;
+    color: var(--cyan);
+    margin-bottom: 20px;
+}
+
+/* Salvation Section */
+.salvation-section {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(255, 215, 0, 0.05));
+}
+
+.salvation-card {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.salvation-title {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 30px;
+}
+
+.salvation-verse {
+    font-size: 1.3rem;
+    font-style: italic;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 50px;
+    padding: 0 20px;
+}
+
+.salvation-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.step {
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    border: 1px solid var(--border);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: var(--gold);
+    color: var(--bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 900;
+    margin: 0 auto 20px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.step h4 {
+    color: var(--cyan);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.prayer-of-salvation {
+    background: rgba(138, 43, 226, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+.prayer-of-salvation h3 {
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.prayer-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-style: italic;
+}
+
+/* AI Quick Actions */
+.ai-quick-actions {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.ai-quick-actions h3 {
+    color: var(--cyan);
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+}
+
+.quick-action-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.quick-btn {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    padding: 25px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    color: var(--text);
+}
+
+.quick-btn:hover {
+    border-color: var(--cyan);
+    background: rgba(138, 43, 226, 0.1);
+    transform: translateY(-5px);
+}
+
+.quick-btn i {
+    font-size: 2.5rem;
+    color: var(--gold);
+}
+
+.quick-btn span {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Footer Enhancements */
+.footer-message {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(255, 215, 0, 0.05));
+    border-radius: 15px;
+}
+
+.footer-message h2 {
+    font-size: 2rem;
+    color: var(--gold);
+    letter-spacing: 3px;
+}
+
+
+.scroll-top {
+    color: var(--cyan);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 20px;
+    font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+
+    .doctrine-points,
+    .course-features,
+    .calendar-grid,
+    .salvation-steps,
+    .quick-action-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .partner-logos {
+        flex-direction: column;
+    }
+
+    .search-input-group {
+        flex-direction: column;
+    }
+}
+
+/* ==========================================
+   CONTACT FORM SPECIFIC STYLES
+   ========================================== */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    color: var(--premium-gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--glass-border);
+    padding: 15px;
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-family: var(--font-modern);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--premium-gold);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.form-group select option {
+    background: var(--deep-space);
+    color: var(--text-primary);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================
+   MODAL ARCHITECTURE (Glassmorphic Overlay)
+   ========================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 1, 10, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+    padding: 40px;
+    background: rgba(42, 10, 74, 0.95);
+    border: 1px solid var(--premium-gold);
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    transform: translateY(30px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-close:hover {
+    color: var(--premium-gold);
+    transform: rotate(90deg);
+}
+
+/* ==========================================
+   ARCHIVE MODAL SPECIFIC STYLES (SEO & UX OPTIMIZED)
+   ========================================== */
+.archive-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.archive-list li {
+    background: rgba(212, 175, 55, 0.05);
+    border-left: 3px solid var(--premium-gold);
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border-radius: 0 8px 8px 0;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    transition: transform 0.2s ease;
+}
+
+.archive-list li:hover {
+    transform: translateX(5px);
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.archive-list li i {
+    color: var(--premium-gold);
+    margin-top: 4px;
+    font-size: 1.1rem;
+}
+
+.archive-highlight {
+    background: rgba(42, 10, 74, 0.4);
+    border: 1px solid var(--premium-gold);
+    padding: 20px;
+    border-radius: 12px;
+    margin: 25px 0;
+    font-style: italic;
+    color: var(--text-primary);
+    text-align: center;
+    font-family: var(--font-majestic);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   EPICENTER & INTELLIGENCE FEED STYLES
+   ========================================== */
+.epicenter-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid var(--gold);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 25px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.epicenter-badge .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--gold);
+    animation: pulse 1.5s infinite;
+}
+
+.main-title {
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    margin-bottom: 25px;
+}
+
+/* Intelligence Ticker */
+.ticker-section {
+    background: #020205;
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.ticker-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 0 20px;
+}
+
+.ticker-header h3 {
+    color: var(--cyan);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.ticker-header p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.ticker-track-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.ticker-track {
+    display: flex;
+    gap: 40px;
+    width: max-content;
+    animation: scroll-ticker 40s linear infinite;
+}
+
+.ticker-track:hover {
+    animation-play-state: paused;
+}
+
+.ticker-item {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    padding: 15px 25px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.ticker-item:hover {
+    border-color: var(--gold);
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.ticker-region {
+    background: var(--cyan);
+    color: var(--bg);
+    padding: 4px 12px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+}
+
+.ticker-msg {
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+@keyframes scroll-ticker {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .ticker-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        white-space: normal;
+        min-width: 280px;
+    }
+}
+
+/* ==========================================
+   AI SCRIPTURE SEARCH STYLES
+   ========================================== */
+.quick-tag {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid var(--glass-border);
+    color: var(--premium-gold);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-modern);
+}
+
+.quick-tag:hover {
+    background: var(--premium-gold);
+    color: var(--royal-purple);
+    border-color: var(--premium-gold);
+}
+
+.verse-result-card {
+    background: rgba(42, 10, 74, 0.4);
+    border-left: 4px solid var(--premium-gold);
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 0 12px 12px 0;
+    animation: fadeUp 0.4s ease forwards;
+}
+
+.verse-result-card .verse-text {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.verse-result-card .verse-ref {
+    font-family: var(--font-majestic);
+    color: var(--premium-gold);
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: right;
+}
+
+.verse-result-card .verse-tags {
+    margin-top: 15px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.verse-result-card .verse-tags span {
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--premium-gold);
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.prophetic-fallback {
+    text-align: center;
+    padding: 30px;
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px dashed var(--premium-gold);
+    border-radius: 12px;
+    color: var(--text-secondary);
+}
+
+/* ==========================================
+   PROPHETIC PRAYER TRIAGE STYLES
+   ========================================== */
+.ai-quick-actions {
+    margin-bottom: 40px;
+}
+
+.quick-action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.quick-btn {
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-family: var(--font-modern);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-width: 140px;
+}
+
+.quick-btn i {
+    font-size: 1.8rem;
+    color: var(--premium-gold);
+}
+
+.quick-btn:hover {
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--premium-gold);
+    transform: translateY(-3px);
+    border-color: var(--premium-gold);
+}
+
+.quick-btn.active-prayer {
+    background: rgba(212, 175, 55, 0.2);
+    border-color: var(--premium-gold);
+    color: var(--premium-gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    color: var(--premium-gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group textarea {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--glass-border);
+    padding: 15px;
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-family: var(--font-modern);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--premium-gold);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+/* ==========================================
+   M-PESA MODAL SPECIFIC STYLES
+   ========================================== */
+#mpesa-paybill:hover {
+    color: var(--gold-light);
+    transition: color 0.2s ease;
+}
+
+/* Toast Notification for Copy */
+.copy-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--premium-gold);
+    color: var(--royal-purple);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    animation: fadeUp 0.3s ease forwards;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ==========================================
+   GLOBAL PRAYER WALL STYLES
+   ========================================== */
+.prayer-card {
+    transition: all 0.4s ease;
+    border: 1px solid var(--glass-border);
+}
+
+.prayer-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--premium-gold);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+}
+
+.pray-btn:hover {
+    background: var(--gold-light) !important;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+/* The Golden Pulse Animation for the Form when scrolled to */
+@keyframes formPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+        border-color: var(--premium-gold);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(212, 175, 55, 0);
+        border-color: var(--premium-gold);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+        border-color: var(--glass-border);
+    }
+}
+
+.form-highlight {
+    animation: formPulse 2s ease-out;
+    border: 2px solid var(--premium-gold) !important;
+}
+
+/* ==========================================
+   NEW FEATURES STYLES
+   ========================================== */
+
+/* Leadership Section */
+.leadership-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.leader-image-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(138, 43, 226, 0.3);
+}
+
+.leader-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    filter: grayscale(30%) contrast(110%);
+    transition: 0.5s;
+}
+
+.leader-image:hover {
+    filter: grayscale(0%) contrast(100%);
+    transform: scale(1.05);
+}
+
+.leader-overlay-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--bg);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+.leader-badge {
+    display: inline-block;
+    background: var(--cyan);
+    color: var(--bg);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.leader-content h3 {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.leader-location {
+    color: var(--cyan);
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.leader-location i {
+    margin-right: 8px;
+}
+
+.leader-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 30px;
+}
+
+.leader-attributes {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.attribute {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--glass);
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+
+.attribute i {
+    color: var(--gold);
+}
+
+/* Impact Dashboard */
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.impact-stat {
+    background: var(--glass);
+    padding: 40px 20px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-icon {
+    font-size: 3rem;
+    color: var(--cyan);
+    margin-bottom: 20px;
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--gold);
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: var(--text);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.stat-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--cyan), var(--gold));
+    transition: width 1.5s ease;
+}
+
+/* Timeline */
+.timeline-container {
+    position: relative;
+    max-width: 800px;
+    margin: 50px auto 0;
+    padding-left: 50px;
+}
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -50px;
+    width: 40px;
+    height: 40px;
+    background: var(--cyan);
+    color: var(--bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 0.8rem;
+    font-family: 'Orbitron', sans-serif;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+}
+
+.timeline-content {
+    background: var(--glass);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+}
+
+.timeline-content h4 {
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.timeline-content p {
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.timeline-item.future .timeline-marker {
+    background: var(--gold);
+    animation: pulse 2s infinite;
+}
+
+/* Prayer Wall */
+.prayer-wall-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.prayer-card {
+    background: var(--glass);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    transition: 0.3s;
+}
+
+.prayer-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--cyan);
+}
+
+.prayer-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.prayer-header i {
+    font-size: 1.5rem;
+    color: var(--gold);
+}
+
+.prayer-category {
+    background: rgba(138, 43, 226, 0.2);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--cyan);
+}
+
+.prayer-text {
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 20px;
+    min-height: 80px;
+}
+
+.prayer-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prayer-author {
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+.pray-btn {
+    background: var(--cyan);
+    color: var(--bg);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: 0.3s;
+}
+
+.pray-btn:hover {
+    background: var(--gold);
+    transform: scale(1.05);
+}
+
+/* Scripture Daily */
+.scripture-daily-card {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(255, 215, 0, 0.05));
+    padding: 60px 40px;
+    border-radius: 20px;
+    border: 2px solid var(--gold);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.scripture-icon {
+    font-size: 4rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.scripture-daily-card h3 {
+    color: var(--cyan);
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.daily-verse {
+    font-size: 1.5rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.daily-reference {
+    display: block;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.scripture-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .leadership-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .impact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .prayer-wall-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-container {
+        padding-left: 40px;
+    }
+
+    .timeline-marker {
+        left: -40px;
+        width: 35px;
+        height: 35px;
+        font-size: 0.7rem;
+    }
+}
+

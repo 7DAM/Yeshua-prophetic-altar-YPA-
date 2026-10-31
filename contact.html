@@ -4,65 +4,658 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact &amp; Prayer | Yeshua Prophetic Altar</title>
-    <meta name="description" content="Submit your prayer request or contact the Yeshua Prophetic Altar team securely.">
+    <meta name="description"
+        content="Submit your prayer request or contact the Yeshua Prophetic Altar team securely. God is ever-present, and we are ready to join you in seeking His guidance.">
+    <meta name="keywords"
+        content="Prayer Request, Yeshua Prophetic Altar, Contact Apostle Joshua, Prophetess Lillian, Nairobi Kenya Ministry">
+    <title>Contact & Prayer | Yeshua Prophetic Altar</title>
+
     <link rel="stylesheet" href="style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation Library for World-Class Scroll Effects -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
     <canvas id="bg-canvas" aria-hidden="true"></canvas>
     <div id="site-header"></div>
 
-    <main id="main-content" class="page-content">
-        <div class="container">
-            <h1 class="page-title">Secure Intercession Portal</h1>
-            <p class="section-desc">God is ever-present. Share your burden, and we will join you in seeking His guidance
-                and comfort.</p>
+    <main id="main-content">
 
-            <form name="prayer" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="glass-form"
-                id="prayerForm">
-                <input type="hidden" name="form-name" value="prayer">
-                <p class="bot-field"><label>Do not fill this out if you are human: <input name="bot-field"></label></p>
-
-                <label for="name" class="sr-only">Your Name</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" required>
-
-                <label for="email" class="sr-only">Your Email</label>
-                <input type="email" id="email" name="email" placeholder="Your Email" required>
-
-                <label for="subject" class="sr-only">Subject</label>
-                <select id="subject" name="subject" required>
-                    <option value="" disabled selected>Select a Subject</option>
-                    <option value="prayer">Prayer Request</option>
-                    <option value="counselling">Counselling</option>
-                    <option value="events">Event Registration</option>
-                    <option value="giving">Giving Enquiry</option>
-                    <option value="other">Other</option>
-                </select>
-
-                <label for="message" class="sr-only">Your Message</label>
-                <textarea id="message" name="message" rows="6" placeholder="Share your burden or enquiry..."
-                    required></textarea>
-
-                <button type="submit" class="btn-neon" id="submitBtn">Transmit Securely</button>
-
-                <div id="formSuccess" class="hidden success-msg" role="alert">
-                    <i class="fas fa-check-circle" aria-hidden="true"></i> Transmission Received. The Altar is praying
-                    for you.
+        <!-- ========================================== -->
+        <!-- CONTACT HERO SECTION -->
+        <!-- ========================================== -->
+        <section class="contact-hero">
+            <div class="hero-overlay"></div>
+            <div class="container">
+                <div class="hero-content" data-aos="fade-up">
+                    <p class="sub-text">ALL OVER THE WORLD, THE SPIRIT IS MOVING</p>
+                    <h1 class="main-title">Secure Intercession <span class="glow">Portal</span></h1>
+                    <blockquote class="hero-scripture">
+                        "Not by might, nor by power, but by my spirit, saith the Lord of hosts."
+                        <cite>— Zechariah 4:6</cite>
+                    </blockquote>
                 </div>
-            </form>
-        </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- MAIN CONTACT GRID -->
+        <!-- ========================================== -->
+        <section class="section">
+            <div class="container">
+                <div class="contact-grid">
+
+                    <!-- LEFT COLUMN: Context, AI Guide, and Info -->
+                    <div class="contact-info" data-aos="fade-right">
+                        <div class="info-card">
+                            <h3><i class="fas fa-praying-hands"></i> How Can We Pray For You?</h3>
+                            <p class="info-text">
+                                During these challenging times in the world, we understand that you may be carrying a
+                                heavy burden. Please know that we are here to support you through prayer. Is there
+                                anything specific on your heart or mind that you would like us to pray for? Remember,
+                                God is ever-present, and we are ready to join you in seeking His guidance and comfort.
+                            </p>
+                        </div>
+
+                        <!-- AI Quick Actions (WITH ICONS PRESERVED) -->
+                        <div class="ai-quick-actions" style="text-align: center; margin-bottom: 30px;">
+                            <h3 style="color: var(--premium-gold); font-family: var(--font-majestic); font-size: 1.3rem; margin-bottom: 25px;">
+                                What is on your heart today?</h3>
+                            <div class="quick-action-buttons" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                                <button type="button" class="quick-btn mood-btn" data-prayer="anxious" data-mood="anxious">
+                                    <i class="fas fa-heart"></i>
+                                    <span>I feel Anxious</span>
+                                </button>
+                                <button type="button" class="quick-btn mood-btn" data-prayer="breakthrough" data-mood="breakthrough">
+                                    <i class="fas fa-mountain"></i>
+                                    <span>Need Breakthrough</span>
+                                </button>
+                                <button type="button" class="quick-btn mood-btn" data-prayer="healing" data-mood="healing">
+                                    <i class="fas fa-hand-holding-medical"></i>
+                                    <span>Seeking Healing</span>
+                                </button>
+                                <button type="button" class="quick-btn mood-btn" data-prayer="peace" data-mood="peace">
+                                    <i class="fas fa-dove"></i>
+                                    <span>Desire Peace</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Dynamic Scripture Injection Area -->
+                        <div id="ai-scripture-response"
+                            style="display: none; text-align: center; margin-bottom: 25px; padding: 20px; background: rgba(212, 175, 55, 0.08); border-radius: 12px; border: 1px solid var(--glass-border);">
+                            <p id="injected-scripture" style="font-style: italic; color: var(--premium-gold); font-size: 1.05rem; margin: 0;">
+                            </p>
+                        </div>
+                        
+                        <!-- Netlify-Ready Prayer Form -->
+                        <form id="prayerForm" name="prayer-request" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+                            class="glass-form">
+                            <input type="hidden" name="form-name" value="prayer-request">
+                        
+                            <p class="hidden">
+                                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                            </p>
+                        
+                            <div class="form-group">
+                                <label for="prayerName">Your Name</label>
+                                <input type="text" id="prayerName" name="name" required placeholder="Enter your name">
+                            </div>
+                        
+                            <div class="form-group">
+                                <label for="prayerEmail">Your Email (Optional, for follow-up)</label>
+                                <input type="email" id="prayerEmail" name="email" placeholder="Enter your email">
+                            </div>
+                        
+                            <div class="form-group">
+                                <label for="prayerMessage">Your Prayer Request</label>
+                                <textarea id="prayerMessage" name="message" rows="5" required
+                                    placeholder="Share what is on your heart..."></textarea>
+                            </div>
+                        
+                            <button type="submit" id="submitBtn" class="btn-primary" style="width: 100%; margin-top: 10px;">
+                                <i class="fas fa-paper-plane"></i> Send Prayer Request
+                            </button>
+                        </form>
+                        
+                        <!-- Success Message (Outside form for clean state management) -->
+                        <div id="formSuccess" class="hidden" style="text-align: center; padding: 40px 20px;">
+                            <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--premium-gold); margin-bottom: 20px;"></i>
+                            <h3 style="color: var(--premium-gold); margin-bottom: 15px;">Transmission Received</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 25px;">
+                                Your request has been securely transmitted to the Altar. Our intercession team is standing in the
+                                gap for you right now.
+                                <br><em>"The effective, fervent prayer of a righteous man avails much." — James 5:16</em>
+                            </p>
+                            <button id="download-cert-btn" class="btn-outline">
+                                <i class="fas fa-file-pdf"></i> Download Prayer Certificate
+                            </button>
+                        </div>
+                        
+                        </div>
+                        </div>
+
+                        <!-- Contact Details -->
+                        <div class="contact-details">
+                            <div class="detail-item">
+                                <i class="fas fa-location-dot"></i>
+                                <div>
+                                    <h5>Headquarters</h5>
+                                    <p>Nairobi, Kenya</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h5>Email</h5>
+                                    <p>yeshuapropheticaltar7@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <div>
+                                    <h5>WhatsApp</h5>
+                                    <p>+254 718 501 642</p> <!-- Replace with actual number -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MISSING CONTENT: Know Jesus CTA -->
+                        <div class="know-jesus-mini">
+                            <h4><i class="fas fa-cross"></i> Do You Know Jesus?</h4>
+                            <p>"For God so loved the world, that he gave his only begotten Son..." — John 3:16</p>
+                            <a href="#know-jesus-section" class="btn-salvation"
+                                style="font-size: 0.8rem; padding: 10px 20px;">Learn About Salvation</a>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         SECTION: SECURE MINISTRY CONTACT & INTERCESSION
+                         ========================================== -->
+                    <section id="contact-form-section" class="section dark-alt">
+                        <div class="container">
+                            <div class="text-center" style="margin-bottom: 50px;">
+                                <span class="epicenter-badge"><span class="pulse-dot"></span> SECURE COMMUNICATION</span>
+                                <h2>Transmit Securely</h2>
+                                <p class="section-desc" style="max-width: 700px; margin: 0 auto;">
+                                    Reach out to the <strong>Yeshua Prophetic Altar</strong> ministry team. Whether you need
+                                    <strong>apostolic counselling in Nairobi</strong>, have a <strong>prophetic prayer request</strong>, or
+                                    seek <strong>secure church contact</strong>, your message is encrypted and routed directly to our
+                                    intercession and administrative team.
+                                </p>
+                            </div>
+                    
+                            <div class="glass-card" style="max-width: 700px; margin: 0 auto; padding: 40px;">
+                    
+                                <!-- NETLIFY NATIVE FORM ARCHITECTURE -->
+                                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="glass-form"
+                                    id="contactForm">
+                    
+                                    <!-- CRITICAL: Hidden field for Netlify Build Parser -->
+                                    <input type="hidden" name="form-name" value="contact">
+                    
+                                    <!-- SPAM DEFENSE: Honeypot (Hidden from humans, catches bots) -->
+                                    <p class="hidden" style="display: none;">
+                                        <label>Do not fill this out if you are human: <input name="bot-field"></label>
+                                    </p>
+                    
+                                    <div class="form-group">
+                                        <label for="contactName">Your Name</label>
+                                        <input type="text" id="contactName" name="name" required placeholder="Enter your full name">
+                                    </div>
+                    
+                                    <div class="form-group">
+                                        <label for="contactEmail">Your Email</label>
+                                        <input type="email" id="contactEmail" name="email" required placeholder="Enter your email address">
+                                    </div>
+                    
+                                    <div class="form-group">
+                                        <label for="contactSubject">Subject</label>
+                                        <select id="contactSubject" name="subject" required
+                                            style="background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 15px; border-radius: 12px; color: var(--text-primary); outline: none;">
+                                            <option value="" disabled selected>Select a Subject</option>
+                                            <option value="Prayer Request">🙏 Prayer Request</option>
+                                            <option value="Pastoral Counselling">🕊️ Pastoral Counselling</option>
+                                            <option value="Event Registration">📅 Event Registration</option>
+                                            <option value="Giving Enquiry">💰 Giving Enquiry</option>
+                                            <option value="Other">💬 Other</option>
+                                        </select>
+                                    </div>
+                    
+                                    <div class="form-group">
+                                        <label for="contactMessage">Your Message</label>
+                                        <textarea id="contactMessage" name="message" rows="5" required
+                                            placeholder="Share your heart, question, or request..."></textarea>
+                                    </div>
+                    
+                                    <button type="submit" id="submitBtn" class="btn-primary" style="width: 100%; margin-top: 10px;">
+                                        <i class="fas fa-shield-alt"></i> Transmit Securely
+                                    </button>
+                                </form>
+                    
+                                <!-- SUCCESS STATE (Hidden by default) -->
+                                <div id="formSuccess" class="hidden" style="text-align: center; padding: 40px 20px;">
+                                    <i class="fas fa-check-circle"
+                                        style="font-size: 3.5rem; color: var(--premium-gold); margin-bottom: 20px;"></i>
+                                    <h3 style="color: var(--premium-gold); margin-bottom: 15px; font-family: var(--font-majestic);">
+                                        Transmission Received</h3>
+                                    <p style="color: var(--text-secondary); line-height: 1.7; font-size: 1.05rem;">
+                                        The Altar is praying for you. Your request has been securely logged and routed to our ministry team.
+                                        We will respond to your email shortly.
+                                    </p>
+                                    <a href="index.html" class="btn-outline" style="margin-top: 25px; display: inline-block;">
+                                        <i class="fas fa-home"></i> Return to Homepage
+                                    </a>
+                                </div>
+                    
+                            </div>
+                        </div>
+                    </section>
+        <!-- ========================================== -->
+        <!-- PARTNERSHIP BANNER -->
+        <!-- ========================================== -->
+        <section class="section dark-alt">
+            <div class="container">
+                <div class="partnership-banner" data-aos="fade-up">
+                    <div class="partner-text">
+                        <i class="fas fa-handshake"></i>
+                        <p>Our Yeshua Prophetic Altar is in proud partnership with the <strong>Capstone Legacy
+                                Foundation</strong> to serve communities and advance the Kingdom globally.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <div id="site-footer"></div>
     <div id="ai-container"></div>
 
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="components.js"></script>
     <script src="script.js"></script>
+
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+
+        // AI Quick Action Auto-Fill Logic
+        document.querySelectorAll('.quick-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const prayerType = this.dataset.prayer;
+                const messageField = document.getElementById('message');
+                const subjectField = document.getElementById('subject');
+
+                const messages = {
+                    'anxiety': 'I am feeling anxious and overwhelmed. Please pray for God\'s peace to guard my heart and mind.',
+                    'breakthrough': 'I am facing a mountain in my life and need a breakthrough. Please stand with me in prayer for divine intervention.',
+                    'healing': 'I am seeking physical, emotional, or spiritual healing. Please pray for the Great Physician to touch my body and restore me.',
+                    'peace': 'I desire peace in my current situation. Please intercede for me and my family.'
+                };
+
+                if (messageField && subjectField) {
+                    subjectField.value = 'prayer';
+                    messageField.value = messages[prayerType];
+
+                    // Visual feedback
+                    messageField.style.borderColor = 'var(--gold)';
+                    messageField.style.boxShadow = '0 0 15px rgba(255, 215, 0, 0.3)';
+                    setTimeout(() => {
+                        messageField.style.borderColor = '';
+                        messageField.style.boxShadow = '';
+                    }, 1500);
+
+                    // Scroll to form on mobile
+                    messageField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    messageField.focus();
+                }
+            });
+        });
+    </script>
+
+    <!-- PAGE-SPECIFIC STYLES (Ensures perfect rendering without modifying global style.css) -->
+    <style>
+        .contact-hero {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(10, 5, 18, 0.9), rgba(138, 43, 226, 0.2));
+            overflow: hidden;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(138,43,226,0.15)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .contact-hero .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 20px;
+        }
+
+        .hero-scripture {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--gold);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-scripture cite {
+            display: block;
+            margin-top: 10px;
+            font-size: 1rem;
+            color: var(--text);
+            font-style: normal;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .info-card {
+            background: var(--glass);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .info-card h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-text {
+            line-height: 1.7;
+            color: var(--text);
+        }
+
+        .ai-quick-actions {
+            background: rgba(138, 43, 226, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .ai-quick-actions h4 {
+            color: var(--cyan);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ai-prompt {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .quick-action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .quick-btn {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text);
+            text-align: center;
+        }
+
+        .quick-btn:hover {
+            border-color: var(--gold);
+            background: rgba(255, 215, 0, 0.05);
+            transform: translateY(-3px);
+        }
+
+        .quick-btn i {
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        .quick-btn span {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .detail-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .detail-item i {
+            font-size: 1.2rem;
+            color: var(--cyan);
+            margin-top: 3px;
+        }
+
+        .detail-item h5 {
+            color: var(--gold);
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .detail-item p {
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .know-jesus-mini {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(138, 43, 226, 0.1));
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid var(--gold);
+            text-align: center;
+        }
+
+        .know-jesus-mini h4 {
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .know-jesus-mini p {
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .glass-form-container {
+            background: var(--glass);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .glass-form-container h3 {
+            color: var(--cyan);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-desc {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+
+        .textarea-icon {
+            top: 20px;
+            transform: none;
+        }
+
+        .glass-form input,
+        .glass-form select,
+        .glass-form textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            padding: 15px 15px 15px 45px;
+            border-radius: 8px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .glass-form textarea {
+            padding-top: 15px;
+            resize: vertical;
+        }
+
+        .glass-form input:focus,
+        .glass-form select:focus,
+        .glass-form textarea:focus {
+            border-color: var(--cyan);
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.2);
+        }
+
+        .glass-form input:focus~.input-icon,
+        .glass-form textarea:focus~.input-icon {
+            color: var(--cyan);
+        }
+
+        .submit-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .success-msg {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 255, 100, 0.05);
+            border: 1px solid #0f0;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            color: #0f0;
+            margin-bottom: 15px;
+        }
+
+        .success-msg h4 {
+            color: #0f0;
+            margin-bottom: 10px;
+        }
+
+        .success-msg p {
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .partnership-banner {
+            background: var(--glass);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .partner-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .partner-text i {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .partner-text p {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .partner-text strong {
+            color: var(--cyan);
+        }
+
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-action-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </body>
 
 </html>
