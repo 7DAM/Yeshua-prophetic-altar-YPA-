@@ -1209,6 +1209,46 @@ if (document.readyState === 'loading') {
 } else {
     initMediaExperience();
     }
+
+    // ==========================================
+// 18. GLOBAL ENGAGEMENTS FILTER ENGINE
+// Architecture: Zero-Reload DOM Filtering
+// ==========================================
+function initEngagementFilter() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.engagement-card');
+
+    if (filterBtns.length === 0) return;
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // 1. Update active button state
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const filterValue = btn.getAttribute('data-filter');
+
+            // 2. Filter the cards
+            cards.forEach(card => {
+                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                    card.classList.remove('hidden');
+                    card.style.animation = 'fadeUp 0.5s ease forwards';
+                } else {
+                    card.classList.add('hidden');
+                }
+                // Clean up animation property after it plays
+                setTimeout(() => { card.style.animation = ''; }, 500);
+            });
+        });
+    });
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEngagementFilter);
+} else {
+    initEngagementFilter();
+}
     
     
     // ==========================================
