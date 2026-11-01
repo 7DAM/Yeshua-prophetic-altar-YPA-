@@ -37,19 +37,19 @@ const footerTemplate = `
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="media.html">Media</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="donate.html">Give</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="nehemiah-protocol.html">Marketplace</a></li>
-                        <li><a href="three-voice-rule.html">Discernment</a></li>
-                        <li><a href="goliath-projects.html">Warfare</a></li>
-                        <li><a href="bloodline-audit.html">Generational Healing</a></li>
-                        <li><a href="executive-fast.html">Fasting</a></li>
-                        <li><a href="church-health.html">Church Health</a></li>
-                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/media.html">Media</a></li>
+                        <li><a href="/events.html">Events</a></li>
+                        <li><a href="/donate.html">Give</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/nehemiah-protocol.html">Marketplace</a></li>
+                        <li><a href="/three-voice-rule.html">Discernment</a></li>
+                        <li><a href="/goliath-projects.html">Warfare</a></li>
+                        <li><a href="/bloodline-audit.html">Generational Healing</a></li>
+                        <li><a href="/executive-fast.html">Fasting</a></li>
+                        <li><a href="/church-health.html">Church Health</a></li>
+                        <li><a href="/blog.html">Blog</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
