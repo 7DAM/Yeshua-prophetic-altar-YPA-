@@ -9,13 +9,13 @@ const headerTemplate = `
             </a>
         </div>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Altar</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="blog.html">Teachings</a></li>
-            <li><a href="media.html">Media</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="donate.html">Give</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index">Altar</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="blog">Teachings</a></li>
+            <li><a href="media">Media</a></li>
+            <li><a href="events">Events</a></li>
+            <li><a href="donate">Give</a></li>
+            <li><a href="contact">Contact</a></li>
         </ul>
         <button class="hamburger" id="hamburger" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation menu">
             <i class="fas fa-bars" aria-hidden="true"></i>

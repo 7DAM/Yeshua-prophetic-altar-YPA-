@@ -94,40 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
         scene.add(new THREE.Mesh(atmGeo, atmMat));
     }
 
-    function createContinents() {
-        // All 7 Continents mapped to spherical coordinates
-        const continentData = [
-            { name: 'Africa', lat: 0, lon: 20 }, { name: 'Europe', lat: 50, lon: 10 },
-            { name: 'Asia', lat: 35, lon: 100 }, { name: 'North America', lat: 45, lon: -100 },
-            { name: 'South America', lat: -15, lon: -60 }, { name: 'Oceania', lat: -25, lon: 135 },
-            { name: 'Antarctica', lat: -85, lon: 0 }
-        ];
-
-        continentData.forEach(cont => {
-            const points = [];
-            const particleCount = 300; // Increased density for richer look
-            
-            for (let i = 0; i < particleCount; i++) {
-                const lat = cont.lat + (Math.random() - 0.5) * (cont.name === 'Antarctica' ? 15 : 35);
-                const lon = cont.lon + (Math.random() - 0.5) * 45;
-                const pos = latLonToVector3(lat, lon, 1.52);
-                points.push(pos.x, pos.y, pos.z);
-            }
-            
-            const geo = new THREE.BufferGeometry();
-            geo.setAttribute('position', new THREE.Float32BufferAttribute(points, 3));
-            
-            const mat = new THREE.PointsMaterial({ 
-                color: 0xD4AF37, // Premium Gold
-                size: 0.02, 
-                transparent: true, 
-                opacity: 0.85, 
-                blending: THREE.AdditiveBlending 
-            });
-            scene.add(new THREE.Points(geo, mat));
-        });
-    }
-
     function createHolographicRings() {
         // The "4D" Intersecting Orbital Rings
         const ringMat = new THREE.MeshBasicMaterial({ color: 0xD4AF37, transparent: true, opacity: 0.3 });

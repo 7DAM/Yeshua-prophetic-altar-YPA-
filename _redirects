@@ -1,0 +1,8 @@
+# ==========================================
+# NETLIFY CLEAN URL REDIRECTS
+# Maps clean URLs to the actual .html files
+# ==========================================
+/about      /about.html      200
+/contact    /contact.html    200
+/give       /give.html       200
+/media      /media.html      200
