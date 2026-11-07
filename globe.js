@@ -1,200 +1,150 @@
-// ==========================================
-// TIER-1 4D INTERACTIVE GLOBE ENGINE (MASTER MERGE)
-// Architecture: Three.js r128 + Custom GLSL Shaders
-// ==========================================
-
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Fail-safe: Ensure Three.js library is loaded
     if (typeof THREE === 'undefined') {
-        console.error("Tier-1 Architecture Error: Three.js library not found in index.html.");
+        console.error("Tier-1 Architecture Error: Three.js library not found.");
         return;
     }
 
     const container = document.getElementById('globe-canvas-container');
     if (!container) return;
 
-    // --- ARCHITECTURAL STATE ---
-    let scene, camera, renderer, globe, stars;
-    let rings = [], hotspots = [];
+    // --- PERFORMANCE ARBITRAGE: Detect Mobile ---
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+    const STAR_COUNT = isMobile ? 2000 : 8000; // Save mobile GPU, maintain desktop fidelity
+    const PIXEL_RATIO = isMobile ? 1.5 : Math.min(window.devicePixelRatio, 2);
+
+    let scene, camera, renderer;
+    let globeCore, globeWireframe, atmHalo;
+    let rings = [], hotspots = [], stars;
     let mouseX = 0, mouseY = 0;
     let targetRotationX = 0, targetRotationY = 0;
 
-    // ==========================================
-    // INITIALIZATION PROTOCOL
-    // ==========================================
     function initGlobe() {
-        // Scene Setup (Alpha true allows CSS background to show through)
         scene = new THREE.Scene();
-
-        // Camera Setup
         camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-        camera.position.z = 5;
+        camera.position.z = isMobile ? 5.5 : 6; // Slightly closer on mobile for better impact
 
-        // Renderer Setup (Antialias for smooth edges, Alpha for transparency)
-        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer = new THREE.WebGLRenderer({ antialias: !isMobile, alpha: true }); // Disable AA on low-end mobile for performance
         renderer.setSize(container.clientWidth, container.clientHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Cap at 2 for performance
+        renderer.setPixelRatio(PIXEL_RATIO); 
         container.appendChild(renderer.domElement);
 
-        // Build the World
         createGlobeCore();
-        createContinents();
         createHolographicRings();
         createPrayerHotspots();
         createStarfield();
         createLighting();
 
-        // Bind Events
+        // Desktop Events
         document.addEventListener('mousemove', onMouseMove);
+        // Mobile Touch Events
+        document.addEventListener('touchstart', onTouchStart, { passive: false });
+        document.addEventListener('touchmove', onTouchMove, { passive: false });
+        
         window.addEventListener('resize', onWindowResize);
 
-        // Ignite Engine
         animate();
     }
 
-    // ==========================================
-    // COMPONENT GENERATORS
-    // ==========================================
-
     function createGlobeCore() {
-        // Deep Royal Purple Core
-        const geometry = new THREE.SphereGeometry(1.5, 64, 64);
-        const material = new THREE.MeshPhongMaterial({
-            color: 0x2A0A4A, 
-            emissive: 0x150524, 
-            emissiveIntensity: 0.5,
-            shininess: 15, 
-            transparent: true, 
-            opacity: 0.95
+        const coreGeometry = new THREE.SphereGeometry(1.5, isMobile ? 32 : 64, isMobile ? 32 : 64);
+        const coreMaterial = new THREE.MeshPhongMaterial({
+            color: 0x2A0A4A, emissive: 0x150524, emissiveIntensity: 0.6,
+            shininess: 20, transparent: true, opacity: 0.95
         });
-        globe = new THREE.Mesh(geometry, material);
-        scene.add(globe);
+        globeCore = new THREE.Mesh(coreGeometry, coreMaterial);
+        scene.add(globeCore);
 
-        // Gold Atmospheric Halo (Custom GLSL Shader)
-        const atmGeo = new THREE.SphereGeometry(1.58, 64, 64);
+        const wireGeometry = new THREE.SphereGeometry(1.52, isMobile ? 16 : 32, isMobile ? 16 : 32);
+        const wireMaterial = new THREE.MeshBasicMaterial({ color: 0x00ffcc, wireframe: true, transparent: true, opacity: 0.15 });
+        globeWireframe = new THREE.Mesh(wireGeometry, wireMaterial);
+        scene.add(globeWireframe);
+
+        // Note: Custom shaders can be heavy on old mobiles. We keep it, but rely on lower geometry counts above.
+        const atmGeo = new THREE.SphereGeometry(1.65, isMobile ? 32 : 64, isMobile ? 32 : 64);
         const atmMat = new THREE.ShaderMaterial({
-            vertexShader: `
-                varying vec3 vNormal;
-                void main() {
-                    vNormal = normalize(normalMatrix * normal);
-                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-                }
-            `,
-            fragmentShader: `
-                varying vec3 vNormal;
-                void main() {
-                    float intensity = pow(0.65 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.5);
-                    gl_FragColor = vec4(0.83, 0.68, 0.21, 1.0) * intensity; // Premium Gold
-                }
-            `,
-            blending: THREE.AdditiveBlending,
-            side: THREE.BackSide,
-            transparent: true
+            vertexShader: `varying vec3 vNormal; void main() { vNormal = normalize(normalMatrix * normal); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
+            fragmentShader: `varying vec3 vNormal; void main() { float intensity = pow(0.65 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.5); gl_FragColor = vec4(0.83, 0.68, 0.21, 1.0) * intensity; }`,
+            blending: THREE.AdditiveBlending, side: THREE.BackSide, transparent: true
         });
-        scene.add(new THREE.Mesh(atmGeo, atmMat));
+        atmHalo = new THREE.Mesh(atmGeo, atmMat);
+        scene.add(atmHalo);
     }
 
     function createHolographicRings() {
-        // The "4D" Intersecting Orbital Rings
         const ringMat = new THREE.MeshBasicMaterial({ color: 0xD4AF37, transparent: true, opacity: 0.3 });
-        
-        const ring1 = new THREE.Mesh(new THREE.TorusGeometry(2.1, 0.005, 16, 100), ringMat);
-        ring1.rotation.x = Math.PI / 2.5;
-        scene.add(ring1); rings.push(ring1);
-
-        const ring2 = new THREE.Mesh(new THREE.TorusGeometry(2.1, 0.005, 16, 100), ringMat.clone());
-        ring2.rotation.x = Math.PI / 1.5; ring2.rotation.y = Math.PI / 4;
-        scene.add(ring2); rings.push(ring2);
-
-        const ring3 = new THREE.Mesh(new THREE.TorusGeometry(2.4, 0.002, 16, 100), ringMat.clone());
-        ring3.material.opacity = 0.15; ring3.rotation.x = Math.PI / 3;
-        scene.add(ring3); rings.push(ring3);
+        const ring1 = new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.008, 16, 100), ringMat);
+        ring1.rotation.x = Math.PI / 2.5; scene.add(ring1); rings.push(ring1);
+        const ring2 = new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.008, 16, 100), ringMat.clone());
+        ring2.rotation.x = Math.PI / 1.5; ring2.rotation.y = Math.PI / 4; scene.add(ring2); rings.push(ring2);
     }
 
     function createPrayerHotspots() {
-        // Injecting Metadata for Future Raycasting (Click-to-interact)
         const nodes = [ 
-            { lat: -1.29, lon: 36.82, label: 'Nairobi', prayers: 847 }, 
+            { lat: -1.29, lon: 36.82, label: 'Nairobi (Source)', prayers: 847 }, 
             { lat: 40.71, lon: -74.00, label: 'New York', prayers: 423 }, 
             { lat: 51.50, lon: -0.12, label: 'London', prayers: 312 }, 
-            { lat: 35.68, lon: 139.69, label: 'Tokyo', prayers: 256 }, 
-            { lat: -33.87, lon: 151.21, label: 'Sydney', prayers: 189 } 
+            { lat: 35.68, lon: 139.69, label: 'Tokyo', prayers: 256 } 
         ];
 
-        nodes.forEach(node => {
-            const pos = latLonToVector3(node.lat, node.lon, 1.53);
+        nodes.forEach((node) => {
+            const pos = latLonToVector3(node.lat, node.lon, 1.55);
+            const dot = new THREE.Mesh(new THREE.SphereGeometry(0.04, 16, 16), new THREE.MeshBasicMaterial({ color: 0xFFFFFF }));
+            dot.position.copy(pos); scene.add(dot);
             
-            // Solid White Core
-            const dot = new THREE.Mesh(
-                new THREE.SphereGeometry(0.03, 16, 16), 
-                new THREE.MeshBasicMaterial({ color: 0xFFFFFF })
-            );
-            dot.position.copy(pos); 
-            scene.add(dot);
-            
-            // Pulsing Gold Radar Ring
-            const pulse = new THREE.Mesh(
-                new THREE.RingGeometry(0.04, 0.07, 32), 
-                new THREE.MeshBasicMaterial({ color: 0xD4AF37, transparent: true, opacity: 0.6, side: THREE.DoubleSide })
-            );
-            pulse.position.copy(pos); 
-            pulse.lookAt(new THREE.Vector3(0, 0, 0)); 
-            scene.add(pulse);
-            
-            // Store reference and data for future interaction
+            const pulse = new THREE.Mesh(new THREE.RingGeometry(0.06, 0.1, 32), new THREE.MeshBasicMaterial({ color: 0xD4AF37, transparent: true, opacity: 0.6, side: THREE.DoubleSide }));
+            pulse.position.copy(pos); pulse.lookAt(new THREE.Vector3(0, 0, 0)); scene.add(pulse);
             hotspots.push({ dot, pulse, data: node });
         });
     }
 
     function createStarfield() {
-        // Deep Space Parallax Background
         const geometry = new THREE.BufferGeometry();
         const vertices = [];
-        for (let i = 0; i < 2500; i++) {
-            vertices.push((Math.random() - 0.5) * 300, (Math.random() - 0.5) * 300, (Math.random() - 0.5) * 300);
+        for (let i = 0; i < STAR_COUNT; i++) {
+            vertices.push((Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000);
         }
         geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-        
-        const material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.15, transparent: true, opacity: 0.6 });
+        const material = new THREE.PointsMaterial({ color: 0xffffff, size: isMobile ? 0.2 : 0.15, transparent: true, opacity: 0.6 });
         stars = new THREE.Points(geometry, material);
         scene.add(stars);
     }
 
     function createLighting() {
-        scene.add(new THREE.AmbientLight(0xffffff, 0.4));
-        
-        // Directional light for specular highlights on the purple core
-        const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
-        dirLight.position.set(5, 3, 5);
-        scene.add(dirLight);
-
-        // Thematic Point Lights
-        const purpleLight = new THREE.PointLight(0x8A2BE2, 1.2, 10);
-        purpleLight.position.set(-5, 2, 5);
-        scene.add(purpleLight);
-
-        const goldLight = new THREE.PointLight(0xD4AF37, 0.8, 10);
-        goldLight.position.set(5, -2, 5);
-        scene.add(goldLight);
+        scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        dirLight.position.set(5, 3, 5); scene.add(dirLight);
+        const purpleLight = new THREE.PointLight(0x8A2BE2, 1.5, 15);
+        purpleLight.position.set(-5, 2, 5); scene.add(purpleLight);
+        const goldLight = new THREE.PointLight(0xD4AF37, 1.2, 15);
+        goldLight.position.set(5, -2, 5); scene.add(goldLight);
     }
-
-    // ==========================================
-    // MATH & PHYSICS UTILITIES
-    // ==========================================
 
     function latLonToVector3(lat, lon, radius) {
         const phi = (90 - lat) * (Math.PI / 180);
         const theta = (lon + 180) * (Math.PI / 180);
-        return new THREE.Vector3(
-            -(radius * Math.sin(phi) * Math.cos(theta)),
-            (radius * Math.cos(phi)),
-            (radius * Math.sin(phi) * Math.sin(theta))
-        );
+        return new THREE.Vector3(-(radius * Math.sin(phi) * Math.cos(theta)), (radius * Math.cos(phi)), (radius * Math.sin(phi) * Math.sin(theta)));
     }
 
+    // --- INTERACTION HANDLERS ---
     function onMouseMove(event) {
         mouseX = (event.clientX / window.innerWidth) * 2 - 1;
         mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+    }
+
+    function onTouchStart(event) {
+        if (event.touches.length === 1) {
+            mouseX = (event.touches[0].clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.touches[0].clientY / window.innerHeight) * 2 + 1;
+        }
+    }
+
+    function onTouchMove(event) {
+        // Prevent default scrolling when interacting with the globe
+        event.preventDefault(); 
+        if (event.touches.length === 1) {
+            mouseX = (event.touches[0].clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.touches[0].clientY / window.innerHeight) * 2 + 1;
+        }
     }
 
     function onWindowResize() {
@@ -203,37 +153,28 @@ document.addEventListener('DOMContentLoaded', () => {
         renderer.setSize(container.clientWidth, container.clientHeight);
     }
     
-    
-    // ==========================================
-    // THE ANIMATION LOOP (60 FPS Target)
-    // ==========================================
     function animate() {
         requestAnimationFrame(animate);
         
-        if (globe) {
-            // Base continuous rotation
-            globe.rotation.y += 0.0015;
+        if (globeCore && globeWireframe && atmHalo) {
+            const rotationSpeed = 0.0015;
+            globeCore.rotation.y += rotationSpeed;
+            globeWireframe.rotation.y += rotationSpeed;
+            atmHalo.rotation.y += rotationSpeed;
             
-            // Smooth Mouse Parallax (The "Lerp" Tactic from Old Code)
             targetRotationY = mouseX * 0.4;
             targetRotationX = mouseY * 0.2;
             
-            globe.rotation.y += (targetRotationY - globe.rotation.y) * 0.03;
-            globe.rotation.x += (targetRotationX - globe.rotation.x) * 0.03;
+            globeCore.rotation.y += (targetRotationY - globeCore.rotation.y) * 0.03;
+            globeCore.rotation.x += (targetRotationX - globeCore.rotation.x) * 0.03;
+            
+            globeWireframe.rotation.x = globeCore.rotation.x;
+            atmHalo.rotation.x = globeCore.rotation.x;
         }
 
-        // Spin 4D Holographic Rings on independent axes
-        rings.forEach((r, i) => { 
-            r.rotation.z += 0.0015 * (i % 2 === 0 ? 1 : -1); 
-        });
+        rings.forEach((r, i) => { r.rotation.z += 0.0015 * (i % 2 === 0 ? 1 : -1); });
+        if (stars) { stars.rotation.y += 0.0002; stars.rotation.x += 0.0001; }
 
-        // Slowly rotate starfield for deep parallax depth
-        if (stars) {
-            stars.rotation.y += 0.0002;
-            stars.rotation.x += 0.0001;
-        }
-
-        // Pulse Prayer Hotspots (Sine wave offset by index for organic feel)
         const time = Date.now() * 0.002;
         hotspots.forEach((h, i) => {
             const scale = 1 + Math.sin(time + i) * 0.6;
@@ -244,6 +185,5 @@ document.addEventListener('DOMContentLoaded', () => {
         renderer.render(scene, camera);
     }
 
-    // Execute Initialization
     initGlobe();
 });

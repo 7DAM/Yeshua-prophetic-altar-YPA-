@@ -55,6 +55,240 @@ h1 {
     line-height: 1.1;
 }
 
+/* =========================================
+   1. CORE RESET & TYPOGRAPHY
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+        background: radial-gradient(circle at center, #0A0512 0%, #020105 100%);
+        color: #ffffff;
+        overflow: hidden;
+        /* 100dvh prevents mobile browser URL bar from causing layout jumps */
+        height: 100dvh;
+        width: 100vw;
+        /* Prevent pull-to-refresh on mobile which disrupts 3D touch */
+        overscroll-behavior: none;
+    }
+
+/* =========================================
+   2. 4D GLOBE CONTAINER SETUP
+   ========================================= */
+#globe-4d-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#globe-canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* Hardware acceleration for smooth mobile rendering */
+    transform: translateZ(0);
+}
+
+/* =========================================
+   3. GLASSMORPHISM UI OVERLAY
+   ========================================= */
+.globe-ui-overlay {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    z-index: 10;
+    animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ui-panel {
+    background: rgba(10, 5, 18, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    min-width: 260px;
+}
+
+/* =========================================
+   4. TYPOGRAPHY & GOLD ACCENTS
+   ========================================= */
+.ui-panel h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.gold-text {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+}
+
+/* =========================================
+   5. CONTINENT LIST & PULSE ANIMATION
+   ========================================= */
+.continent-list {
+    margin-bottom: 28px;
+}
+
+.continent-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #d1d5db;
+    margin-bottom: 10px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.continent-item:hover {
+    color: #ffffff;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #00ffcc;
+    /* Neon Cyan for "Spirit Moving" aesthetic */
+    border-radius: 50%;
+    margin-right: 14px;
+    box-shadow: 0 0 10px #00ffcc;
+    animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 12px rgba(0, 255, 204, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 204, 0);
+    }
+}
+
+/* =========================================
+   6. STATS FOOTER
+   ========================================= */
+.ui-stats {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.stat {
+    text-align: center;
+    flex: 1;
+}
+
+.stat:first-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-num {
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #FFD700;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #9ca3af;
+    letter-spacing: 1.5px;
+}
+
+/* =========================================
+   5. MOBILE RESPONSIVE ARCHITECTURE
+   ========================================= */
+@media (max-width: 768px) {
+    .globe-ui-overlay {
+        top: auto;
+        bottom: 24px;
+        /* Safe area from bottom */
+        left: 16px;
+        right: 16px;
+        width: auto;
+    }
+
+    .ui-panel {
+        padding: 24px 20px;
+        min-width: auto;
+        border-radius: 20px;
+        /* More rounded for mobile aesthetics */
+    }
+
+    .ui-panel h3 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        text-align: center;
+    }
+
+    .continent-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* 2-column grid on mobile */
+        gap: 8px 16px;
+        margin-bottom: 20px;
+    }
+
+    .continent-item {
+        font-size: 0.75rem;
+        margin-bottom: 0;
+    }
+
+    .pulse-dot {
+        width: 6px;
+        height: 6px;
+        margin-right: 8px;
+    }
+
+    .stat-num {
+        font-size: 1.4rem;
+    }
+
+    .stat-label {
+        font-size: 0.65rem;
+    }
+}
+
 /* ==========================================
    4. UTILITY CLASSES
    ========================================== */
