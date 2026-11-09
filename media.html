@@ -4,20 +4,585 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Access prophetic teachings, sermons, discipleship materials, and the Bible study course from Apostle Joshua and Prophetess Lillian at Yeshua Prophetic Altar.">
-    <meta name="keywords"
-        content="Prophetic Teachings, Sermons, Bible Study Course, Yeshua Prophetic Altar, Apostle Joshua, Prophetess Lillian, Discipleship Matrix">
-    <title>Media & Teachings | Yeshua Prophetic Altar</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Primary Meta Tags -->
+    <title>Media & Global Prayer Wall | Yeshua Prophetic Altar</title>
+    <meta name="description"
+        content="Join our online prayer community and view global crusades, event flyers, and prophetic ministry engagements from Yeshua Prophetic Altar in Kenya, USA, South Africa, and Tanzania.">
+    <meta name="keywords"
+        content="Yeshua Prophetic Altar media, global crusades Kenya, prophetic ministry USA, prayer wall, intercessory prayer, Apostle Joshua, Prophetess Lillian">
+    <meta name="author" content="Yeshua Prophetic Altar">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0A0512">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="assets/media/image/logoyeshuaprophetic.webp">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PAGE-SPECIFIC STYLES -->
+    <style>
+        :root {
+            --premium-gold: #D4AF37;
+            --royal-purple: #6B2D8B;
+            --bg-dark: #05010a;
+            --glass-border: rgba(212, 175, 55, 0.2);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --text-secondary: rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-bar {
+            background: rgba(5, 1, 10, 0.95);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .nav-logo .gold {
+            color: var(--premium-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--premium-gold);
+        }
+
+        .section {
+            padding: 80px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .section-title .gold {
+            color: var(--premium-gold);
+        }
+
+        .section-desc {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .engagement-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            padding: 10px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--premium-gold);
+            color: #05010a;
+            border-color: var(--premium-gold);
+        }
+
+        .engagement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .engagement-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin: 0;
+        }
+
+        .engagement-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--premium-gold);
+        }
+
+        .engagement-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .engagement-card img[style*="contain"] {
+            object-fit: contain;
+            background: #0a0a0a;
+        }
+
+        .engagement-card figcaption {
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .engagement-card h3 {
+            color: var(--premium-gold);
+            font-family: 'Orbitron', sans-serif;
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+        }
+
+        .engagement-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .prayer-wall-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .prayer-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .prayer-category {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--premium-gold);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .prayer-text {
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .prayer-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pray-btn {
+            background: var(--premium-gold);
+            color: #05010a;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .pray-btn:hover {
+            background: #e5c158;
+        }
+
+        .breadcrumb {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--premium-gold);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #020205;
+            padding: 60px 20px 20px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--premium-gold);
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            color: var(--text-muted);
+            text-decoration: none;
+            line-height: 1.6;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--premium-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .engagement-grid,
+            .prayer-wall-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo">YESHUA <span class="gold">PROPHETIC</span> ALTAR</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="counseling.html">Counseling</a></li>
+            <li><a href="bible-study.html">Bible Study</a></li>
+            <li><a href="media.html" class="active">Media</a></li>
+            <li><a href="index.html#give">Give</a></li>
+        </ul>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> &raquo; <span>Media & Global Prayer Wall</span>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- GLOBAL INTERCESSION & MEDIA GALLERY -->
+    <!-- ========================================== -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 50px;">
+                <span class="epicenter-badge"
+                    style="display: inline-block; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.3); padding: 8px 20px; border-radius: 50px; margin-bottom: 20px;">
+                    <span
+                        style="color: var(--premium-gold); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;">
+                        <span
+                            style="display: inline-block; width: 8px; height: 8px; background: var(--premium-gold); border-radius: 50%; margin-right: 8px;"></span>
+                        GLOBAL INTERCESSION
+                    </span>
+                </span>
+                <h2 class="section-title">Global Prayer Wall & <span class="gold">Media Gallery</span></h2>
+                <p class="section-desc">
+                    Join our <strong>online prayer community</strong> and stand in the gap with believers worldwide.
+                    Submit your <strong>prayer request online</strong> or click "Pray" to join thousands in
+                    <strong>intercessory prayer</strong> for breakthrough, healing, and divine guidance.
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="engagement-filters">
+                <button class="filter-btn active" data-filter="all">All Engagements</button>
+                <button class="filter-btn" data-filter="crusade">Global Crusades</button>
+                <button class="filter-btn" data-filter="flyer">Event Flyers & Posters</button>
+            </div>
+
+            <!-- Media Grid -->
+            <div class="engagement-grid">
+                <!-- Item 1: Live Photo -->
+                <figure class="engagement-card" data-category="crusade">
+                    <img src="assets/media/image/engagements/kenya-crusade.webp"
+                        alt="Prophetess Lillian ministering at a global revival crusade in Nairobi Kenya"
+                        loading="lazy">
+                    <figcaption>
+                        <h3>Nairobi Night of Fire</h3>
+                        <p>Kenya</p>
+                    </figcaption>
+                </figure>
+
+                <!-- Item 2: Event Flyer -->
+                <figure class="engagement-card" data-category="flyer">
+                    <img src="assets/media/image/usa-conference-flyer5.webp"
+                        alt="Apostolic conference flyer and poster for prophetic ministry event in USA" loading="lazy">
+                    <figcaption>
+                        <h3>USA Apostolic Summit</h3>
+                        <p>United States</p>
+                    </figcaption>
+                </figure>
+
+                <!-- Item 3: Live Photo -->
+                <figure class="engagement-card" data-category="crusade">
+                    <img src="assets/media/image/engagements/south-africa-ministry.webp"
+                        alt="Prophetess Lillian leading prophetic worship and healing at a South Africa ministry event"
+                        loading="lazy">
+                    <figcaption>
+                        <h3>Cape Town Revival</h3>
+                        <p>South Africa</p>
+                    </figcaption>
+                </figure>
+
+                <!-- Item 4: Event Poster -->
+                <figure class="engagement-card" data-category="flyer">
+                    <img src="assets/media/image/engagements/usa-event-poster.webp"
+                        alt="Prophetic prayer and healing event poster for Yeshua Prophetic Altar in USA"
+                        loading="lazy">
+                    <figcaption>
+                        <h3>Houston Breakthrough</h3>
+                        <p>United States</p>
+                    </figcaption>
+                </figure>
+
+                <!-- Item 5: Event Poster -->
+                <figure class="engagement-card" data-category="flyer">
+                    <img src="assets/media/image/tanzania-conference-flyer2.webp"
+                        alt="Prophetic prayer and healing event poster for Yeshua Prophetic Altar in Tanzania"
+                        loading="lazy">
+                    <figcaption>
+                        <h3>Tanzania Breakthrough</h3>
+                        <p>Tanzania</p>
+                    </figcaption>
+                </figure>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- DYNAMIC PRAYER GRID (Sample Data) -->
+            <!-- ========================================== -->
+            <h3 class="section-title" style="margin-top: 80px; font-size: 1.8rem;">Live <span class="gold">Intercession
+                    Requests</span></h3>
+
+            <div class="prayer-wall-grid">
+                <!-- Card 1 -->
+                <div class="glass-card">
+                    <div class="prayer-header">
+                        <i class="fas fa-globe-africa" style="color: var(--premium-gold); font-size: 1.2rem;"></i>
+                        <span class="prayer-category">Breakthrough</span>
+                    </div>
+                    <p class="prayer-text">"Praying for divine open doors and financial provision for my family's new
+                        business venture in Nairobi. We trust God's timing."</p>
+                    <div class="prayer-footer">
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Nairobi, Kenya • 2h ago</span>
+                        <button class="pray-btn"><i class="fas fa-hands-praying"></i> <span>42</span> Praying</button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card">
+                    <div class="prayer-header">
+                        <i class="fas fa-heart" style="color: var(--premium-gold); font-size: 1.2rem;"></i>
+                        <span class="prayer-category">Healing</span>
+                    </div>
+                    <p class="prayer-text">"Asking for complete physical and emotional healing for my mother. We claim
+                        the promises of Isaiah 53:5 over her body."</p>
+                    <div class="prayer-footer">
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">London, UK • 5h ago</span>
+                        <button class="pray-btn"><i class="fas fa-hands-praying"></i> <span>87</span> Praying</button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card">
+                    <div class="prayer-header">
+                        <i class="fas fa-dove" style="color: var(--premium-gold); font-size: 1.2rem;"></i>
+                        <span class="prayer-category">Peace</span>
+                    </div>
+                    <p class="prayer-text">"Praying for peace in my home and clarity in my career decisions. Lord, guide
+                        my steps and calm my anxious thoughts."</p>
+                    <div class="prayer-footer">
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Texas, USA • 8h ago</span>
+                        <button class="pray-btn"><i class="fas fa-hands-praying"></i> <span>115</span> Praying</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="text-center" style="margin-top: 60px;">
+                <a href="index.html#prayer" class="btn-primary"
+                    style="display: inline-block; background: var(--premium-gold); color: #05010a; padding: 18px 40px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 1.1rem; box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);">
+                    <i class="fas fa-plus-circle"></i> Add Your Prayer Request
+                </a>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 15px;">
+                    <i class="fas fa-lock"></i> Your request is secure, confidential, and will be prayed over by our
+                    global team.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- FOOTER -->
+    <!-- ========================================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>YESHUA PROPHETIC ALTAR</h4>
+                    <p>A digital apostolic altar broadcasting from Nairobi, Kenya to the nations. Equipping the saints
+                        for the work of the ministry.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="media.html">Media</a>
+                    <a href="index.html#give">Give</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <a href="https://wa.me/254718501642" target="_blank">WhatsApp</a>
+                    <a href="index.html#prayer">Prayer Request</a>
+                    <a href="https://youtube.com/@yeshuapropheticaltar" target="_blank">YouTube</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Yeshua Prophetic Altar. All rights reserved.</p>
+                <p style="margin-top: 10px; font-size: 0.75rem; color: var(--premium-gold);">
+                    <i class="fas fa-globe-africa"></i> Broadcasting from Nairobi, Kenya to the Nations
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Auto-update year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // ==========================================
+        // MEDIA FILTER LOGIC (Makes the buttons work!)
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const mediaItems = document.querySelectorAll('.engagement-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const filterValue = this.getAttribute('data-filter');
+
+                    mediaItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            // Add a tiny animation for smoothness
+                            item.style.opacity = '0';
+                            setTimeout(() => { item.style.opacity = '1'; }, 50);
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 
     <!-- ADVANCED SEO: JSON-LD Schema for Video and Course (Hidden Strategy for Google Rich Snippets) -->
     <script type="application/ld+json">
@@ -35,7 +600,7 @@
             "name": "Yeshua Prophetic Altar",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://yeshuapropheticaltar.org/logo.png"
+              "url": "https://yeshuapropheticaltar.org/assets/media/image/logoyeshuaprophetic.webp"
             }
           }
         },

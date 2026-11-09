@@ -34,7 +34,7 @@
     <meta property="twitter:image" content="https://yeshuapropheticaltar.org/og-image.jpg">
 
     <!-- Favicon & Web App Manifest -->
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/webp" href="assets/media/image/logoyeshuaprophetic.webp">
     <link rel="manifest" href="manifest.json">
 
     <!-- Fonts & Icons -->
@@ -48,12 +48,60 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="style.css">
 
+    <style>
+
+    @media (max-width: 768px) {
+    .main-title, .hero-content h1 { font-size: 2.2rem !important; }
+    .sub-text { font-size: 0.95rem !important; letter-spacing: 2px !important; }
+    .hero-content blockquote { font-size: 1.05rem !important; }
+    .cta-group { flex-direction: column !important; gap: 12px !important; }
+    .cta-group a { width: 100% !important; display: block !important; text-align: center !important; }
+    .grid-2, .grid-3, .leadership-grid, .engagement-grid, .prayer-wall-grid, .impact-grid, .calendar-grid, .footer-grid {
+    grid-template-columns: 1fr !important; }
+    .search-input-group { flex-direction: column !important; }
+    .media-hero { height: auto !important; min-height: 350px !important; }
+    .engagement-card img { height: 280px !important; }
+    .partner-logos, .give-options, .salvation-steps { flex-direction: column !important; gap: 15px !important; }
+    .give-btn { width: 100% !important; }
+    .doctrine-points { grid-template-columns: 1fr !important; }
+    .prayer-counter { flex-wrap: wrap !important; justify-content: center !important; }
+    .ui-panel { display: none !important; }
+    .container { padding-left: 16px !important; padding-right: 16px !important; }
+    .section { padding: 60px 0 !important; }
+    }
+    </style>
+
+    <!-- EMERGENCY SCROLL FIX -->
+    <style>
+        .hero {
+            min-height: 25vh !important;
+            height: auto !important;
+            position: relative !important;
+        }
+
+        #globe-4d-wrapper {
+            height: 100vh !important;
+            position: relative !important;
+        }
+
+        body,
+        html {
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+        }
+
+        section {
+            position: relative !important;
+            z-index: 10 !important;
+        }
+    </style>
+
     <!-- CRITICAL: Load the Three.js Engine FIRST -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <!-- CRITICAL: Load Custom Logic SECOND -->
     <script src="globe.js" defer></script>
-   
+
 
     <!-- OMEGA-TIER SEO: GLOBAL KNOWLEDGE GRAPH SCHEMA -->
     <script type="application/ld+json">
@@ -119,110 +167,100 @@
 <body>
 
     <!-- TIER-1 4D HOLOGRAPHIC GLOBE STRUCTURE -->
-   
-        <div id="globe-canvas-container"></div>
-        <div id="globe-4d-wrapper" style="height: 100vh; position: relative;">
+
+    <div id="globe-canvas-container"></div>
+    <div id="globe-4d-wrapper">
 
         <div class="globe-ui-overlay">
             <div class="ui-panel">
-                <h3>Global <span class="gold-text">Reach</span></h3>
-                <div class="continent-list">
-                    <div class="continent-item"><span class="pulse-dot"></span> Africa (Source Node)</div>
-                    <div class="continent-item"><span class="pulse-dot"></span> Europe</div>
-                    <div class="continent-item"><span class="pulse-dot"></span> Asia</div>
-                    <div class="continent-item"><span class="pulse-dot"></span> North America</div>
-                    <div class="continent-item"><span class="pulse-dot"></span> South America</div>
-                    <div class="continent-item"><span class="pulse-dot"></span> Oceania</div>
-                    <div class="continent-item"><span class="pulse-dot"></span> Antarctica</div>
-                </div>
-                <div class="ui-stats">
-                    <div class="stat"><span class="stat-num">7</span><span class="stat-label">Continents</span></div>
-                    <div class="stat"><span class="stat-num">195</span><span class="stat-label">Nations</span></div>
-                </div>
+              <div class="ui-stats"></div>
             </div>
         </div>
-        </div> <!-- Close globe-4d-wrapper -->
 
 
-<!-- Accessibility: Skip to Content -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+        <!-- Accessibility: Skip to Content -->
+        <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Particle Background Canvas -->
-    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+        <!-- Particle Background Canvas -->
+        <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-    <!-- INJECTED HEADER -->
-    <div id="site-header"></div>
+        <!-- INJECTED HEADER -->
+        <div id="site-header"></div>
 
-   
+
         <!-- ========================================== -->
         <!-- HERO SECTION WITH 4D GLOBE -->
         <!-- ========================================== -->
-        <header id="home" class="hero">
-            <div id="globe-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></div>
+        <header id="home" class="hero" style="min-height: 100vh; position: relative;">
+            <div id="globe-container"
+                style="position: absolute; top: 0; left: 0; width: 60%; height: 60%; z-index: 1; pointer-events: none;"></div>
             <div class="hero-content fade-up" style="position: relative; z-index: 2;">
                 <div class="epicenter-badge">
                     <span class="epicenter-badge"><span class="pulse-dot"></span> DIVINE PATTERN</span>
                 </div>
-                <p class="sub-text" style="color: var(--gold); font-size: 1.1rem; letter-spacing: 3px; margin-bottom: 20px;">ALL
-                    OVER THE WORLD, THE SPIRIT IS MOVING</p>
-                <h1 class="main-title">The Global Epicenter of <span class="glow">Apostolic Intelligence</span></h1>
-                <blockquote
-                    style="font-size: 1.3rem; font-style: italic; color: var(--gold); margin: 30px auto; max-width: 700px; line-height: 1.6;">
-                    "Not by might, nor by power, but by my spirit, saith the Lord of hosts."
-                    <cite style="display: block; margin-top: 10px; font-size: 1rem; color: var(--text); font-style: normal;">—
-                        Zechariah 4:6</cite>
-                </blockquote>
+                <p class="sub-text" style="color: var(--gold); font-size: 1.1rem; letter-spacing: 3px; margin-bottom: 15px;">
+            </div> ALL OVER THE WORLD, THE SPIRIT IS MOVING
+        </p>
+            <h1 class="main-title">The Global Epicenter of <span class="glow">Apostolic Intelligence</span></h1>
+            <blockquote
+                style="font-size: 1.3rem; font-style: italic; color: var(--gold); margin: 30px auto; max-width: 700px; line-height: 1.6;">
+                "Not by might, nor by power, but by my spirit, saith the Lord of hosts."
+                <cite style="display: block; margin-top: 5px; font-size: 1rem; color: var(--text); font-style: normal;">— Zechariah 4:6</cite>
+            </blockquote>
 
-                <!-- Real-Time Prayer Counter -->
-                <div class="prayer-counter">
-                    <i class="fas fa-praying-hands"></i>
-                    <span id="prayerCount">12,847</span>
-                    <span class="counter-label">Prayers Lifted Globally</span>
-                </div>
-
-                <div class="cta-group">
-                    <a href="#prayer" class="btn-neon">Request Prayer</a>
-                    <a href="#leadership" class="btn-glass">Meet The Apostles</a>
-                    <a href="#know-jesus" class="btn-salvation">Know Jesus</a>
-                </div>
+            <!-- Real-Time Prayer Counter -->
+            <div class="prayer-counter">
+                <i class="fas fa-praying-hands"></i>
+                <span id="prayerCount">12,847</span>
+                <span class="counter-label">Prayers Lifted Globally</span>
             </div>
-        </header>
-        <!-- ==========================================
+
+            <div class="cta-group">
+                <a href="#prayer" class="btn-neon">Request Prayer</a>
+                <a href="#leadership" class="btn-glass">Meet The Apostles</a>
+                <a href="#know-jesus" class="btn-salvation">Know Jesus</a>
+                <a href="counseling.html" class="btn-glass">Counseling</a>
+                <a href="bible-study.html" class="btn-glass">Bible Study</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
              SECTION: PROPHETIC MEDIA & WORSHIP SANCTUARY
              ========================================== -->
-        <section id="media" class="section dark-alt">
-            <div class="container">
-                <div class="text-center" style="margin-bottom: 50px;">
-                    <span class="epicenter-badge"><span class="pulse-dot"></span> DIGITAL SANCTUARY</span>
-                    <h2>Prophetic Media & Worship Streams</h2>
-                    <p class="section-desc" style="max-width: 800px; margin: 0 auto;">
-                        Experience the moving of the Spirit from anywhere in the world. Access our library of
-                        <strong>apostolic teaching videos</strong>, <strong>prophetic worship music online</strong>,
-                        and <strong>Holy Ghost revival streams</strong> broadcasted from the
-                        <strong>Yeshua Prophetic Altar in Nairobi, Kenya</strong>.
-                    </p>
-                </div>
-        
-                <!-- 1. CINEMATIC VIDEO & AUDIO EXPERIENCE -->
-                <div class="glass-card media-hero"
-                    style="position: relative; overflow: hidden; border-radius: 20px; margin-bottom: 60px; padding: 0; height: 500px;">
-        
-                    <!-- REPLACED BROKEN VIDEO WITH OPTIMIZED FALLBACK IMAGE -->
-                    <img src="assets/media/image/kenya-revival.webp"
-                        alt="Prophetic worship and revival streams at Yeshua Prophetic Altar Nairobi" loading="lazy"
-                        style="width: 100%; max-width: 800px; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin: 0 auto; display: block;">
-        
+    <section id="media" class="section dark-alt">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 50px;">
+                <span class="epicenter-badge"><span class="pulse-dot"></span> DIGITAL SANCTUARY</span>
+                <h2>Prophetic Media & Worship Streams</h2>
+                <p class="section-desc" style="max-width: 800px; margin: 0 auto;">
+                    Experience the moving of the Spirit from anywhere in the world. Access our library of
+                    <strong>apostolic teaching videos</strong>, <strong>prophetic worship music online</strong>,
+                    and <strong>Holy Ghost revival streams</strong> broadcasted from the
+                    <strong>Yeshua Prophetic Altar in Nairobi, Kenya</strong>.
+                </p>
+            </div>
+
+            <!-- 1. CINEMATIC VIDEO & AUDIO EXPERIENCE -->
+            <div class="glass-card media-hero"
+                style="position: relative; overflow: hidden; border-radius: 20px; margin-bottom: 60px; padding: 0; height: 500px;">
+
+                <!-- REPLACED BROKEN VIDEO WITH OPTIMIZED FALLBACK IMAGE -->
+                <img src="assets/media/image/kenya-revival.webp"
+                    alt="Prophetic worship and revival streams at Yeshua Prophetic Altar Nairobi" loading="lazy"
+                    style="width: 100%; max-width: 800px; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin: 0 auto; display: block;">
+
 
                 <!-- WORSHIP AUDIO TOGGLE -->
                 <div style="text-align: center; margin-top: 25px;">
-                    <audio id="heroWorshipAudio" loop src="assets/media/audio/worship-audio.mp3"></audio>
+                    <audio id="heroWorshipAudio" loop src="assets/media/Yeshuamusic.mp3"></audio>
                     <button onclick="toggleWorshipAudio()" id="worshipAudioBtn"
                         style="background: transparent; border: 2px solid var(--premium-gold, #D4AF37); color: var(--premium-gold, #D4AF37); padding: 12px 30px; border-radius: 50px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s;">
                         <i class="fas fa-play" id="worshipAudioIcon"></i>
                         <span id="worshipAudioText">Enable Worship Audio</span>
                     </button>
                 </div>
-                
+
                 <script>
                     function toggleWorshipAudio() {
                         const audio = document.getElementById('heroWorshipAudio');
@@ -246,835 +284,1517 @@
                     }
                 </script>
 
-                    <!-- Overlay Content -->
-                    <div
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(5,1,10,0.9), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; z-index: 2;">
-                        <h3
-                            style="color: var(--premium-gold); font-family: var(--font-majestic); font-size: 2rem; margin-bottom: 10px;">
-                            Live Apostolic Broadcasts</h3>
-                        <p style="color: var(--text-secondary); max-width: 600px; margin-bottom: 20px;">Join thousands in
-                            <strong>online Christian intercession</strong> and prophetic impartation.</p>
-        
-                        <!-- The Elegant Audio Trigger (Solves the Autoplay Block) -->
-                        <button id="audioToggleBtn" class="btn-primary"
-                            style="width: fit-content; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-play" id="audioIcon"></i>
-                            <span id="audioText">Enable Worship Audio</span>
-                        </button>
-        
-                        <!-- Hidden Audio Element -->
-                        <audio id="worshipAudio" loop>
-                            <source src="assets/media/Yeshuamusic.mp3" type="audio/mpeg">
-                        </audio>
-                    </div>
-                </div>
-        
-                <!-- 2. SEO-OPTIMIZED MEDIA GALLERY -->
-                <div class="grid-3">
-                    <figure class="glass-card media-card" style="padding: 0; overflow: hidden;">
-                        <img src="assets/media/image/kenya-ministry4.webp"
-                            alt="Apostle Joshua and Prophetess Lillian leading prophetic worship music online in Nairobi"
-                            loading="lazy" decoding="async"
-                            style="width: 100%; height: 150px; object-fit: cover; transition: transform 0.5s ease;"
-                            onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <figcaption style="padding: 20px; text-align: center;">
-                            <h4 style="color: var(--premium-gold); margin-bottom: 10px;">Revival Gatherings</h4>
-                            <p style="font-size: 0.9rem; color: var(--text-muted);">Witness the transformative anointing during
-                                our global <strong>apostolic teaching videos</strong> and crusades.</p>
-                        </figcaption>
-                    </figure>
-        
-                    <figure class="glass-card media-card" style="padding: 0; overflow: hidden;">
-                        <img src="assets/media/image/rwanda-crusade-revival4.webp"
-                            alt="Holy Ghost revival streams and Christian media ministry Rwanda"
-                            style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.5s ease;"
-                            onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <figcaption style="padding: 20px; text-align: center;">
-                            <h4 style="color: var(--premium-gold); margin-bottom: 10px;">Prophetic Impartation</h4>
-                            <p style="font-size: 0.9rem; color: var(--text-muted);">Access archived <strong>Holy Ghost revival
-                                    streams</strong> and discipleship matrices.</p>
-                        </figcaption>
-                    </figure>
-        
-                    <figure class="glass-card media-card" style="padding: 0; overflow: hidden;">
-                        <img src="assets/media/image/kenya-ministry2.webp" alt="Yeshua Prophetic Altar global missions and prayer"
-                            style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;"
-                            onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <figcaption style="padding: 20px; text-align: center;">
-                            <h4 style="color: var(--premium-gold); margin-bottom: 10px;">Global Missions</h4>
-                            <p style="font-size: 0.9rem; color: var(--text-muted);">Follow our <strong>Christian media
-                                    ministry</strong> as we take the gospel to the nations.</p>
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>
-        </section>
+                <!-- Overlay Content -->
+                <div
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(5,1,10,0.9), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; z-index: 2;">
+                    <h3
+                        style="color: var(--premium-gold); font-family: var(--font-majestic); font-size: 2rem; margin-bottom: 10px;">
+                        Live Apostolic Broadcasts</h3>
+                    <p style="color: var(--text-secondary); max-width: 600px; margin-bottom: 20px;">Join thousands in
+                        <strong>online Christian intercession</strong> and prophetic impartation.
+                    </p>
 
-        <!-- ========================================== -->
-        <!-- LEADERSHIP SECTION -->
-        <!-- ========================================== -->
-        <section id="leadership" class="section">
-            <div class="container">
-                <h2 class="section-title">Apostolic Leadership</h2>
-                <div class="leadership-grid">
-                    <div class="leader-card" data-aos="fade-right">
-                        <div class="leader-image-wrapper">
-                            <img src="assets/media/image/leaders.webp" alt="Apostle Joshua & Prophetess Lillian" class="leader-image">
-                            <div class="leader-overlay-badge">
-                                <i class="fas fa-crown"></i>
-                            </div>
-                        </div>
-                        <div class="leader-content">
-                            <div class="leader-badge">APOSTLE & PROPHETESS</div>
-                            <h3>Joshua & Lillian</h3>
-                            <p class="leader-location"><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
-                            <p class="leader-intro">
-                                Apostle Joshua and Prophetess Lillian are called to minister to the nations through The Yeshua
-                                Apostolic and Prophetic Altar. Both walk in a mighty breakthrough Holy Ghost anointing,
-                                withstanding all obstacles and releasing Transformative Anointing into the body of Christ with
-                                signs following.
-                            </p>
-                            <div class="leader-attributes">
-                                <div class="attribute"><i class="fas fa-fire"></i> Breakthrough Anointing</div>
-                                <div class="attribute"><i class="fas fa-globe"></i> Global Ministry</div>
-                                <div class="attribute"><i class="fas fa-scroll"></i> Prophetic Authority</div>
-                            </div>
-                            <a href="about.html" class="btn-glass" style="margin-top: 20px; display: inline-block;">Learn More
-                                →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    <!-- The Elegant Audio Trigger (Solves the Autoplay Block) -->
+                    <button id="audioToggleBtn" class="btn-primary"
+                        style="width: fit-content; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-play" id="audioIcon"></i>
+                        <span id="audioText">Enable Worship Audio</span>
+                    </button>
 
-        <!-- ========================================== -->
-        <!--  APOSTOLIC INTELLIGENCE TICKER -->
-        <!-- ========================================== -->
-        <section id="intelligence-feed" class="ticker-section">
-            <div class="ticker-header">
-                <h3><i class="fas fa-satellite-dish"></i> LIVE APOSTOLIC INTELLIGENCE FEED</h3>
-                <p>Current prophetic directives and strategic alignments for the global body.</p>
-            </div>
-            <div class="ticker-track-wrapper">
-                <div class="ticker-track" id="tickerTrack">
-                    <!-- JS will populate this, but here are the static fallbacks for SEO -->
-                    <div class="ticker-item"><span class="ticker-region">NORTH AMERICA</span> <span
-                            class="ticker-msg">Directive: Shift from expansion to consolidation. Fortify the inner
-                            sanctum.</span></div>
-                    <div class="ticker-item"><span class="ticker-region">EUROPE</span> <span class="ticker-msg">Directive: The
-                            spirit of heaviness is breaking. Prepare for a sudden harvest of souls in Q4.</span></div>
-                    <div class="ticker-item"><span class="ticker-region">GLOBAL MARKETS</span> <span
-                            class="ticker-msg">Protocol: Execute the Nehemiah rebuild. Do not sign new partnerships without
-                            3-voice counsel.</span></div>
-                    <div class="ticker-item"><span class="ticker-region">AFRICA</span> <span class="ticker-msg">Impartation: The
-                            mantle of the pioneer is returning. Expect unprecedented territorial shifts.</span></div>
+                    <!-- Hidden Audio Element -->
+                    <audio id="worshipAudio" loop>
+                        <source src="assets/media/Yeshuamusic.mp3" type="audio/mp3">
+                    </audio>
                 </div>
             </div>
-        </section>
 
-        <!-- ========================================== -->
-        <!-- VISION & LEADERSHIP SECTION -->
-        <!-- ========================================== -->
-        <section id="vision" class="section" aria-labelledby="vision-title">
-            <div class="container">
-                <h2 class="section-title" id="vision-title">The Apostolic Mandate</h2>
-                <div class="glass-card">
-                    <h3><i class="fas fa-eye" aria-hidden="true"></i> Our Vision</h3>
-                    <p>Called to minister to the nations through The Yeshua Apostolic and Prophetic Altar. Both walk in
-                        a mighty breakthrough Holy Ghost anointing, withstanding all obstacles and releasing
-                        Transformative Anointing into the body of Christ with signs following.</p>
-                </div>
-                <div class="grid-2">
-                    <div class="glass-card">
-                        <h3><i class="fas fa-globe" aria-hidden="true"></i> Global Reach</h3>
-                        <p>From Nairobi, Kenya to the ends of the earth. The digital altar knows no borders,
-                            broadcasting the prophetic word 24/7 to all nations.</p>
-                    </div>
-                    <div class="glass-card" style="padding: 0; overflow: hidden; min-height: 250px;">
-                        <img src="assets/media/image/leaders.webp" alt="Apostle Joshua and Prophetess Lillian"
-                            style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%) contrast(120%);">
-                    </div>
-                    <div class="glass-card">
-                        <h3><i class="fas fa-fire" aria-hidden="true"></i> The Anointing</h3>
-                        <p>Equipping the saints for the work of the ministry. We believe in the present-day ministry of
-                            Prophets and Apostles to guide the Church.</p>
-                    </div>
-                    <div class="glass-card">
-                        <h3><i class="fas fa-cross" aria-hidden="true"></i> Our Foundation</h3>
-                        <p>"Not by might, nor by power, but by my Spirit, saith the Lord of hosts." Zechariah 4:6 is the
-                            bedrock upon which this altar is built.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <!-- 2. SEO-OPTIMIZED MEDIA GALLERY -->
+            <div class="grid-3">
+                <figure class="glass-card media-card" style="padding: 0; overflow: hidden;">
+                    <img src="assets/media/image/kenya-ministry4.webp"
+                        alt="Apostle Joshua and Prophetess Lillian leading prophetic worship music online in Nairobi"
+                        loading="lazy" decoding="async"
+                        style="width: 100%; height: 150px; object-fit: cover; transition: transform 0.5s ease;"
+                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <figcaption style="padding: 20px; text-align: center;">
+                        <h4 style="color: var(--premium-gold); margin-bottom: 10px;">Revival Gatherings</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Witness the transformative anointing
+                            during
+                            our global <strong>apostolic teaching videos</strong> and crusades.</p>
+                    </figcaption>
+                </figure>
 
-        <!-- ========================================== -->
-        <!-- TEACHING: WHY PROPHETS? -->
-        <!-- ========================================== -->
-        <section id="prophets" class="section dark-alt" aria-labelledby="prophets-title">
-            <div class="container">
-                <h2 class="section-title" id="prophets-title">God Speaks Through Prophets</h2>
-                <div class="glass-card teaching-content">
-                    <h3><i class="fas fa-scroll"></i> Why Do We Have Prophets & Prophetesses?</h3>
-                    <p class="large-text">God desires us to overcome life's challenges, enhance our character, and
-                        ultimately return to His presence in the hereafter. Yet, He doesn't anticipate us to navigate
-                        this journey on our own.</p>
-                    <div class="doctrine-points">
-                        <div class="doctrine-point">
-                            <i class="fas fa-dove"></i>
-                            <h4>Holy Ghost Guidance</h4>
-                            <p>Instead, He provides guidance through the Holy Ghost, scriptures, and prophets.</p>
-                            <button class="btn-outline insight-btn" data-id="guidance" style="margin-top: 20px; width: 100%;">Reveal
-                                Scripture</button>
-                        </div>
-                        <div class="doctrine-point">
-                            <i class="fas fa-user-tie"></i>
-                            <h4>Chosen Vessels</h4>
-                            <p>A prophet is an individual chosen by God to provide direction to all of humanity.</p>
-                            <button class="btn-outline insight-btn" data-id="vessels" style="margin-top: 20px; width: 100%;">Reveal
-                                Scripture</button>
-                        </div>
-                        <div class="doctrine-point">
-                            <i class="fas fa-history"></i>
-                            <h4>Biblical Pattern</h4>
-                            <p>Throughout history, from figures like Abraham and Moses to modern-day living prophets,
-                                God consistently employs the pattern of using prophets to lead His children.</p>
-                            <button class="btn-outline insight-btn" data-id="pattern" style="margin-top: 20px; width: 100%;">Reveal
-                                Scripture</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <figure class="glass-card media-card" style="padding: 0; overflow: hidden;">
+                    <img src="assets/media/image/rwanda-crusade-revival4.webp"
+                        alt="Holy Ghost revival streams and Christian media ministry Rwanda"
+                        style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.5s ease;"
+                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <figcaption style="padding: 20px; text-align: center;">
+                        <h4 style="color: var(--premium-gold); margin-bottom: 10px;">Prophetic Impartation</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Access archived <strong>Holy Ghost
+                                revival
+                                streams</strong> and discipleship matrices.</p>
+                    </figcaption>
+                </figure>
 
-        <!-- DYNAMIC MODAL CONTAINER (Hidden by default) -->
-        <div id="insight-modal" class="modal-overlay" aria-hidden="true">
-            <div class="modal-content glass-card">
-                <button class="modal-close" aria-label="Close modal">&times;</button>
-                <div id="modal-icon" class="card-icon" style="font-size: 3rem; margin-bottom: 20px;"></div>
-                <h3 id="modal-title" style="color: var(--premium-gold); margin-bottom: 15px;"></h3>
-                <blockquote id="modal-scripture"
-                    style="font-style: italic; color: var(--text-primary); border-left: 3px solid var(--premium-gold); padding-left: 20px; margin: 20px 0;">
-                </blockquote>
-                <p id="modal-description" style="color: var(--text-secondary); line-height: 1.7;"></p>
-                <a href="#connect" class="btn-primary" style="margin-top: 20px; display: inline-block;">Connect With a
-                    Prophet</a>
+                <figure class="glass-card media-card" style="padding: 0; overflow: hidden;">
+                    <img src="assets/media/image/kenya-ministry2.webp"
+                        alt="Yeshua Prophetic Altar global missions and prayer"
+                        style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;"
+                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <figcaption style="padding: 20px; text-align: center;">
+                        <h4 style="color: var(--premium-gold); margin-bottom: 10px;">Global Missions</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Follow our <strong>Christian media
+                                ministry</strong> as we take the gospel to the nations.</p>
+                    </figcaption>
+                </figure>
             </div>
         </div>
+    </section>
 
-        <!-- ========================================== -->
-        <!-- PROPHETIC ARCHIVES (MEDIA) -->
-        <!-- ========================================== -->
-        <section id="media" class="section" aria-labelledby="media-title">
-            <div class="container">
-                <h2 class="section-title" id="media-title">Prophetic Archives</h2>
-                <div class="grid-3">
-                    <article class="glass-card teaching-card">
-                        <div class="card-icon"><i class="fas fa-book-open" aria-hidden="true"></i></div>
-                        <h4>Discipleship Matrix</h4>
-                        <p>Foundational teachings for new believers and seasoned saints alike.</p>
-                        <a href="#" class="text-link" aria-label="Access Discipleship Matrix">Access Data →</a>
-                    </article>
-                    <article class="glass-card teaching-card">
-                        <div class="card-icon"><i class="fas fa-scroll" aria-hidden="true"></i></div>
-                        <h4>Prophetic Directives</h4>
-                        <p>Current word for the current season. Navigate the future with divine insight.</p>
-                        <a href="#" class="text-link" aria-label="Access Prophetic Directives">Access Data →</a>
-                    </article>
-                    <article class="glass-card teaching-card">
-                        <div class="card-icon"><i class="fas fa-pray" aria-hidden="true"></i></div>
-                        <h4>Intercession Protocols</h4>
-                        <p>Learn how to stand in the gap and wage spiritual warfare effectively.</p>
-                        <a href="#" class="text-link" aria-label="Access Intercession Protocols">Access Data →</a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========================================== -->
-        <!-- BIBLE STUDY COURSE -->
-        <!-- ========================================== -->
-        <section id="bible-study" class="section dark-alt" aria-labelledby="bible-title">
-            <div class="container">
-                <h2 class="section-title" id="bible-title">Learning Bible Scripture</h2>
-                <div class="glass-card bible-study-card">
-                    <div class="bible-icon">
-                        <i class="fas fa-book-bible"></i>
-                    </div>
-                    <h3>Join Our Bible Study Course</h3>
-                    <p>Learn more about God and discover His perfect will for your life. Our structured discipleship
-                        program takes you from foundational truths to advanced prophetic understanding.</p>
-                    <div class="course-features">
-                        <div class="feature">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>7-Week Curriculum</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-video"></i>
-                            <span>Video Lessons</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-users"></i>
-                            <span>Community Support</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-certificate"></i>
-                            <span>Certificate</span>
+    <!-- ========================================== -->
+    <!-- LEADERSHIP SECTION -->
+    <!-- ========================================== -->
+    <section id="leadership" class="section">
+        <div class="container">
+            <h2 class="section-title">Apostolic Leadership</h2>
+            <div class="leadership-grid">
+                <div class="leader-card" data-aos="fade-right">
+                    <div class="leader-image-wrapper">
+                        <img src="assets/media/image/leaders.webp" alt="Apostle Joshua & Prophetess Lillian"
+                        style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%) contrast(120%);"
+                            class="leader-image">
+                        <div class="leader-overlay-badge">
+                            <i class="fas fa-crown"></i>
                         </div>
                     </div>
-                    <a href="contact.html" class="btn-neon">Enroll Now</a>
+                    <div class="leader-content">
+                        <div class="leader-badge">APOSTLE & PROPHETESS</div>
+                        <h3>Joshua & Lillian</h3>
+                        <p class="leader-location"><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                        <p class="leader-intro">
+                            Apostle Joshua and Prophetess Lillian are called to minister to the nations through The Yeshua Apostolic and Prophetic Altar. Both walk in a mighty breakthrough Holy Ghost anointing,
+                            withstanding all obstacles and releasing Transformative Anointing into the body of Christ
+                            with signs following.
+                        </p>
+                        <div class="leader-attributes">
+                            <div class="attribute"><i class="fas fa-fire"></i> Breakthrough Anointing</div>
+                            <div class="attribute"><i class="fas fa-globe"></i> Global Ministry</div>
+                            <div class="attribute"><i class="fas fa-scroll"></i> Prophetic Authority</div>
+                        </div>
+                        <a href="about.html" class="btn-glass" style="margin-top: 20px; display: inline-block;">Learn
+                            More
+                            →</a>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- ==========================================
+    <!-- ========================================== -->
+    <!--  APOSTOLIC INTELLIGENCE TICKER -->
+    <!-- ========================================== -->
+    <section id="intelligence-feed" class="ticker-section">
+        <div class="ticker-header">
+            <h3><i class="fas fa-satellite-dish"></i> LIVE APOSTOLIC INTELLIGENCE FEED</h3>
+            <p>Current prophetic directives and strategic alignments for the global body.</p>
+        </div>
+        <div class="ticker-track-wrapper">
+            <div class="ticker-track" id="tickerTrack">
+                <!-- JS will populate this, but here are the static fallbacks for SEO -->
+                <div class="ticker-item"><span class="ticker-region">NORTH AMERICA</span> <span
+                        class="ticker-msg">Directive: Shift from expansion to consolidation. Fortify the inner
+                        sanctum.</span></div>
+                <div class="ticker-item"><span class="ticker-region">EUROPE</span> <span class="ticker-msg">Directive:
+                        The
+                        spirit of heaviness is breaking. Prepare for a sudden harvest of souls in Q4.</span></div>
+                <div class="ticker-item"><span class="ticker-region">GLOBAL MARKETS</span> <span
+                        class="ticker-msg">Protocol: Execute the Nehemiah rebuild. Do not sign new partnerships without
+                        3-voice counsel.</span></div>
+                <div class="ticker-item"><span class="ticker-region">AFRICA</span> <span class="ticker-msg">Impartation:
+                        The
+                        mantle of the pioneer is returning. Expect unprecedented territorial shifts.</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VISION & LEADERSHIP SECTION -->
+    <!-- ========================================== -->
+    <section id="vision" class="section" aria-labelledby="vision-title">
+        <div class="container">
+            <h2 class="section-title" id="vision-title">The Apostolic Mandate</h2>
+            <div class="glass-card">
+                <h3><i class="fas fa-eye" aria-hidden="true"></i> Our Vision</h3>
+                <p>Called to minister to the nations through The Yeshua Apostolic and Prophetic Altar. Both walk in
+                    a mighty breakthrough Holy Ghost anointing, withstanding all obstacles and releasing
+                    Transformative Anointing into the body of Christ with signs following.</p>
+            </div>
+            <div class="grid-2">
+                <div class="glass-card">
+                    <h3><i class="fas fa-globe" aria-hidden="true"></i> Global Reach</h3>
+                    <p>From Nairobi, Kenya to the ends of the earth. The digital altar knows no borders,
+                        broadcasting the prophetic word 24/7 to all nations.</p>
+                </div>
+        
+                <div class="glass-card">
+                    <h3><i class="fas fa-fire" aria-hidden="true"></i> The Anointing</h3>
+                    <p>Equipping the saints for the work of the ministry. We believe in the present-day ministry of
+                        Prophets and Apostles to guide the Church.</p>
+                </div>
+                <div class="glass-card">
+                    <h3><i class="fas fa-cross" aria-hidden="true"></i> Our Foundation</h3>
+                    <p>"Not by might, nor by power, but by my Spirit, saith the Lord of hosts." Zechariah 4:6 is the
+                        bedrock upon which this altar is built.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TEACHING: WHY PROPHETS? -->
+    <!-- ========================================== -->
+    <section id="prophets" class="section dark-alt" aria-labelledby="prophets-title">
+        <div class="container">
+            <h2 class="section-title" id="prophets-title">God Speaks Through Prophets</h2>
+            <div class="glass-card teaching-content">
+                <h3><i class="fas fa-scroll"></i> Why Do We Have Prophets & Prophetesses?</h3>
+                <p class="large-text">God desires us to overcome life's challenges, enhance our character, and
+                    ultimately return to His presence in the hereafter. Yet, He doesn't anticipate us to navigate
+                    this journey on our own.</p>
+                <div class="doctrine-points">
+                    <div class="doctrine-point">
+                        <i class="fas fa-dove"></i>
+                        <h4>Holy Ghost Guidance</h4>
+                        <p>Instead, He provides guidance through the Holy Ghost, scriptures, and prophets.</p>
+                        <button class="btn-outline insight-btn" data-id="guidance"
+                            style="margin-top: 20px; width: 100%;">Reveal
+                            Scripture</button>
+                    </div>
+                    <div class="doctrine-point">
+                        <i class="fas fa-user-tie"></i>
+                        <h4>Chosen Vessels</h4>
+                        <p>A prophet is an individual chosen by God to provide direction to all of humanity.</p>
+                        <button class="btn-outline insight-btn" data-id="vessels"
+                            style="margin-top: 20px; width: 100%;">Reveal
+                            Scripture</button>
+                    </div>
+                    <div class="doctrine-point">
+                        <i class="fas fa-history"></i>
+                        <h4>Biblical Pattern</h4>
+                        <p>Throughout history, from figures like Abraham and Moses to modern-day living prophets,
+                            God consistently employs the pattern of using prophets to lead His children.</p>
+                        <button class="btn-outline insight-btn" data-id="pattern"
+                            style="margin-top: 20px; width: 100%;">Reveal
+                            Scripture</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DYNAMIC MODAL CONTAINER (Hidden by default) -->
+    <div id="insight-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content glass-card">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div id="modal-icon" class="card-icon" style="font-size: 3rem; margin-bottom: 20px;"></div>
+            <h3 id="modal-title" style="color: var(--premium-gold); margin-bottom: 15px;"></h3>
+            <blockquote id="modal-scripture"
+                style="font-style: italic; color: var(--text-primary); border-left: 3px solid var(--premium-gold); padding-left: 20px; margin: 20px 0;">
+            </blockquote>
+            <p id="modal-description" style="color: var(--text-secondary); line-height: 1.7;"></p>
+            <a href="#connect" class="btn-primary" style="margin-top: 20px; display: inline-block;">Connect With a
+                Prophet</a>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PROPHETIC ARCHIVES (MEDIA) -->
+    <!-- ========================================== -->
+    <section id="prophetic-archives" class="section" aria-labelledby="archives-title">
+        <div class="container">
+            <h2 class="section-title" id="archives-title">Prophetic Archives</h2>
+            <div class="grid-3" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                <article class="glass-card teaching-card">
+                    <div class="card-icon"><i class="fas fa-book-open" aria-hidden="true"></i></div>
+                    <h4>Discipleship Matrix</h4>
+                    <p>Foundational teachings for new believers and seasoned saints alike.</p>
+                    <a href="#" class="text-link" aria-label="Access Discipleship Matrix">Access Data →</a>
+                </article>
+                <article class="glass-card teaching-card">
+                    <div class="card-icon"><i class="fas fa-scroll" aria-hidden="true"></i></div>
+                    <h4>Prophetic Directives</h4>
+                    <p>Current word for the current season. Navigate the future with divine insight.</p>
+                    <a href="#" class="text-link" aria-label="Access Prophetic Directives">Access Data →</a>
+                </article>
+                <article class="glass-card teaching-card">
+                    <div class="card-icon"><i class="fas fa-pray" aria-hidden="true"></i></div>
+                    <h4>Intercession Protocols</h4>
+                    <p>Learn how to stand in the gap and wage spiritual warfare effectively.</p>
+                    <a href="#" class="text-link" aria-label="Access Intercession Protocols">Access Data →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- BIBLE STUDY COURSE -->
+    <!-- ========================================== -->
+    <section id="bible-study" class="section dark-alt" aria-labelledby="bible-title">
+        <div class="container">
+            <h2 class="section-title" id="bible-title">Learning Bible Scripture</h2>
+            <div class="glass-card bible-study-card">
+                <div class="bible-icon">
+                    <i class="fas fa-book-bible"></i>
+                </div>
+                <h3>Join Our Bible Study Course</h3>
+                <p>Learn more about God and discover His perfect will for your life. Our structured discipleship
+                    program takes you from foundational truths to advanced prophetic understanding.</p>
+                <div class="course-features">
+                    <div class="feature">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>7-Week Curriculum</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-video"></i>
+                        <span>Video Lessons</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-users"></i>
+                        <span>Community Support</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-certificate"></i>
+                        <span>Certificate</span>
+                    </div>
+                </div>
+                <a href="bible-study.html" class="btn-neon">Enroll Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
              SECTION: SCRIPTURE SEARCH & PROPHETIC FINDER
              ========================================== -->
-        <section id="scripture-search" class="section">
-            <div class="container">
-                <div class="text-center" style="margin-bottom: 40px;">
-                    <span class="epicenter-badge"><span class="pulse-dot"></span> DIVINE INTELLIGENCE</span>
-                    <h2>Scripture Search & Prophetic Verse Finder</h2>
-                    <p class="section-desc">
-                        Instantly discover God's Word for your specific situation. Use our free <strong>Christian scripture
-                            search</strong> to find <strong>Bible verses by topic</strong>, emotion, or keyword. Whether you
-                        need <strong>prophetic Bible verses</strong> for anxiety, healing, or breakthrough, receive immediate,
-                        spirit-led guidance.
-                    </p>
-                </div>
-        
-                <!-- Search Interface -->
-                <div class="search-card glass-card" style="max-width: 700px; margin: 0 auto 40px auto; padding: 30px;">
-                    <div class="search-input-group" style="display: flex; gap: 15px;">
-                        <input type="text" id="scriptureInput"
-                            placeholder="Search by topic (e.g., anxiety, breakthrough, healing, peace)..."
-                            style="flex: 1; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--glass-border); padding: 15px 20px; border-radius: 12px; color: white; font-size: 1rem; outline: none;">
-                        <button id="scriptureSearchBtn" class="btn-primary" style="border-radius: 12px; padding: 15px 30px;">
-                            <i class="fas fa-search"></i> Search
-                        </button>
-                    </div>
-        
-                    <!-- Quick Tags for UX -->
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
-                        <span style="color: var(--text-muted); font-size: 0.85rem; align-self: center;">Trending:</span>
-                        <button class="quick-tag" data-term="anxiety">Anxiety</button>
-                        <button class="quick-tag" data-term="breakthrough">Breakthrough</button>
-                        <button class="quick-tag" data-term="healing">Healing</button>
-                        <button class="quick-tag" data-term="financial provision">Provision</button>
-                    </div>
-                </div>
-        
-                <!-- Dynamic Results Container -->
-                <div id="searchResults" class="search-results" style="max-width: 800px; margin: 0 auto;"></div>
+    <section id="scripture-search" class="section">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 40px;">
+                <span class="epicenter-badge"><span class="pulse-dot"></span> DIVINE INTELLIGENCE</span>
+                <h2>Scripture Search & Prophetic Verse Finder</h2>
+                <p class="section-desc">
+                    Instantly discover God's Word for your specific situation. Use our free <strong>Christian scripture
+                        search</strong> to find <strong>Bible verses by topic</strong>, emotion, or keyword. Whether you
+                    need <strong>prophetic Bible verses</strong> for anxiety, healing, or breakthrough, receive
+                    immediate,
+                    spirit-led guidance.
+                </p>
             </div>
-        </section>
 
-        <!-- ========================================== -->
-        <!-- PROPHETIC CALENDAR -->
-        <!-- ========================================== -->
-        <section id="calendar" class="section dark-alt">
-            <div class="container">
-                <h2 class="section-title">Prophetic Calendar</h2>
-                <div class="glass-card calendar-card">
-                    <div class="calendar-grid">
-                        <div class="calendar-event">
-                            <div class="event-date-badge">NOV 15</div>
-                            <h4>Nairobi Night of Fire</h4>
-                            <p>Prophetic impartation and divine encounter</p>
-                        </div>
-                        <div class="calendar-event">
-                            <div class="event-date-badge">DEC 1</div>
-                            <h4>Global Broadcast</h4>
-                            <p>Live prophetic word for the nations</p>
-                        </div>
-                        <div class="calendar-event">
-                            <div class="event-date-badge">FEB 20</div>
-                            <h4>Apostolic Summit 2027</h4>
-                            <p>Three-day leadership equipping</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========================================== -->
-        <!-- LIVE STREAM HUB -->
-        <!-- ========================================== -->
-        <section id="live-stream" class="section">
-            <div class="container">
-                <h2 class="section-title">Live Stream Hub</h2>
-                <div class="grid-2">
-                    <div class="glass-card stream-card">
-                        <i class="fab fa-youtube stream-icon"></i>
-                        <h3>YouTube Ministry</h3>
-                        <p>Watch live services and prophetic teachings</p>
-                        <a href="https://youtube.com/@yeshuapropheticaltar" target="_blank" rel="noopener noreferrer"
-                            class="btn-glass">Watch Now</a>
-                    </div>
-                    <div class="glass-card stream-card">
-                        <i class="fab fa-tiktok stream-icon"></i>
-                        <h3>TikTok Podcast</h3>
-                        <p>Listen to prophetic broadcasts on the go</p>
-                        <a href="https://www.tiktok.com/@yeshuapropheticaltar" target="_blank" rel="noopener noreferrer" class="btn-glass">Listen Now</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========================================== -->
-        <!-- KINGDOM PARTNERSHIP -->
-        <!-- ========================================== -->
-        <section id="partnership" class="section dark-alt">
-            <div class="container text-center">
-                <h2 class="section-title">Kingdom Partnership</h2>
-                <div class="glass-card partnership-card">
-                    <div class="partner-logos">
-                        <div class="partner-logo">
-                            <i class="fas fa-handshake"></i>
-                            <h3>Yeshua Prophetic Altar</h3>
-                        </div>
-                        <div class="partner-connector">
-                            <i class="fas fa-link"></i>
-                        </div>
-                        <div class="partner-logo">
-                            <i class="fas fa-landmark"></i>
-                            <h3>Capstone Legacy Foundation</h3>
-                        </div>
-                    </div>
-                    <p class="partnership-desc">Our Yeshua Prophetic Altar is in partnership with the Capstone Legacy
-                        Foundation to serve communities and advance the Kingdom globally.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========================================== -->
-        <!-- KINGDOM FINANCING (GIVING) -->
-        <!-- ========================================== -->
-        <section id="give" class="section" aria-labelledby="give-title">
-            <div class="container text-center">
-                <h2 class="section-title" id="give-title">Kingdom Financing</h2>
-                <p class="section-desc">Support the global broadcast of the prophetic altar. Your seed funds the digital
-                    infrastructure and global missions.</p>
-                <div class="give-options">
-                    <a href="https://paypal.com" target="_blank" rel="noopener noreferrer" class="btn-glass give-btn">
-                        <i class="fab fa-paypal" aria-hidden="true"></i> Give via PayPal
-                    </a>
-                    <button type="button" class="btn-glass give-btn" id="openMpesaModal" style="cursor: pointer;">
-                        <i class="fas fa-mobile-alt" aria-hidden="true"></i> Give via M-Pesa
+            <!-- Search Interface -->
+            <div class="search-card glass-card" style="max-width: 700px; margin: 0 auto 40px auto; padding: 30px;">
+                <div class="search-input-group" style="display: flex; gap: 15px;">
+                    <input type="text" id="scriptureInput"
+                        placeholder="Search by topic (e.g., anxiety, breakthrough, healing, peace)..."
+                        style="flex: 1; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--glass-border); padding: 15px 20px; border-radius: 12px; color: white; font-size: 1rem; outline: none;">
+                    <button id="scriptureSearchBtn" class="btn-primary"
+                        style="border-radius: 12px; padding: 15px 30px;">
+                        <i class="fas fa-search"></i> Search
                     </button>
-                    <a href="contact.html" class="btn-glass give-btn">
-                        <i class="fas fa-university" aria-hidden="true"></i> Bank Transfer Details
-                    </a>
+                </div>
+
+                <!-- Quick Tags for UX -->
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
+                    <span style="color: var(--text-muted); font-size: 0.85rem; align-self: center;">Trending:</span>
+                    <button class="quick-tag" data-term="anxiety">Anxiety</button>
+                    <button class="quick-tag" data-term="breakthrough">Breakthrough</button>
+                    <button class="quick-tag" data-term="healing">Healing</button>
+                    <button class="quick-tag" data-term="financial provision">Provision</button>
                 </div>
             </div>
-        </section>
 
-        <!-- ========================================== -->
-        <!-- KNOW JESUS (SALVATION) -->
-        <!-- ========================================== -->
-        <section id="know-jesus" class="section salvation-section">
-            <div class="container">
-                <div class="glass-card salvation-card">
-                    <h2 class="salvation-title">Do You Know Jesus?</h2>
-                    <p class="salvation-verse">"For God so loved the world, that he gave his only begotten Son, that
-                        whosoever believeth in him should not perish, but have everlasting life." — John 3:16</p>
-                    <div class="salvation-steps">
-                        <div class="step">
-                            <div class="step-number">1</div>
-                            <h4>Admit</h4>
-                            <p>Admit you are a sinner in need of salvation</p>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">2</div>
-                            <h4>Believe</h4>
-                            <p>Believe Jesus died for your sins and rose again</p>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">3</div>
-                            <h4>Confess</h4>
-                            <p>Confess Jesus as Lord of your life</p>
-                        </div>
+            <!-- Dynamic Results Container -->
+            <div id="searchResults" class="search-results" style="max-width: 800px; margin: 0 auto;"></div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- PROPHETIC CALENDAR -->
+    <!-- ========================================== -->
+    <section id="calendar" class="section dark-alt">
+        <div class="container">
+            <h2 class="section-title">Prophetic Calendar</h2>
+            <div class="glass-card calendar-card">
+                <div class="calendar-grid">
+                    <div class="calendar-event">
+                        <div class="event-date-badge">NOV 15</div>
+                        <h4>Nairobi Night of Fire</h4>
+                        <p>Prophetic impartation and divine encounter</p>
                     </div>
-                    <div class="prayer-of-salvation">
-                        <h3>Pray This Prayer:</h3>
-                        <p class="prayer-text">"Lord Jesus, I admit I am a sinner. I believe You died for my sins and
-                            rose from the dead. I confess You as Lord of my life. Come into my heart and save me. Thank
-                            You for my salvation. Amen."</p>
+                    <div class="calendar-event">
+                        <div class="event-date-badge">DEC 1</div>
+                        <h4>Global Broadcast</h4>
+                        <p>Live prophetic word for the nations</p>
                     </div>
-                    <a href="contact.html" class="btn-neon">I Prayed This Prayer</a>
+                    <div class="calendar-event">
+                        <div class="event-date-badge">FEB 20</div>
+                        <h4>Apostolic Summit 2027</h4>
+                        <p>Three-day leadership equipping</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- ==========================================
+    <!-- ========================================== -->
+    <!-- LIVE STREAM HUB -->
+    <!-- ========================================== -->
+    <section id="live-stream" class="section">
+        <div class="container">
+            <h2 class="section-title">Live Stream Hub</h2>
+            <div class="grid-2">
+                <div class="glass-card stream-card">
+                    <i class="fab fa-youtube stream-icon"></i>
+                    <h3>YouTube Ministry</h3>
+                    <p>Watch live services and prophetic teachings</p>
+                    
+                    <a href="https://youtube.com/@yeshuapropheticaltar" target="_blank" rel="noopener noreferrer"
+                        class="btn-glass">Watch Now</a>
+                </div>
+                <div class="glass-card stream-card">
+                    <i class="fab fa-tiktok stream-icon"></i>
+                    <h3>TikTok Podcast</h3>
+                    <p>Listen to prophetic broadcasts on the go</p>
+                    <a href="https://www.tiktok.com/@yeshuapropheticaltar" target="_blank" rel="noopener noreferrer"
+                        class="btn-glass">Listen Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- KINGDOM PARTNERSHIP -->
+    <!-- ========================================== -->
+    <section id="partnership" class="section dark-alt">
+        <div class="container text-center">
+            <h2 class="section-title">Kingdom Partnership</h2>
+            <div class="glass-card partnership-card">
+                <div class="partner-logos">
+                    <div class="partner-logo">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Yeshua Prophetic Altar</h3>
+                    </div>
+                    <div class="partner-connector">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="partner-logo">
+                        <i class="fas fa-landmark"></i>
+                        <h3>Capstone Legacy Foundation</h3>
+                    </div>
+                </div>
+                <p class="partnership-desc">Our Yeshua Prophetic Altar is in partnership with the Capstone Legacy
+                    Foundation to serve communities and advance the Kingdom globally.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- KINGDOM FINANCING (GIVING) -->
+    <!-- ========================================== -->
+    <section id="give" class="section" aria-labelledby="give-title">
+        <div class="container text-center">
+            <h2 class="section-title" id="give-title">Kingdom Financing</h2>
+            <p class="section-desc">Support the global broadcast of the prophetic altar. Your seed funds the digital
+                infrastructure and global missions.</p>
+            <div class="give-options">
+                <a href="https://paypal.com" target="_blank" rel="noopener noreferrer" class="btn-glass give-btn">
+                    <i class="fab fa-paypal" aria-hidden="true"></i> Give via PayPal
+                </a>
+                <button type="button" class="btn-glass give-btn" id="openMpesaModal" style="cursor: pointer;">
+                    <i class="fas fa-mobile-alt" aria-hidden="true"></i> Give via M-Pesa
+                </button>
+                <a href="contact.html" class="btn-glass give-btn">
+                    <i class="fas fa-university" aria-hidden="true"></i> Bank Transfer Details
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- KNOW JESUS (SALVATION) -->
+    <!-- ========================================== -->
+    <section id="know-jesus" class="section salvation-section">
+        <div class="container">
+            <div class="glass-card salvation-card">
+                <h2 class="salvation-title">Do You Know Jesus?</h2>
+                <p class="salvation-verse">"For God so loved the world, that he gave his only begotten Son, that
+                    whosoever believeth in him should not perish, but have everlasting life." — John 3:16</p>
+                <div class="salvation-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Admit</h4>
+                        <p>Admit you are a sinner in need of salvation</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Believe</h4>
+                        <p>Believe Jesus died for your sins and rose again</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Confess</h4>
+                        <p>Confess Jesus as Lord of your life</p>
+                    </div>
+                </div>
+                <div class="prayer-of-salvation">
+                    <h3>Pray This Prayer:</h3>
+                    <p class="prayer-text">"Lord Jesus, I admit I am a sinner. I believe You died for my sins and
+                        rose from the dead. I confess You as Lord of my life. Come into my heart and save me. Thank
+                        You for my salvation. Amen."</p>
+                </div>
+                <a href="contact.html" class="btn-neon">I Prayed This Prayer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
              SECTION: PROPHETIC PRAYER INTERCESSION (DEFINITIVE BUILD)
              ========================================== -->
-        <section id="prayer" class="section dark-alt">
-            <div class="container">
-                <div class="text-center" style="margin-bottom: 50px;">
-                    <span class="epicenter-badge"><span class="pulse-dot"></span> ALTAR OF INTERCESSION</span>
-                    <h2>How Can We Pray For You?</h2>
-                    <p class="section-desc" style="max-width: 700px; margin: 0 auto;">
-                        During these challenging times, you do not have to carry the burden alone. Submit your <strong>online
-                            prayer request</strong> to the Yeshua Apostolic and Prophetic Altar. Our global <strong>Christian
-                            intercession</strong> team is standing by to provide <strong>prophetic prayer support</strong>,
-                        spiritual healing, and breakthrough.
-                    </p>
+    <section id="prayer" class="section dark-alt">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 50px;">
+                <span class="epicenter-badge"><span class="pulse-dot"></span> ALTAR OF INTERCESSION</span>
+                <h2>How Can We Pray For You?</h2>
+                <p class="section-desc" style="max-width: 700px; margin: 0 auto;">
+                    During these challenging times, you do not have to carry the burden alone. Submit your
+                    <strong>online
+                        prayer request</strong> to the Yeshua Apostolic and Prophetic Altar. Our global
+                    <strong>Christian
+                        intercession</strong> team is standing by to provide <strong>prophetic prayer support</strong>,
+                    spiritual healing, and breakthrough.
+                </p>
+            </div>
+
+            <div class="glass-card" style="max-width: 800px; margin: 0 auto; padding: 40px;">
+
+                <!-- AI Quick Actions (WITH ICONS PRESERVED) -->
+                <div class="ai-quick-actions" style="text-align: center; margin-bottom: 30px;">
+                    <h3
+                        style="color: var(--premium-gold); font-family: var(--font-majestic); font-size: 1.3rem; margin-bottom: 25px;">
+                        What is on your heart today?</h3>
+                    <div class="quick-action-buttons"
+                        style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <button type="button" class="quick-btn mood-btn" data-prayer="anxious" data-mood="anxious">
+                            <i class="fas fa-heart"></i>
+                            <span>I feel Anxious</span>
+                        </button>
+                        <button type="button" class="quick-btn mood-btn" data-prayer="breakthrough"
+                            data-mood="breakthrough">
+                            <i class="fas fa-mountain"></i>
+                            <span>Need Breakthrough</span>
+                        </button>
+                        <button type="button" class="quick-btn mood-btn" data-prayer="healing" data-mood="healing">
+                            <i class="fas fa-hand-holding-medical"></i>
+                            <span>Seeking Healing</span>
+                        </button>
+                        <button type="button" class="quick-btn mood-btn" data-prayer="peace" data-mood="peace">
+                            <i class="fas fa-dove"></i>
+                            <span>Desire Peace</span>
+                        </button>
+                    </div>
                 </div>
-        
-                <div class="glass-card" style="max-width: 800px; margin: 0 auto; padding: 40px;">
-        
-                    <!-- AI Quick Actions (WITH ICONS PRESERVED) -->
-                    <div class="ai-quick-actions" style="text-align: center; margin-bottom: 30px;">
-                        <h3
-                            style="color: var(--premium-gold); font-family: var(--font-majestic); font-size: 1.3rem; margin-bottom: 25px;">
-                            What is on your heart today?</h3>
-                        <div class="quick-action-buttons"
-                            style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                            <button type="button" class="quick-btn mood-btn" data-prayer="anxious" data-mood="anxious">
-                                <i class="fas fa-heart"></i>
-                                <span>I feel Anxious</span>
-                            </button>
-                            <button type="button" class="quick-btn mood-btn" data-prayer="breakthrough"
-                                data-mood="breakthrough">
-                                <i class="fas fa-mountain"></i>
-                                <span>Need Breakthrough</span>
-                            </button>
-                            <button type="button" class="quick-btn mood-btn" data-prayer="healing" data-mood="healing">
-                                <i class="fas fa-hand-holding-medical"></i>
-                                <span>Seeking Healing</span>
-                            </button>
-                            <button type="button" class="quick-btn mood-btn" data-prayer="peace" data-mood="peace">
-                                <i class="fas fa-dove"></i>
-                                <span>Desire Peace</span>
-                            </button>
-                        </div>
+
+                <!-- Dynamic Scripture Injection Area -->
+                <div id="ai-scripture-response"
+                    style="display: none; text-align: center; margin-bottom: 25px; padding: 20px; background: rgba(212, 175, 55, 0.08); border-radius: 12px; border: 1px solid var(--glass-border);">
+                    <p id="injected-scripture"
+                        style="font-style: italic; color: var(--premium-gold); font-size: 1.05rem; margin: 0;"></p>
+                </div>
+
+                <!-- Netlify-Ready Prayer Form -->
+                <form id="prayerForm" name="prayer-request" method="POST" data-netlify="true"
+                    netlify-honeypot="bot-field" class="glass-form">
+                    <input type="hidden" name="form-name" value="prayer-request">
+
+                    <p class="hidden" style="display: none;">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </p>
+
+                    <div class="form-group">
+                        <label for="prayerName">Your Name</label>
+                        <input type="text" id="prayerName" name="name" required placeholder="Enter your name">
                     </div>
-        
-                    <!-- Dynamic Scripture Injection Area -->
-                    <div id="ai-scripture-response"
-                        style="display: none; text-align: center; margin-bottom: 25px; padding: 20px; background: rgba(212, 175, 55, 0.08); border-radius: 12px; border: 1px solid var(--glass-border);">
-                        <p id="injected-scripture"
-                            style="font-style: italic; color: var(--premium-gold); font-size: 1.05rem; margin: 0;"></p>
+
+                    <div class="form-group">
+                        <label for="prayerEmail">Your Email (Optional, for follow-up)</label>
+                        <input type="email" id="prayerEmail" name="email" placeholder="Enter your email">
                     </div>
-        
-                    <!-- Netlify-Ready Prayer Form -->
-                    <form id="prayerForm" name="prayer-request" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-                        class="glass-form">
-                        <input type="hidden" name="form-name" value="prayer-request">
-        
-                        <p class="hidden">
-                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-                        </p>
-        
-                        <div class="form-group">
-                            <label for="prayerName">Your Name</label>
-                            <input type="text" id="prayerName" name="name" required placeholder="Enter your name">
-                        </div>
-        
-                        <div class="form-group">
-                            <label for="prayerEmail">Your Email (Optional, for follow-up)</label>
-                            <input type="email" id="prayerEmail" name="email" placeholder="Enter your email">
-                        </div>
-        
-                        <div class="form-group">
-                            <label for="prayerMessage">Your Prayer Request</label>
-                            <textarea id="prayerMessage" name="message" rows="5" required
-                                placeholder="Share what is on your heart..."></textarea>
-                        </div>
-        
-                        <button type="submit" id="submitBtn" class="btn-primary" style="width: 100%; margin-top: 10px;">
-                            <i class="fas fa-paper-plane"></i> Send Prayer Request
-                        </button>
-                    </form>
-        
-                    <!-- Success Message (Outside form for clean state management) -->
-                    <div id="formSuccess" class="hidden" style="text-align: center; padding: 40px 20px;">
-                        <i class="fas fa-check-circle"
-                            style="font-size: 3rem; color: var(--premium-gold); margin-bottom: 20px;"></i>
-                        <h3 style="color: var(--premium-gold); margin-bottom: 15px;">Transmission Received</h3>
-                        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 25px;">
-                            Your request has been securely transmitted to the Altar. Our intercession team is standing in the
-                            gap for you right now.
-                            <br><em>"The effective, fervent prayer of a righteous man avails much." — James 5:16</em>
-                        </p>
-                        <button id="download-cert-btn" class="btn-outline">
-                            <i class="fas fa-file-pdf"></i> Download Prayer Certificate
-                        </button>
+
+                    <div class="form-group">
+                        <label for="prayerMessage">Your Prayer Request</label>
+                        <textarea id="prayerMessage" name="message" rows="5" required
+                            placeholder="Share what is on your heart..."></textarea>
                     </div>
-        
+
+                    <button type="submit" id="submitBtn" class="btn-primary" style="width: 100%; margin-top: 10px;">
+                        <i class="fas fa-paper-plane"></i> Send Prayer Request
+                    </button>
+                </form>
+
+                <!-- Success Message (Outside form for clean state management) -->
+                <div id="formSuccess" class="hidden" style="text-align: center; padding: 40px 20px;">
+                    <i class="fas fa-check-circle"
+                        style="font-size: 3rem; color: var(--premium-gold); margin-bottom: 20px;"></i>
+                    <h3 style="color: var(--premium-gold); margin-bottom: 15px;">Transmission Received</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 25px;">
+                        Your request has been securely transmitted to the Altar. Our intercession team is standing in
+                        the
+                        gap for you right now.
+                        <br><em>"The effective, fervent prayer of a righteous man avails much." — James 5:16</em>
+                    </p>
+                    <button id="download-cert-btn" class="btn-outline">
+                        <i class="fas fa-file-pdf"></i> Download Prayer Certificate
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!--    PROPHETIC TIMELINE -->
+    <!-- ========================================== -->
+    <section id="timeline" class="section">
+        <div class="container">
+            <h2 class="section-title">Prophetic Timeline</h2>
+            <p class="section-desc">Key moments in the apostolic journey</p>
+
+            <div class="timeline-container">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-marker">2020</div>
+                    <div class="timeline-content">
+                        <h4>Foundation Established</h4>
+                        <p>Yeshua Prophetic Altar founded in Nairobi with a mandate to reach the nations.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-marker">2022</div>
+                    <div class="timeline-content">
+                        <h4>Global Broadcast Launch</h4>
+                        <p>Digital altar goes live, reaching 15+ nations with prophetic teachings.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-marker">2024</div>
+                    <div class="timeline-content">
+                        <h4>Capstone Legacy Partnership</h4>
+                        <p>Strategic alliance formed to serve communities and advance Kingdom impact.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-marker">2026</div>
+                    <div class="timeline-content">
+                        <h4>Apostolic Intelligence Network</h4>
+                        <p>Launch of real-time prophetic directives for global leaders and markets.</p>
+                    </div>
+                </div>
+                <div class="timeline-item future" data-aos="fade-right">
+                    <div class="timeline-marker">2027</div>
+                    <div class="timeline-content">
+                        <h4>Global Apostolic Summit</h4>
+                        <p>The premier gathering for apostolic intelligence and prophetic governance.</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-            <!-- ========================================== -->
-            <!--    PROPHETIC TIMELINE -->
-            <!-- ========================================== -->
-            <section id="timeline" class="section">
-                <div class="container">
-                    <h2 class="section-title">Prophetic Timeline</h2>
-                    <p class="section-desc">Key moments in the apostolic journey</p>
-            
-                    <div class="timeline-container">
-                        <div class="timeline-item" data-aos="fade-right">
-                            <div class="timeline-marker">2020</div>
-                            <div class="timeline-content">
-                                <h4>Foundation Established</h4>
-                                <p>Yeshua Prophetic Altar founded in Nairobi with a mandate to reach the nations.</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item" data-aos="fade-left">
-                            <div class="timeline-marker">2022</div>
-                            <div class="timeline-content">
-                                <h4>Global Broadcast Launch</h4>
-                                <p>Digital altar goes live, reaching 15+ nations with prophetic teachings.</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item" data-aos="fade-right">
-                            <div class="timeline-marker">2024</div>
-                            <div class="timeline-content">
-                                <h4>Capstone Legacy Partnership</h4>
-                                <p>Strategic alliance formed to serve communities and advance Kingdom impact.</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item" data-aos="fade-left">
-                            <div class="timeline-marker">2026</div>
-                            <div class="timeline-content">
-                                <h4>Apostolic Intelligence Network</h4>
-                                <p>Launch of real-time prophetic directives for global leaders and markets.</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item future" data-aos="fade-right">
-                            <div class="timeline-marker">2027</div>
-                            <div class="timeline-content">
-                                <h4>Global Apostolic Summit</h4>
-                                <p>The premier gathering for apostolic intelligence and prophetic governance.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        <!-- ==========================================
+    <!-- ==========================================
              SECTION: GLOBAL PRAYER WALL & INTERCESSION NETWORK
              ========================================== -->
-        <section id="prayer-wall" class="section">
+    <section id="prayer-wall" class="section">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 50px;">
+
+                <!DOCTYPE html>
+                <html lang="en">
+                
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta name="description"
+                        content="Join upcoming prophetic gatherings, apostolic summits, and global live broadcasts from Yeshua Prophetic Altar. Experience the transformative anointing.">
+                    <meta name="keywords"
+                        content="Prophetic Conference Nairobi, Apostolic Summit, Global Prophetic Broadcast, Yeshua Prophetic Altar Events, Apostle Joshua, Prophetess Lillian">
+                    <title>Events & Gatherings | Yeshua Prophetic Altar</title>
+                
+                    <link rel="stylesheet" href="style.css">
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
+                        rel="stylesheet">
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+                
+                    <!-- AOS Animation Library for World-Class Scroll Effects -->
+                    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+                
+                    <!-- ADVANCED SEO: JSON-LD Event Schema -->
+                    <script type="application/ld+json">
+                    {
+                      "@context": "https://schema.org",
+                      "@type": "Event",
+                      "name": "Nairobi Night of Fire",
+                      "startDate": "2026-11-15T18:00",
+                      "endDate": "2026-11-15T22:00",
+                      "eventStatus": "https://schema.org/EventScheduled",
+                      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+                      "location": {
+                        "@type": "Place",
+                        "name": "Nairobi, Kenya",
+                        "address": { "@type": "PostalAddress", "addressLocality": "Nairobi", "addressCountry": "KE" }
+                      },
+                      "organizer": { "@type": "Organization", "name": "Yeshua Prophetic Altar", "url": "https://yeshuapropheticaltar.org" },
+                      "description": "A night of prophetic impartation, worship, and divine encounter with Apostle Joshua and Prophetess Lillian."
+                    }
+                    </script>
+                
+                    <!-- PAGE-SPECIFIC STYLES -->
+                    <style>
+                        .events-hero {
+                            position: relative;
+                            height: 50vh;
+                            min-height: 400px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: linear-gradient(135deg, rgba(10, 5, 18, 0.9), rgba(138, 43, 226, 0.2));
+                            overflow: hidden;
+                            text-align: center;
+                            padding: 0 20px;
+                        }
+                
+                        .hero-overlay {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(138,43,226,0.15)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+                            opacity: 0.5;
+                        }
+                
+                        .events-hero .hero-content {
+                            position: relative;
+                            z-index: 2;
+                        }
+                
+                        .main-title {
+                            font-size: clamp(2.5rem, 6vw, 4rem);
+                            margin-bottom: 20px;
+                        }
+                
+                        .hero-scripture {
+                            font-size: 1.2rem;
+                            font-style: italic;
+                            color: var(--gold);
+                            max-width: 600px;
+                            margin: 0 auto;
+                            line-height: 1.6;
+                        }
+                
+                        .hero-scripture cite {
+                            display: block;
+                            margin-top: 10px;
+                            font-size: 1rem;
+                            color: var(--text);
+                            font-style: normal;
+                        }
+                
+                        .hero-desc {
+                            font-size: 1.1rem;
+                            color: #94a3b8;
+                            max-width: 700px;
+                            margin: 20px auto 0;
+                        }
+                
+                        /* Events Grid */
+                        .events-grid {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                            gap: 30px;
+                            margin-top: 50px;
+                        }
+                
+                        .event-card {
+                            background: var(--glass);
+                            border-radius: 20px;
+                            border: 1px solid var(--border);
+                            overflow: hidden;
+                            transition: 0.4s ease;
+                            position: relative;
+                            display: flex;
+                            flex-direction: column;
+                        }
+                
+                        .event-card:hover {
+                            transform: translateY(-10px);
+                            border-color: var(--cyan);
+                            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.2);
+                        }
+                
+                        .event-card.featured {
+                            border: 2px solid var(--gold);
+                            background: rgba(255, 215, 0, 0.03);
+                        }
+                
+                        .event-status-badge {
+                            position: absolute;
+                            top: 20px;
+                            right: 20px;
+                            padding: 6px 14px;
+                            border-radius: 20px;
+                            font-size: 0.75rem;
+                            font-weight: 700;
+                            text-transform: uppercase;
+                            letter-spacing: 1px;
+                            z-index: 2;
+                        }
+                
+                        .event-status-badge.registering {
+                            background: var(--cyan);
+                            color: var(--bg);
+                        }
+                
+                        .event-status-badge.live-soon {
+                            background: #ff4757;
+                            color: white;
+                            animation: pulse 2s infinite;
+                        }
+                
+                        .event-status-badge.waitlist {
+                            background: var(--gold);
+                            color: var(--bg);
+                        }
+                
+                        @keyframes pulse {
+                            0% {
+                                box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7);
+                            }
+                
+                            70% {
+                                box-shadow: 0 0 0 10px rgba(255, 71, 87, 0);
+                            }
+                
+                            100% {
+                                box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
+                            }
+                        }
+                
+                        .event-image-placeholder {
+                            height: 180px;
+                            background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(10, 5, 18, 0.8));
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 4rem;
+                            color: var(--gold);
+                            border-bottom: 1px solid var(--border);
+                        }
+                
+                        .event-image-placeholder.digital {
+                            background: linear-gradient(135deg, rgba(0, 243, 255, 0.2), rgba(10, 5, 18, 0.8));
+                            color: var(--cyan);
+                        }
+                
+                        .event-content {
+                            padding: 30px;
+                            flex-grow: 1;
+                            display: flex;
+                            flex-direction: column;
+                        }
+                
+                        .event-date-badge {
+                            display: inline-flex;
+                            flex-direction: column;
+                            align-items: center;
+                            background: rgba(255, 215, 0, 0.1);
+                            border: 1px solid var(--gold);
+                            border-radius: 10px;
+                            padding: 10px 15px;
+                            margin-bottom: 20px;
+                            width: fit-content;
+                        }
+                
+                        .event-date-badge .month {
+                            font-size: 0.8rem;
+                            font-weight: 700;
+                            color: var(--gold);
+                            letter-spacing: 1px;
+                        }
+                
+                        .event-date-badge .day {
+                            font-size: 1.8rem;
+                            font-weight: 900;
+                            color: var(--gold);
+                            line-height: 1;
+                            font-family: 'Orbitron', sans-serif;
+                        }
+                
+                        .event-date-badge .year {
+                            font-size: 0.8rem;
+                            color: var(--text);
+                        }
+                
+                        .event-content h3 {
+                            font-size: 1.4rem;
+                            color: var(--text);
+                            margin-bottom: 15px;
+                            font-family: 'Orbitron', sans-serif;
+                        }
+                
+                        .event-meta {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 8px;
+                            margin-bottom: 20px;
+                            font-size: 0.9rem;
+                            color: var(--cyan);
+                        }
+                
+                        .event-meta i {
+                            width: 20px;
+                            text-align: center;
+                            margin-right: 5px;
+                        }
+                
+                        .event-desc {
+                            color: #94a3b8;
+                            line-height: 1.6;
+                            margin-bottom: 30px;
+                            flex-grow: 1;
+                        }
+                
+                        .event-actions {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 15px;
+                        }
+                
+                        .event-actions .btn-glass {
+                            text-align: center;
+                            text-decoration: none;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 8px;
+                        }
+                
+                        /* Broadcast Info Card */
+                        .broadcast-info-card {
+                            background: var(--glass);
+                            border: 1px solid var(--border);
+                            border-radius: 20px;
+                            padding: 40px;
+                            display: flex;
+                            align-items: center;
+                            gap: 40px;
+                            max-width: 900px;
+                            margin: 0 auto;
+                        }
+                
+                        .broadcast-icon {
+                            font-size: 5rem;
+                            color: var(--cyan);
+                            flex-shrink: 0;
+                        }
+                
+                        .broadcast-content h3 {
+                            color: var(--gold);
+                            font-size: 1.8rem;
+                            margin-bottom: 15px;
+                        }
+                
+                        .broadcast-content p {
+                            color: #94a3b8;
+                            line-height: 1.7;
+                            margin-bottom: 25px;
+                        }
+                
+                        .timezone-pills {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 15px;
+                        }
+                
+                        .tz-pill {
+                            background: rgba(138, 43, 226, 0.15);
+                            border: 1px solid var(--border);
+                            padding: 10px 20px;
+                            border-radius: 30px;
+                            font-size: 0.9rem;
+                            color: var(--text);
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                        }
+                
+                        .tz-pill i {
+                            color: var(--gold);
+                        }
+                
+                        /* Invite Ministry Card */
+                        .invite-ministry-card {
+                            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(255, 215, 0, 0.05));
+                            border: 2px solid var(--gold);
+                            border-radius: 20px;
+                            padding: 50px;
+                            display: flex;
+                            align-items: center;
+                            gap: 50px;
+                            max-width: 1000px;
+                            margin: 0 auto;
+                        }
+                
+                        .invite-content {
+                            flex: 2;
+                        }
+                
+                        .invite-content h2 {
+                            color: var(--gold);
+                            font-size: 2rem;
+                            margin-bottom: 20px;
+                            display: flex;
+                            align-items: center;
+                            gap: 15px;
+                        }
+                
+                        .invite-content p {
+                            color: var(--text);
+                            line-height: 1.7;
+                            margin-bottom: 25px;
+                            font-size: 1.05rem;
+                        }
+                
+                        .invite-benefits {
+                            list-style: none;
+                            margin-bottom: 30px;
+                        }
+                
+                        .invite-benefits li {
+                            color: var(--text);
+                            margin-bottom: 12px;
+                            display: flex;
+                            align-items: center;
+                            gap: 12px;
+                            font-size: 1rem;
+                        }
+                
+                        .invite-benefits i {
+                            color: var(--cyan);
+                        }
+                
+                        .invite-visual {
+                            flex: 1;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 8rem;
+                            color: rgba(138, 43, 226, 0.3);
+                        }
+                
+                        /* Archive Grid */
+                        .archive-grid {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                            gap: 25px;
+                        }
+                
+                        .archive-card {
+                            background: var(--glass);
+                            border: 1px solid var(--border);
+                            border-radius: 15px;
+                            padding: 30px;
+                            text-align: center;
+                            transition: 0.3s;
+                            position: relative;
+                        }
+                
+                        .archive-card:hover {
+                            border-color: var(--cyan);
+                            transform: translateY(-5px);
+                        }
+                
+                        .archive-overlay {
+                            font-size: 3rem;
+                            color: var(--gold);
+                            margin-bottom: 20px;
+                            transition: 0.3s;
+                        }
+                
+                        .archive-card:hover .archive-overlay {
+                            transform: scale(1.1);
+                            color: var(--cyan);
+                        }
+                
+                        .archive-card h4 {
+                            color: var(--text);
+                            margin-bottom: 10px;
+                            font-size: 1.1rem;
+                        }
+                
+                        .archive-card p {
+                            color: #94a3b8;
+                            font-size: 0.9rem;
+                            margin-bottom: 20px;
+                        }
+                
+                        /* ========================================== */
+                        /* NEW: ENGAGEMENT & PRAYER WALL FILTERS */
+                        /* ========================================== */
+                        .engagement-filters {
+                            display: flex;
+                            justify-content: center;
+                            gap: 15px;
+                            margin-bottom: 40px;
+                            flex-wrap: wrap;
+                        }
+                
+                        .filter-btn {
+                            background: rgba(255, 255, 255, 0.05);
+                            border: 1px solid var(--border);
+                            color: var(--text);
+                            padding: 10px 25px;
+                            border-radius: 50px;
+                            cursor: pointer;
+                            font-weight: 600;
+                            transition: all 0.3s ease;
+                        }
+                
+                        .filter-btn:hover,
+                        .filter-btn.active {
+                            background: var(--gold);
+                            color: var(--bg);
+                            border-color: var(--gold);
+                        }
+                
+                        .engagement-grid {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                            gap: 25px;
+                            margin-bottom: 60px;
+                        }
+                
+                        .engagement-card {
+                            background: var(--glass);
+                            border: 1px solid var(--border);
+                            border-radius: 15px;
+                            overflow: hidden;
+                            transition: all 0.3s ease;
+                            margin: 0;
+                        }
+                
+                        .engagement-card:hover {
+                            transform: translateY(-5px);
+                            border-color: var(--gold);
+                        }
+                
+                        .engagement-card img {
+                            width: 100%;
+                            height: 350px;
+                            object-fit: cover;
+                            transition: transform 0.5s ease;
+                        }
+                
+                        .engagement-card img[style*="contain"] {
+                            object-fit: cover !important;
+                            background: #0a0a0a;
+                        }
+                
+                        .engagement-card figcaption {
+                            padding: 20px;
+                            text-align: center;
+                            border-top: 1px solid var(--border);
+                        }
+                
+                        .engagement-card h3 {
+                            color: var(--gold);
+                            font-family: 'Orbitron', sans-serif;
+                            margin: 0 0 5px 0;
+                            font-size: 1.1rem;
+                        }
+                
+                        .engagement-card p {
+                            color: #94a3b8;
+                            font-size: 0.9rem;
+                            margin: 0;
+                        }
+                
+                        .prayer-wall-grid {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                            gap: 30px;
+                            margin-bottom: 50px;
+                        }
+                
+                        .prayer-card {
+                            background: var(--glass);
+                            border: 1px solid var(--border);
+                            border-radius: 20px;
+                            padding: 30px;
+                        }
+                
+                        .prayer-header {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            margin-bottom: 15px;
+                        }
+                
+                        .prayer-category {
+                            background: rgba(255, 215, 0, 0.15);
+                            color: var(--gold);
+                            padding: 4px 12px;
+                            border-radius: 20px;
+                            font-size: 0.75rem;
+                            font-weight: 700;
+                            text-transform: uppercase;
+                        }
+                
+                        .prayer-text {
+                            font-style: italic;
+                            color: #94a3b8;
+                            line-height: 1.6;
+                            margin-bottom: 20px;
+                        }
+                
+                        .prayer-footer {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+                
+                        .pray-btn {
+                            background: var(--gold);
+                            color: var(--bg);
+                            border: none;
+                            padding: 8px 16px;
+                            border-radius: 20px;
+                            font-size: 0.85rem;
+                            font-weight: 700;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            gap: 6px;
+                            transition: all 0.3s ease;
+                        }
+                
+                        .pray-btn:hover {
+                            background: #e5c158;
+                        }
+                
+                        /* Responsive */
+                        @media (max-width: 900px) {
+                
+                            .broadcast-info-card,
+                            .invite-ministry-card {
+                                flex-direction: column;
+                                text-align: center;
+                                padding: 30px;
+                            }
+                
+                            .timezone-pills {
+                                justify-content: center;
+                            }
+                
+                            .invite-benefits {
+                                text-align: left;
+                                display: inline-block;
+                            }
+                
+                            .invite-visual {
+                                display: none;
+                            }
+                        }
+                    </style>
+                </head>
+                
+                <body>
+                    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+                    <div id="site-header"></div>
+                
+                    <main id="main-content">
+                
+                        <!-- ========================================== -->
+                        <!-- EVENTS HERO SECTION -->
+                        <!-- ========================================== -->
+                        <section class="events-hero">
+                            <div class="hero-overlay"></div>
+                            <div class="container">
+                                <div class="hero-content" data-aos="fade-up">
+                                    <p class="sub-text">ALL OVER THE WORLD, THE SPIRIT IS MOVING</p>
+                                    <h1 class="main-title">Prophetic <span class="glow">Gatherings</span></h1>
+                                    <blockquote class="hero-scripture">
+                                        "Not by might, nor by power, but by my spirit, saith the Lord of hosts."
+                                        <cite>— Zechariah 4:6</cite>
+                                    </blockquote>
+                                    <p class="hero-desc">Join us physically in Nairobi or digitally from anywhere in the world. Prepare
+                                        your heart for transformative apostolic and prophetic encounters.</p>
+                                </div>
+                            </div>
+                        </section>
+                
+                        <!-- ========================================== -->
+                        <!-- GLOBAL ENGAGEMENTS & PRAYER WALL (NEW) -->
+                        <!-- ========================================== -->
+                        <section class="section dark-alt" id="engagements">
+                            <div class="container">
+                                <div class="text-center" style="margin-bottom: 50px;" data-aos="fade-up">
+                                    <span class="epicenter-badge"
+                                        style="display: inline-block; background: rgba(255, 215, 0, 0.15); border: 1px solid var(--gold); padding: 8px 20px; border-radius: 50px; margin-bottom: 20px;">
+                                        <span
+                                            style="color: var(--gold); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;">
+                                            Global Engagements & Prayer Wall
+                                        </span>
+                                    </span>
+                                </div>
+                                <!-- Dynamic Prayer Grid -->
+                                <h3 class="section-title" style="font-size: 1.8rem; margin-top: 60px;" data-aos="fade-up">Live
+                                    Intercession Requests</h3>
+                                <div class="prayer-wall-grid" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="prayer-card">
+                                        <div class="prayer-header">
+                                            <i class="fas fa-globe-africa" style="color: var(--gold); font-size: 1.2rem;"></i>
+                                            <span class="prayer-category">Breakthrough</span>
+                                        </div>
+                                        <p class="prayer-text">"Praying for divine open doors and financial provision for my family's
+                                            new business venture in Nairobi. We trust God's timing."</p>
+                                        <div class="prayer-footer">
+                                            <span style="font-size: 0.85rem; color: #94a3b8;">Nairobi, Kenya • 2h ago</span>
+                                            <button class="pray-btn"><i class="fas fa-hands-praying"></i> <span>42</span>
+                                                Praying</button>
+                                        </div>
+                                    </div>
+                                    <div class="prayer-card">
+                                        <div class="prayer-header">
+                                            <i class="fas fa-heart" style="color: var(--gold); font-size: 1.2rem;"></i>
+                                            <span class="prayer-category">Healing</span>
+                                        </div>
+                                        <p class="prayer-text">"Asking for complete physical and emotional healing for my mother. We
+                                            claim the promises of Isaiah 53:5 over her body."</p>
+                                        <div class="prayer-footer">
+                                            <span style="font-size: 0.85rem; color: #94a3b8;">London, UK • 5h ago</span>
+                                            <button class="pray-btn"><i class="fas fa-hands-praying"></i> <span>87</span>
+                                                Praying</button>
+                                        </div>
+                                    </div>
+                                    <div class="prayer-card">
+                                        <div class="prayer-header">
+                                            <i class="fas fa-dove" style="color: var(--gold); font-size: 1.2rem;"></i>
+                                            <span class="prayer-category">Peace</span>
+                                        </div>
+                                        <p class="prayer-text">"Praying for peace in my home and clarity in my career decisions. Lord,
+                                            guide my steps and calm my anxious thoughts."</p>
+                                        <div class="prayer-footer">
+                                            <span style="font-size: 0.85rem; color: #94a3b8;">Texas, USA • 8h ago</span>
+                                            <button class="pray-btn"><i class="fas fa-hands-praying"></i> <span>115</span>
+                                                Praying</button>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <!-- CTA Button -->
+                                <div class="text-center" style="margin-top: 40px;" data-aos="fade-up">
+                                    <a href="contact.html?subject=prayer&message=I would like to submit a prayer request."
+                                        class="btn-neon" style="display: inline-flex; align-items: center; gap: 10px;">
+                                        <i class="fas fa-plus-circle"></i> Add Your Prayer Request
+                                    </a>
+                                    <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 15px;">
+                                        <i class="fas fa-lock"></i> Your request is secure, confidential, and will be prayed over by our
+                                        global team.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                
+                        <!-- ========================================== -->
+                        <!-- GLOBAL BROADCAST TIMEZONE HELPER -->
+                        <!-- ========================================== -->
+                        <section class="section">
+                            <div class="container">
+                                <div class="broadcast-info-card" data-aos="zoom-in">
+                                    <div class="broadcast-icon"><i class="fas fa-satellite-dish"></i></div>
+                                    <div class="broadcast-content">
+                                        <h3>Join Us From Anywhere in the World</h3>
+                                        <p>Our digital altar knows no borders. All global broadcasts are streamed in high definition
+                                            with real-time prophetic interpretation. We recommend checking your local time zone
+                                            conversion for 7:00 PM East Africa Time (EAT / UTC+3).</p>
+                                        <div class="timezone-pills">
+                                            <span class="tz-pill"><i class="fas fa-globe-americas"></i> New York: 12:00 PM</span>
+                                            <span class="tz-pill"><i class="fas fa-globe-europe"></i> London: 5:00 PM</span>
+                                            <span class="tz-pill"><i class="fas fa-globe-africa"></i> Nairobi: 7:00 PM</span>
+                                            <span class="tz-pill"><i class="fas fa-globe-oceania"></i> Sydney: 3:00 AM (+1)</span>
+                                        </div>
+                                        <a href="contact.html" class="btn-glass" style="margin-top: 20px;">Request a Specific Time Zone
+                                            Guide</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                
+                        <!-- ========================================== -->
+                        <!-- INVITE THE MINISTRY -->
+                        <!-- ========================================== -->
+                        <section class="section dark-alt">
+                            <div class="container">
+                                <div class="invite-ministry-card" data-aos="fade-up">
+                                    <div class="invite-content">
+                                        <h2><i class="fas fa-paper-plane"></i> Invite the Ministry to Your City</h2>
+                                        <p>Do you feel led to host Apostle Joshua and Prophetess Lillian for a crusade, conference, or
+                                            special service in your region? We partner with local churches and ministries globally to
+                                            release the transformative anointing.</p>
+                                        <ul class="invite-benefits">
+                                            <li><i class="fas fa-check-circle"></i> Apostolic & Prophetic Impartation</li>
+                                            <li><i class="fas fa-check-circle"></i> Leadership Equipping & Mentoring</li>
+                                            <li><i class="fas fa-check-circle"></i> Strategic Kingdom Partnerships</li>
+                                        </ul>
+                                        <a href="contact.html?subject=invite&message=I would like to discuss hosting Apostle Joshua and Prophetess Lillian in my city/church."
+                                            class="btn-neon">Submit an Invitation Request</a>
+                                    </div>
+                                    <div class="invite-visual"><i class="fas fa-globe-africa"></i></div>
+                                </div>
+                            </div>
+                        </section>
+
+        <!-- ========================================== -->
+        <!-- NEW FEATURE 1: GLOBAL IMPACT DASHBOARD -->
+        <!-- ========================================== -->
+        <section id="impact-dashboard" class="section dark-alt">
             <div class="container">
-                <div class="text-center" style="margin-bottom: 50px;">
-                    <span class="epicenter-badge"><span class="pulse-dot"></span> GLOBAL INTERCESSION</span>
-                    <h2>Global Prayer Wall</h2>
-                    <p class="section-desc" style="max-width: 700px; margin: 0 auto;">
-                        Join our <strong>online prayer community</strong> and stand in the gap with believers worldwide.
-                        Submit your <strong>prayer request online</strong> or click "Pray" to join thousands in
-                        <strong>intercessory prayer</strong> for breakthrough, healing, and divine guidance.
-                    </p>
-                </div>
-
-                <!-- Filter Buttons -->
-                <div class="engagement-filters"
-                    style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
-                    <button class="filter-btn active" data-filter="all">All Engagements</button>
-                    <button class="filter-btn" data-filter="crusade">Global Crusades</button>
-                    <button class="filter-btn" data-filter="flyer">Event Flyers & Posters</button< /button>
-                </div>
-                
-                <!-- Media Grid -->
-                <div class="engagement-grid"
-                    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px;">
-                
-                    <!-- Item 1: Live Photo -->
-                    <figure class="engagement-card" data-category="crusade">
-                        <img src="assets/media/image/engagements/kenya-crusade.webp"
-                            alt="Prophetess Lillian ministering at a global revival crusade in Nairobi Kenya" loading="lazy"
-                            style="width: 100%; height: 350px; object-fit: cover; transition: transform 0.5s ease;">
-                        <figcaption style="padding: 20px; text-align: center; border-top: 1px solid var(--glass-border);">
-                            <h3
-                                style="color: var(--premium-gold); font-family: var(--font-majestic); margin: 0 0 5px 0; font-size: 1.1rem;">
-                                Nairobi Night of Fire</h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Kenya</p>
-                        </figcaption>
-                    </figure>
-                
-                    <!-- Item 2: Event Flyer -->
-                    <figure class="engagement-card" data-category="flyer">
-                        <img src="assets/media/image/usa-conference-flyer5.webp"
-                            alt="Apostolic conference flyer and poster for prophetic ministry event in USA" loading="lazy"
-                            style="width: 100%; height: 350px; object-fit: contain; background: #0a0a0a; transition: transform 0.5s ease;">
-                        <figcaption style="padding: 20px; text-align: center; border-top: 1px solid var(--glass-border);">
-                            <h3
-                                style="color: var(--premium-gold); font-family: var(--font-majestic); margin: 0 0 5px 0; font-size: 1.1rem;">
-                                USA Apostolic Summit</h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">United States</p>
-                        </figcaption>
-                    </figure>
-                
-                    <!-- Item 3: Live Photo -->
-                    <figure class="engagement-card" data-category="crusade">
-                        <img src="assets/media/image/engagements/south-africa-ministry.webp"
-                            alt="Prophetess Lillian leading prophetic worship and healing at a South Africa ministry event"
-                            loading="lazy" style="width: 100%; height: 350px; object-fit: cover; transition: transform 0.5s ease;">
-                        <figcaption style="padding: 20px; text-align: center; border-top: 1px solid var(--glass-border);">
-                            <h3
-                                style="color: var(--premium-gold); font-family: var(--font-majestic); margin: 0 0 5px 0; font-size: 1.1rem;">
-                                Cape Town Revival</h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">South Africa</p>
-                        </figcaption>
-                    </figure>
-                
-                    <!-- Item 4: Event Poster -->
-                    <figure class="engagement-card" data-category="flyer">
-                        <img src="assets/media/image/engagements/usa-event-poster.webp"
-                            alt="Prophetic prayer and healing event poster for Yeshua Prophetic Altar in USA" loading="lazy"
-                            style="width: 100%; height: 350px; object-fit: contain; background: #0a0a0a; transition: transform 0.5s ease;">
-                        <figcaption style="padding: 20px; text-align: center; border-top: 1px solid var(--glass-border);">
-                            <h3
-                                style="color: var(--premium-gold); font-family: var(--font-majestic); margin: 0 0 5px 0; font-size: 1.1rem;">
-                                Houston Breakthrough</h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">United States</p>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="engagement-card" data-category="flyer">
-                        <img src="assets/media/image/tanzania-conference-flyer2.webp"
-                            alt="Prophetic prayer and healing event poster for Yeshua Prophetic Altar in Tanzania" loading="lazy"
-                            style="width: 100%; height: 350px; object-fit: contain; background: #0a0a0a; transition: transform 0.5s ease;">
-                        <figcaption style="padding: 20px; text-align: center; border-top: 1px solid var(--glass-border);">
-                            <h3
-                                style="color: var(--premium-gold); font-family: var(--font-majestic); margin: 0 0 5px 0; font-size: 1.1rem;">
-                                Tanzania Breakthrough</h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Tanzania</p>
-                        </figcaption>
-                    </figure>
-                
-                </div>
-                </div>
+                <h2 class="section-title">Global Impact Dashboard</h2>
+                <p class="section-desc">Real-time metrics from the apostolic epicenter</p>
         
-                <!-- Dynamic Prayer Grid (Sample Data representing global reach) -->
-                <div class="prayer-wall-grid"
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px;">
-        
-                    <!-- Card 1 -->
-                    <div class="glass-card prayer-card">
-                        <div class="prayer-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
-                            <i class="fas fa-globe-africa" style="color: var(--premium-gold); font-size: 1.2rem;"></i>
-                            <span class="prayer-category"
-                                style="background: rgba(212, 175, 55, 0.15); color: var(--premium-gold); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Breakthrough</span>
-                        </div>
-                        <p class="prayer-text"
-                            style="font-style: italic; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
-                            "Praying for divine open doors and financial provision for my family's new business venture in
-                            Nairobi. We trust God's timing."
-                        </p>
-                        <div class="prayer-footer" style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: 0.85rem; color: var(--text-muted);">Nairobi, Kenya • 2h ago</span>
-                            <button class="pray-btn"
-                                style="background: var(--premium-gold); color: var(--royal-purple); border: none; padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease;">
-                                <i class="fas fa-hands-praying"></i> <span class="pray-count">42</span> Praying
-                            </button>
+                <div class="impact-grid">
+                    <div class="impact-stat" data-aos="zoom-in">
+                        <div class="stat-icon"><i class="fas fa-globe-americas"></i></div>
+                        <div class="stat-number" data-target="47">0</div>
+                        <div class="stat-label">Nations Reached</div>
+                        <div class="stat-bar">
+                            <div class="bar-fill" style="width: 0%" data-width="78%"></div>
                         </div>
                     </div>
-        
-                    <!-- Card 2 -->
-                    <div class="glass-card prayer-card">
-                        <div class="prayer-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
-                            <i class="fas fa-heart" style="color: var(--premium-gold); font-size: 1.2rem;"></i>
-                            <span class="prayer-category"
-                                style="background: rgba(212, 175, 55, 0.15); color: var(--premium-gold); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Healing</span>
-                        </div>
-                        <p class="prayer-text"
-                            style="font-style: italic; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
-                            "Asking for complete physical and emotional healing for my mother. We claim the promises of Isaiah
-                            53:5 over her body."
-                        </p>
-                        <div class="prayer-footer" style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: 0.85rem; color: var(--text-muted);">London, UK • 5h ago</span>
-                            <button class="pray-btn"
-                                style="background: var(--premium-gold); color: var(--royal-purple); border: none; padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease;">
-                                <i class="fas fa-hands-praying"></i> <span class="pray-count">87</span> Praying
+                    <div class="impact-stat" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-number" data-target="12847">0</div>
+                        <div class="stat-label">Lives Transformed</div>
+                        <div class="stat-bar">
+                            <div class="bar-fill" style="width: 0%" data-width="92%"></div>
                         </div>
                     </div>
-        
-                    <!-- Card 3 -->
-                    <div class="glass-card prayer-card">
-                        <div class="prayer-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
-                            <i class="fas fa-dove" style="color: var(--premium-gold); font-size: 1.2rem;"></i>
-                            <span class="prayer-category"
-                                style="background: rgba(212, 175, 55, 0.15); color: var(--premium-gold); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Peace</span>
-                        </div>
-                        <p class="prayer-text"
-                            style="font-style: italic; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
-                            "Praying for peace in my home and clarity in my career decisions. Lord, guide my steps and calm my
-                            anxious thoughts."
-                        </p>
-                        <div class="prayer-footer" style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: 0.85rem; color: var(--text-muted);">Texas, USA • 8h ago</span>
-                            <button class="pray-btn"
-                                style="background: var(--premium-gold); color: var(--royal-purple); border: none; padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease;">
-                                <i class="fas fa-hands-praying"></i> <span class="pray-count">115</span> Praying
-                            </button>
+                    <div class="impact-stat" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="stat-icon"><i class="fas fa-pray"></i></div>
+                        <div class="stat-number" data-target="365">0</div>
+                        <div class="stat-label">Days Active (24/7)</div>
+                        <div class="stat-bar">
+                            <div class="bar-fill" style="width: 0%" data-width="100%"></div>
                         </div>
                     </div>
-                </div>
-        
-                <!-- THE WORKING CTA BUTTON -->
-                <div class="text-center">
-                    <button type="button" id="addPrayerRequestBtn" class="btn-primary"
-                        style="padding: 18px 40px; font-size: 1.1rem; box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);">
-                        <i class="fas fa-plus-circle"></i> Add Your Prayer Request
-                    </button>
-                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 15px;">
-                        <i class="fas fa-lock"></i> Your request is secure, confidential, and will be prayed over by our global
-                        team.
-                    </p>
+                    <div class="impact-stat" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="stat-icon"><i class="fas fa-broadcast-tower"></i></div>
+                        <div class="stat-number" data-target="892">0</div>
+                        <div class="stat-label">Prophetic Broadcasts</div>
+                        <div class="stat-bar">
+                            <div class="bar-fill" style="width: 0%" data-width="85%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+        
+                        <!-- ========================================== -->
+                        <!-- PAST EVENTS ARCHIVE TEASER -->
+                        <!-- ========================================== -->
+                        <section class="section">
+                            <div class="container">
+                                <h2 class="section-title" data-aos="fade-up">Prophetic Archives</h2>
+                                <p class="section-desc" data-aos="fade-up" data-aos-delay="100">Missed a gathering? The anointing is
+                                    still available. Access past teachings and service replays.</p>
+                
+                                <div class="archive-grid" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="archive-card">
+                                        <div class="archive-overlay"><i class="fas fa-play-circle"></i></div>
+                                        <h4>2025 Global Fire Conference</h4>
+                                        <p>3-Part Series on Prophetic Governance</p>
+                                        <a href="media.html" class="text-link" style="color: var(--cyan); text-decoration: none;">Watch
+                                            Replay →</a>
+                                    </div>
+                                    <div class="archive-card">
+                                        <div class="archive-overlay"><i class="fas fa-play-circle"></i></div>
+                                        <h4>Nairobi Night of Fire 2025</h4>
+                                        <p>Full Service Recording & Impartation</p>
+                                        <a href="media.html" class="text-link" style="color: var(--cyan); text-decoration: none;">Watch
+                                            Replay →</a>
+                                    </div>
+                                    <div class="archive-card">
+                                        <div class="archive-overlay"><i class="fas fa-play-circle"></i></div>
+                                        <h4>Apostolic Foundations Course</h4>
+                                        <p>12-Week Recorded Discipleship Matrix</p>
+                                        <a href="media.html" class="text-link" style="color: var(--cyan); text-decoration: none;">Access
+                                            Course →</a>
+                                    </div>
+                                </div>
+                
+                                <div class="text-center" style="margin-top: 40px;" data-aos="fade-up">
+                                    <a href="media.html" class="btn-glass">View Full Media Archive</a>
+                                </div>
+                            </div>
+                        </section>
+                
+                    </main>
+                
+                    <div id="site-footer"></div>
+                    <div id="ai-container"></div>
+                
+                    <!-- AOS Animation Library -->
+                    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+                    <script src="components.js"></script>
+                    <script src="script.js"></script>
+                
+                    <script>
+                        // Initialize AOS animations
+                        AOS.init({ duration: 800, once: true, offset: 50 });
 
-            <!-- ========================================== -->
-            <!-- NEW FEATURE 1: GLOBAL IMPACT DASHBOARD -->
-            <!-- ========================================== -->
-            <section id="impact-dashboard" class="section dark-alt">
-                <div class="container">
-                    <h2 class="section-title">Global Impact Dashboard</h2>
-                    <p class="section-desc">Real-time metrics from the apostolic epicenter</p>
-            
-                    <div class="impact-grid">
-                        <div class="impact-stat" data-aos="zoom-in">
-                            <div class="stat-icon"><i class="fas fa-globe-americas"></i></div>
-                            <div class="stat-number" data-target="47">0</div>
-                            <div class="stat-label">Nations Reached</div>
-                            <div class="stat-bar">
-                                <div class="bar-fill" style="width: 0%" data-width="78%"></div>
-                            </div>
-                        </div>
-                        <div class="impact-stat" data-aos="zoom-in" data-aos-delay="100">
-                            <div class="stat-icon"><i class="fas fa-users"></i></div>
-                            <div class="stat-number" data-target="12847">0</div>
-                            <div class="stat-label">Lives Transformed</div>
-                            <div class="stat-bar">
-                                <div class="bar-fill" style="width: 0%" data-width="92%"></div>
-                            </div>
-                        </div>
-                        <div class="impact-stat" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="stat-icon"><i class="fas fa-pray"></i></div>
-                            <div class="stat-number" data-target="365">0</div>
-                            <div class="stat-label">Days Active (24/7)</div>
-                            <div class="stat-bar">
-                                <div class="bar-fill" style="width: 0%" data-width="100%"></div>
-                            </div>
-                        </div>
-                        <div class="impact-stat" data-aos="zoom-in" data-aos-delay="300">
-                            <div class="stat-icon"><i class="fas fa-broadcast-tower"></i></div>
-                            <div class="stat-number" data-target="892">0</div>
-                            <div class="stat-label">Prophetic Broadcasts</div>
-                            <div class="stat-bar">
-                                <div class="bar-fill" style="width: 0%" data-width="85%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                        // ==========================================
+                        // ENGAGEMENT FILTER LOGIC (Makes buttons work!)
+                        // ==========================================
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const filterBtns = document.querySelectorAll('.filter-btn');
+                            const mediaItems = document.querySelectorAll('.engagement-card');
 
+                            filterBtns.forEach(btn => {
+                                btn.addEventListener('click', function () {
+                                    // Remove active class from all buttons
+                                    filterBtns.forEach(b => b.classList.remove('active'));
+                                    // Add active class to clicked button
+                                    this.classList.add('active');
+
+                                    const filterValue = this.getAttribute('data-filter');
+
+                                    mediaItems.forEach(item => {
+                                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                                            item.style.display = 'block';
+                                            item.style.opacity = '0';
+                                            setTimeout(() => { item.style.opacity = '1'; }, 50);
+                                        } else {
+                                            item.style.display = 'none';
+                                        }
+                                    });
+                                });
+                            });
+                        });
+                    </script>
+                </body>
+                
+                </html>
+
+    
     <!-- INJECTED FOOTER -->
     <div id="site-footer"></div>
 
@@ -1101,118 +1821,254 @@
         </div>
     </noscript>
 
-<!-- ==========================================
+    <!-- ==========================================
      FOOTER (BRAND RECLAMATION)
      ========================================== -->
-<footer class="footer" style="background: #020205; padding: 60px 20px 20px; border-top: 1px solid var(--glass-border);">
-    <div class="container">
-        <div class="footer-grid"
-            style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px;">
-            <div class="footer-col">
-                <h4
-                    style="color: var(--premium-gold); margin-bottom: 20px; font-family: var(--font-majestic); font-size: 1.2rem;">
-                    YESHUA PROPHETIC ALTAR
-                </h4>
-                <p style="color: var(--text-muted); line-height: 1.6;">
-                    A digital apostolic altar broadcasting from Nairobi, Kenya to the nations. Equipping the saints for
-                    the work of the ministry.
-                </p>
-                <div class="social-icons" style="display: flex; gap: 15px; margin-top: 20px;">
-                    <a href="#" style="color: var(--premium-gold); font-size: 1.5rem;"><i
-                            class="fab fa-facebook"></i></a>
-                    <a href="#" style="color: var(--premium-gold); font-size: 1.5rem;"><i
-                            class="fab fa-youtube"></i></a>
-                    <a href="#" style="color: var(--premium-gold); font-size: 1.5rem;"><i
-                            class="fab fa-spotify"></i></a>
+    <footer class="footer"
+        style="background: #020205; padding: 60px 20px 20px; border-top: 1px solid var(--glass-border);">
+        <div class="container">
+            <div class="footer-grid"
+                style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px;">
+                <div class="footer-col">
+                    <h4
+                        style="color: var(--premium-gold); margin-bottom: 20px; font-family: var(--font-majestic); font-size: 1.2rem;">
+                        YESHUA PROPHETIC ALTAR
+                    </h4>
+                    <p style="color: var(--text-muted); line-height: 1.6;">
+                        A digital apostolic altar broadcasting from Nairobi, Kenya to the nations. Equipping the saints
+                        for
+                        the work of the ministry.
+                    </p>
+                    <div class="social-icons" style="display: flex; gap: 15px; margin-top: 20px;">
+                        <a href="#" style="color: var(--premium-gold); font-size: 1.5rem;"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: var(--premium-gold); font-size: 1.5rem;"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="#" style="color: var(--premium-gold); font-size: 1.5rem;"><i
+                                class="fab fa-spotify"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: var(--premium-gold); margin-bottom: 20px;">Quick Links</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="#home"
+                                style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">Home</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#about"
+                                style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">About</a>
+                        </li>
+                        <li style="margin-bottom: 10px;"><a href="#media"
+                                style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">Media</a>
+                        </li>
+                        <li style="margin-bottom: 10px;"><a href="#give"
+                                style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">Give</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: var(--premium-gold); margin-bottom: 20px;">Connect</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="#contact"
+                                style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">Contact
+                                Us</a>
+                        </li>
+                        <li style="margin-bottom: 10px;"><a href="#prayer"
+                                style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">Prayer
+                                Request</a></li>
+                        <li style="margin-bottom: 10px;"><a href="https://wa.me/254718501642" target="_blank"
+                                style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">WhatsApp</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4 style="color: var(--premium-gold); margin-bottom: 20px;">Quick Links</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 10px;"><a href="#home"
-                            style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">Home</a></li>
-                    <li style="margin-bottom: 10px;"><a href="#about"
-                            style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">About</a></li>
-                    <li style="margin-bottom: 10px;"><a href="#media"
-                            style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">Media</a></li>
-                    <li style="margin-bottom: 10px;"><a href="#give"
-                            style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">Give</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4 style="color: var(--premium-gold); margin-bottom: 20px;">Connect</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 10px;"><a href="#contact"
-                            style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">Contact Us</a>
-                    </li>
-                    <li style="margin-bottom: 10px;"><a href="#prayer"
-                            style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">Prayer
-                            Request</a></li>
-                    <li style="margin-bottom: 10px;"><a href="https://wa.me/254718501642" target="_blank"
-                            style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">WhatsApp</a></li>
-                </ul>
+
+            <div class="footer-bottom"
+                style="text-align: center; padding-top: 20px; border-top: 1px solid var(--glass-border); color: var(--text-muted); font-size: 0.85rem;">
+                <p>&copy; <span id="year"></span> Yeshua Prophetic Altar. All rights reserved.</p>
+                <p style="margin-top: 10px; font-size: 0.75rem; color: var(--premium-gold);">
+                    <i class="fas fa-globe-africa"></i> Broadcasting from Nairobi, Kenya to the Nations
+                </p>
             </div>
         </div>
+    </footer>
 
-        <div class="footer-bottom"
-            style="text-align: center; padding-top: 20px; border-top: 1px solid var(--glass-border); color: var(--text-muted); font-size: 0.85rem;">
-            <p>&copy; <span id="year"></span> Yeshua Prophetic Altar. All rights reserved.</p>
-            <p style="margin-top: 10px; font-size: 0.75rem; color: var(--premium-gold);">
-                <i class="fas fa-globe-africa"></i> Broadcasting from Nairobi, Kenya to the Nations
+    <!-- ========================================================== -->
+    <!-- M-PESA SECURE GIVING MODAL (Place right before </body>) -->
+    <!-- ========================================================== -->
+    <div id="mpesa-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content glass-card" style="max-width: 500px; text-align: center;">
+            <button class="modal-close" aria-label="Close M-Pesa modal">&times;</button>
+
+            <div style="font-size: 3.5rem; color: #4CAF50; margin-bottom: 15px;">
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+
+            <h3 style="color: var(--premium-gold); margin-bottom: 10px; font-family: var(--font-majestic);">Sow a Seed
+                via
+                M-Pesa</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem;">
+                Follow these simple steps to complete your secure offering.
             </p>
-        </div>
-    </div>
-</footer>
-    
-<!-- ========================================================== -->
-<!-- M-PESA SECURE GIVING MODAL (Place right before </body>) -->
-<!-- ========================================================== -->
-<div id="mpesa-modal" class="modal-overlay" aria-hidden="true">
-    <div class="modal-content glass-card" style="max-width: 500px; text-align: center;">
-        <button class="modal-close" aria-label="Close M-Pesa modal">&times;</button>
 
-        <div style="font-size: 3.5rem; color: #4CAF50; margin-bottom: 15px;">
-            <i class="fas fa-mobile-alt"></i>
-        </div>
-
-        <h3 style="color: var(--premium-gold); margin-bottom: 10px; font-family: var(--font-majestic);">Sow a Seed via
-            M-Pesa</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem;">
-            Follow these simple steps to complete your secure offering.
-        </p>
-
-        <!-- M-Pesa Instructions -->
-        <div
-            style="text-align: left; background: rgba(0,0,0,0.3); padding: 25px; border-radius: 12px; border: 1px solid var(--glass-border); margin-bottom: 25px;">
-            <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 20px; margin: 0;">
-                <li>Go to <strong>M-Pesa</strong> on your phone.</li>
-                <li>Select <strong>Lipa Na M-Pesa</strong>.</li>
-                <li>Select <strong>Paybill: 247247</strong> .</li>
-                <li>Enter Business Number: 0718501642</strong> .</li>
+            <!-- M-Pesa Instructions -->
+            <div
+                style="text-align: left; background: rgba(0,0,0,0.3); padding: 25px; border-radius: 12px; border: 1px solid var(--glass-border); margin-bottom: 25px;">
+                <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 20px; margin: 0;">
+                    <li>Go to <strong>M-Pesa</strong> on your phone.</li>
+                    <li>Select <strong>Lipa Na M-Pesa</strong>.</li>
+                    <li>Select <strong>Paybill: 247247</strong> .</li>
+                    <li>Enter Business Number: 0718501642</strong> .</li>
                     <span id="mpesa-paybill"
                         style="color: var(--premium-gold); font-weight: 700; cursor: pointer; text-decoration: underline;"
                         title="Click to copy">
-                        0718501642 
+                        0718501642
                     </span>
                     <i class="fas fa-copy" style="font-size: 0.8rem; color: var(--premium-gold); margin-left: 5px;"></i>
-                </li>
-                <li>Enter Equity Till/Account Number: <strong style="color: var(--text-primary);">Yeshua Foundation</strong></li>
-                <li>Enter Amount and your M-Pesa PIN.</li>
-            </ol>
+                    </li>
+                    <li>Enter Equity Till/Account Number: <strong style="color: var(--text-primary);">Yeshua
+                            Foundation</strong></li>
+                    <li>Enter Amount and your M-Pesa PIN.</li>
+                </ol>
+            </div>
+
+            <!-- WhatsApp Confirmation Button -->
+            <a href="https://wa.me/254718501642?text=Shalom%2C%20I%20have%20just%20sown%20a%20seed%20via%20M-Pesa.%20Please%20find%20my%20details%20below%3A%0A%0AName%3A%20%0AAmount%3A%20%0AM-Pesa%20Code%3A%20"
+                target="_blank" rel="noopener noreferrer" class="btn-primary"
+                style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                <i class="fab fa-whatsapp"></i> Confirm My Seed on WhatsApp
+            </a>
+
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 15px;">
+                <i class="fas fa-shield-alt"></i> Secure, direct, and instantly received by the ministry.
+            </p>
         </div>
-
-        <!-- WhatsApp Confirmation Button -->
-        <a href="https://wa.me/254718501642?text=Shalom%2C%20I%20have%20just%20sown%20a%20seed%20via%20M-Pesa.%20Please%20find%20my%20details%20below%3A%0A%0AName%3A%20%0AAmount%3A%20%0AM-Pesa%20Code%3A%20"
-            target="_blank" rel="noopener noreferrer" class="btn-primary"
-            style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;">
-            <i class="fab fa-whatsapp"></i> Confirm My Seed on WhatsApp
-        </a>
-
-        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 15px;">
-            <i class="fas fa-shield-alt"></i> Secure, direct, and instantly received by the ministry.
-        </p>
     </div>
-</div>
+   <a href="https://wa.me/254718501642?text=Shalom%2C%20I%20am%20visiting%20the%20website%20and%20would%20like%20more%20information."
+    target="_blank"
+    style="position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 9999; text-decoration: none; transition: transform 0.3s;">
+    <i class="fab fa-whatsapp"></i>
+   </a>
+
+        <script>
+        /* ==========================================
+           DIVINE INTELLIGENCE: SCRIPTURE SEARCH ENGINE
+           ========================================== */
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // 1. THE "AI" DATABASE (Curated Prophetic Verses)
+            const scriptureDatabase = {
+                "anxiety": {
+                    verse: "Philippians 4:6-7",
+                    text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.",
+                    prayer: "Lord, I cast my cares upon You. Replace my anxiety with Your supernatural peace."
+                },
+                "healing": {
+                    verse: "Jeremiah 17:14",
+                    text: "Heal me, Lord, and I will be healed; save me and I will be saved, for you are the one I praise.",
+                    prayer: "Jehovah Rapha, I ask for Your healing touch over my body and my mind today."
+                },
+                "breakthrough": {
+                    verse: "Micah 2:13",
+                    text: "The One who breaks open the way will go up before them; they will break through the gate and go out. Their King will pass through before them, the Lord at their head.",
+                    prayer: "Lord, break every chain hindering my progress. I step into my season of open doors."
+                },
+                "peace": {
+                    verse: "John 14:27",
+                    text: "Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid.",
+                    prayer: "I receive the Prince of Peace into my heart. I reject the spirit of fear."
+                },
+                "provision": {
+                    verse: "Philippians 4:19",
+                    text: "And my God will meet all your needs according to the riches of his glory in Christ Jesus.",
+                    prayer: "Jehovah Jireh, I trust You as my provider. I declare lack has no place in my life."
+                },
+                "strength": {
+                    verse: "Isaiah 40:31",
+                    text: "But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.",
+                    prayer: "Lord, renew my strength. I mount up with wings like an eagle."
+                },
+                "marriage": {
+                    verse: "Ecclesiastes 4:12",
+                    text: "Though one may be overpowered, two can defend themselves. A cord of three strands is not quickly broken.",
+                    prayer: "Lord, bind my marriage together with Your love. Let Christ be the center of our home."
+                },
+                "fear": {
+                    verse: "Isaiah 41:10",
+                    text: "So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with my righteous right hand.",
+                    prayer: "I reject the spirit of fear. God is with me, and He is fighting for me."
+                }
+            };
+
+            // 2. THE SEARCH FUNCTION
+            function performSearch(query) {
+                const resultsContainer = document.getElementById('searchResults');
+                if (!resultsContainer) return;
+
+                const cleanQuery = query.toLowerCase().trim();
+                let result = scriptureDatabase[cleanQuery];
+
+                if (!result) {
+                    for (let key in scriptureDatabase) {
+                        if (key.includes(cleanQuery) || cleanQuery.includes(key)) {
+                            result = scriptureDatabase[key];
+                            break;
+                        }
+                    }
+                }
+
+                if (result) {
+                    resultsContainer.innerHTML = `
+                        <div class="glass-card" style="text-align: center; padding: 40px; border: 1px solid var(--premium-gold);">
+                            <h3 style="color: var(--premium-gold); font-family: 'Orbitron', sans-serif; margin-bottom: 20px;">
+                                <i class="fas fa-book-open"></i> ${result.verse}
+                            </h3>
+                            <p style="font-size: 1.2rem; font-style: italic; color: #fff; margin-bottom: 30px; line-height: 1.6;">
+                                "${result.text}"
+                            </p>
+                            <div style="background: rgba(212, 175, 55, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--premium-gold); text-align: left;">
+                                <h4 style="color: var(--premium-gold); margin-top: 0;">🙏 Prophetic Prayer:</h4>
+                                <p style="margin: 0; color: var(--text-secondary);">${result.prayer}</p>
+                            </div>
+                            <a href="#prayer" class="btn-primary" style="display: inline-block; margin-top: 30px; text-decoration: none; padding: 12px 30px; border-radius: 50px;">
+                                Request Personal Prayer
+                            </a>
+                        </div>
+                    `;
+                } else {
+                    resultsContainer.innerHTML = `
+                        <div class="glass-card" style="text-align: center; padding: 30px;">
+                            <p style="color: var(--text-muted);">We didn't find a specific match for "${query}". <br>Try searching for: <strong>Anxiety, Healing, Breakthrough, Peace, Provision, Strength, Marriage, or Fear.</strong></p>
+                        </div>
+                    `;
+                }
+                
+                resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            // 3. EVENT LISTENERS
+            const searchBtn = document.getElementById('scriptureSearchBtn');
+            const searchInput = document.getElementById('scriptureInput');
+            const quickTags = document.querySelectorAll('.quick-tag');
+
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function() {
+                    if (searchInput.value) performSearch(searchInput.value);
+                });
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && searchInput.value) performSearch(searchInput.value);
+                });
+            }
+
+            quickTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    const term = this.getAttribute('data-term');
+                    if (searchInput) searchInput.value = term;
+                    performSearch(term);
+                });
+            });
+        });
+    </script>
 
     <!-- Scripts -->
     <script src="components.js"></script>

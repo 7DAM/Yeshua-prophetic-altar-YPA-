@@ -1,31 +1,76 @@
 /* ==========================================
-   1. ROOT VARIABLES
+   1. ROOT VARIABLES — FULL BRAND TOKEN SYSTEM
    ========================================== */
 :root {
+    /* Surfaces */
     --bg: #0A0512;
+    --deep-space: #020105;
+    --dark-alt: #120A1E;
     --glass: rgba(138, 43, 226, 0.04);
     --border: rgba(138, 43, 226, 0.15);
+    --glass-border: rgba(212, 175, 55, 0.18);
+
+    /* ROYAL PURPLE FAMILY */
     --purple: #8A2BE2;
+    --royal-purple: #3C096C;
+    --royal-purple-light: #7B2CBF;
+
+    /* GOLD FAMILY */
     --gold: #FFD700;
+    --premium-gold: #D4AF37;
+    --gold-light: #F5D76E;
+
+    /* Text */
     --text: #e2e8f0;
-    --dark-alt: #120A1E;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+
+    /* Fonts */
+    --font-modern: 'Inter', sans-serif;
+    --font-majestic: 'Orbitron', sans-serif;
 }
 
 /* ==========================================
-   2. RESET & BASE
+   2. RESET & BASE (FIXED: scroll lock removed)
    ========================================== */
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
+    font-family: var(--font-modern);
+    background: radial-gradient(circle at center, var(--bg) 0%, var(--deep-space) 100%);
+    background-attachment: fixed;
     color: var(--text);
     overflow-x: hidden;
+    overscroll-behavior-y: auto;
+    min-height: 100vh;
+}
+
+/* Brand selection & scrollbar */
+::selection {
+    background: var(--premium-gold);
+    color: var(--royal-purple);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--deep-space);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--royal-purple-light), var(--premium-gold));
+    border-radius: 5px;
 }
 
 #bg-canvas {
@@ -45,7 +90,7 @@ h2,
 h3,
 h4,
 .logo {
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-majestic);
     letter-spacing: 1px;
 }
 
@@ -55,53 +100,43 @@ h1 {
     line-height: 1.1;
 }
 
-/* =========================================
-   1. CORE RESET & TYPOGRAPHY
-   ========================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-        background: radial-gradient(circle at center, #0A0512 0%, #020105 100%);
-        color: #ffffff;
-        overflow: hidden;
-        /* 100dvh prevents mobile browser URL bar from causing layout jumps */
-        height: 100dvh;
-        width: 100vw;
-        /* Prevent pull-to-refresh on mobile which disrupts 3D touch */
-        overscroll-behavior: none;
-    }
-
-/* =========================================
-   2. 4D GLOBE CONTAINER SETUP
-   ========================================= */
+/* ==========================================
+   4. 4D GLOBE CONTAINER SETUP
+   ========================================== */
 #globe-4d-wrapper {
     position: relative;
-    width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    height: auto !important;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #globe-canvas-container {
-    position: absolute;
+    position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 1;
-    /* Hardware acceleration for smooth mobile rendering */
     transform: translateZ(0);
 }
 
-/* =========================================
-   3. GLASSMORPHISM UI OVERLAY
-   ========================================= */
+#globe-container {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 0 !important;
+    opacity: 0.35;
+        /* ghosted so text stays readable */
+    pointer-events: none;
+    }
+
+/* ==========================================
+   5. GLASSMORPHISM UI OVERLAY
+   ========================================== */
 .globe-ui-overlay {
     position: absolute;
     top: 40px;
@@ -110,52 +145,35 @@ body {
     animation: fadeIn 1.5s ease-out;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .ui-panel {
     background: rgba(10, 5, 18, 0.6);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 215, 0, 0.2);
+    border: 1px solid rgba(212, 175, 55, 0.25);
     border-radius: 16px;
     padding: 32px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     min-width: 260px;
 }
 
-/* =========================================
-   4. TYPOGRAPHY & GOLD ACCENTS
-   ========================================= */
 .ui-panel h3 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-majestic);
     font-size: 1.4rem;
     font-weight: 700;
     letter-spacing: 2px;
     margin-bottom: 24px;
     text-transform: uppercase;
+    color: var(--premium-gold);
 }
 
 .gold-text {
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    background: linear-gradient(135deg, var(--gold) 0%, var(--premium-gold) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
 }
 
-/* =========================================
-   5. CONTINENT LIST & PULSE ANIMATION
-   ========================================= */
 .continent-list {
     margin-bottom: 28px;
 }
@@ -164,9 +182,8 @@ body {
     display: flex;
     align-items: center;
     font-size: 0.85rem;
-    color: #d1d5db;
+    color: var(--text-secondary);
     margin-bottom: 10px;
-    font-weight: 400;
     letter-spacing: 0.5px;
     transition: color 0.3s ease;
 }
@@ -175,36 +192,23 @@ body {
     color: #ffffff;
 }
 
+.continent-item .pulse-dot {
+    margin-right: 14px;
+}
+
+/* Unified pulse dot (gold brand accent) */
 .pulse-dot {
     width: 8px;
     height: 8px;
-    background: #00ffcc;
-    /* Neon Cyan for "Spirit Moving" aesthetic */
+    flex: none;
+    background: var(--gold);
     border-radius: 50%;
-    margin-right: 14px;
-    box-shadow: 0 0 10px #00ffcc;
-    animation: pulse 2.5s infinite;
+    box-shadow: 0 0 10px var(--gold);
+    animation: pulseRing 2.5s infinite;
 }
 
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7);
-    }
-
-    70% {
-        box-shadow: 0 0 0 12px rgba(0, 255, 204, 0);
-    }
-
-    100% {
-        box-shadow: 0 0 0 0 rgba(0, 255, 204, 0);
-    }
-}
-
-/* =========================================
-   6. STATS FOOTER
-   ========================================= */
 .ui-stats {
-    display: flex;
+    display: none;
     justify-content: space-between;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 20px;
@@ -221,38 +225,31 @@ body {
 
 .stat-num {
     display: block;
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-majestic);
     font-size: 1.8rem;
     font-weight: 700;
-    color: #FFD700;
+    color: var(--gold);
     margin-bottom: 4px;
 }
 
 .stat-label {
     font-size: 0.7rem;
     text-transform: uppercase;
-    color: #9ca3af;
+    color: var(--text-muted);
     letter-spacing: 1.5px;
 }
 
-/* =========================================
-   5. MOBILE RESPONSIVE ARCHITECTURE
-   ========================================= */
 @media (max-width: 768px) {
     .globe-ui-overlay {
-        top: auto;
-        bottom: 24px;
-        /* Safe area from bottom */
-        left: 16px;
-        right: 16px;
-        width: auto;
+        position: static;
+        width: calc(100% - 32px);
+        margin: 0 auto 20px;
     }
 
     .ui-panel {
         padding: 24px 20px;
         min-width: auto;
         border-radius: 20px;
-        /* More rounded for mobile aesthetics */
     }
 
     .ui-panel h3 {
@@ -264,7 +261,6 @@ body {
     .continent-list {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        /* 2-column grid on mobile */
         gap: 8px 16px;
         margin-bottom: 20px;
     }
@@ -274,7 +270,7 @@ body {
         margin-bottom: 0;
     }
 
-    .pulse-dot {
+    .continent-item .pulse-dot {
         width: 6px;
         height: 6px;
         margin-right: 8px;
@@ -290,7 +286,7 @@ body {
 }
 
 /* ==========================================
-   4. UTILITY CLASSES
+   6. UTILITY CLASSES
    ========================================== */
 .hidden {
     display: none !important;
@@ -316,8 +312,8 @@ body {
     position: absolute;
     top: -100px;
     left: 0;
-    background: var(--purple);
-    color: var(--bg);
+    background: var(--royal-purple);
+    color: var(--gold);
     padding: 10px 20px;
     z-index: 1001;
     font-weight: bold;
@@ -338,7 +334,7 @@ body {
 }
 
 /* ==========================================
-   5. NAVIGATION
+   7. NAVIGATION
    ========================================== */
 .glass-nav {
     position: fixed;
@@ -375,8 +371,8 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--purple);
-    text-shadow: 0 0 10px var(--purple);
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
 }
 
 .hamburger {
@@ -389,15 +385,22 @@ body {
 }
 
 /* ==========================================
-   6. HERO SECTION
+   8. HERO SECTION
    ========================================== */
 .hero {
-    height: 100vh;
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 0 20px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
 }
 
 .sub-text {
@@ -411,7 +414,7 @@ body {
 .hero-desc {
     max-width: 600px;
     margin: 0 auto 40px;
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 1.1rem;
     line-height: 1.6;
 }
@@ -424,7 +427,7 @@ body {
 }
 
 /* ==========================================
-   7. BUTTONS
+   9. BUTTONS
    ========================================== */
 .btn-neon,
 .btn-glass {
@@ -434,7 +437,7 @@ body {
     cursor: pointer;
     transition: 0.3s;
     border: none;
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-majestic);
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 1px;
@@ -454,17 +457,38 @@ body {
 
 .btn-glass {
     background: var(--glass);
-    color: var(--purple);
-    border: 1px solid var(--purple);
+    color: var(--gold-light);
+    border: 1px solid var(--premium-gold);
     backdrop-filter: blur(5px);
 }
 
 .btn-glass:hover {
-    background: rgba(138, 43, 226, 0.1);
+    background: rgba(212, 175, 55, 0.1);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+}
+
+.btn-salvation {
+    background: linear-gradient(135deg, var(--gold), var(--premium-gold));
+    color: var(--royal-purple);
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: var(--font-majestic);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    transition: 0.3s;
+}
+
+.btn-salvation:hover {
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+    transform: translateY(-2px);
 }
 
 /* ==========================================
-   8. SECTIONS & CONTAINERS
+   10. SECTIONS & CONTAINERS
    ========================================== */
 .section {
     padding: 100px 20px;
@@ -492,12 +516,9 @@ body {
 .section-desc {
     max-width: 600px;
     margin: 0 auto 40px;
-    color: #94a3b8;
+    color: var(--text-muted);
 }
 
-/* ==========================================
-   9. PAGE-SPECIFIC LAYOUTS
-   ========================================== */
 .page-content {
     padding-top: 140px;
     min-height: 80vh;
@@ -513,7 +534,7 @@ body {
 }
 
 /* ==========================================
-   10. CARDS & GRIDS
+   11. CARDS & GRIDS
    ========================================== */
 .glass-card {
     background: var(--glass);
@@ -527,12 +548,12 @@ body {
 
 .glass-card:hover {
     transform: translateY(-5px);
-    border-color: var(--purple);
+    border-color: var(--premium-gold);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .glass-card h3 {
-    color: var(--purple);
+    color: var(--gold-light);
     margin-bottom: 20px;
     font-size: 1.2rem;
     display: flex;
@@ -541,7 +562,7 @@ body {
 }
 
 .glass-card p {
-    color: #94a3b8;
+    color: var(--text-muted);
     line-height: 1.7;
 }
 
@@ -558,7 +579,7 @@ body {
 }
 
 /* ==========================================
-   11. TEACHING / MEDIA CARDS
+   12. TEACHING / MEDIA CARDS
    ========================================== */
 .teaching-card {
     text-align: center;
@@ -572,7 +593,7 @@ body {
 }
 
 .text-link {
-    color: var(--purple);
+    color: var(--gold-light);
     text-decoration: none;
     font-weight: 600;
     display: inline-block;
@@ -581,12 +602,9 @@ body {
 }
 
 .text-link:hover {
-    text-shadow: 0 0 10px var(--purple);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
 }
 
-/* ==========================================
-   12. EVENT DATE STYLING
-   ========================================== */
 .event-date {
     color: var(--purple);
     font-size: 0.85rem;
@@ -615,7 +633,7 @@ body {
     padding: 15px 30px;
     margin-top: 20px;
     text-decoration: none;
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-majestic);
     font-size: 0.85rem;
 }
 
@@ -624,7 +642,7 @@ body {
 }
 
 /* ==========================================
-   14. FORMS
+   14. FORMS (single merged definition)
    ========================================== */
 .glass-form {
     display: flex;
@@ -639,38 +657,61 @@ body {
     margin: 0 auto;
 }
 
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    color: var(--premium-gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 .glass-form input,
 .glass-form textarea,
-.glass-form select {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--border);
+.glass-form select,
+.form-group input,
+.form-group textarea,
+.form-group select {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--glass-border);
     padding: 15px;
-    border-radius: 8px;
-    color: white;
-    font-family: 'Inter', sans-serif;
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-family: var(--font-modern);
+    font-size: 1rem;
     outline: none;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 .glass-form input:focus,
 .glass-form textarea:focus,
-.glass-form select:focus {
-    border-color: var(--purple);
-    box-shadow: 0 0 10px rgba(138, 43, 226, 0.2);
+.glass-form select:focus,
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--premium-gold);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
 }
 
-.glass-form select {
+.glass-form select,
+.form-group select {
     appearance: none;
     -webkit-appearance: none;
     cursor: pointer;
 }
 
-.glass-form select option {
-    background: var(--bg);
-    color: var(--text);
+.glass-form select option,
+.form-group select option {
+    background: var(--deep-space);
+    color: var(--text-primary);
 }
 
-/* Honeypot - hidden from humans, catches bots */
 .bot-field {
     position: absolute;
     left: -9999px;
@@ -682,7 +723,7 @@ body {
 .success-msg {
     background: rgba(138, 43, 226, 0.1);
     border: 1px solid var(--purple);
-    color: var(--purple);
+    color: var(--gold-light);
     padding: 20px;
     border-radius: 8px;
     text-align: center;
@@ -699,7 +740,7 @@ body {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--purple), var(--gold));
+    background: linear-gradient(135deg, var(--royal-purple-light), var(--premium-gold));
     border: none;
     font-size: 24px;
     cursor: pointer;
@@ -740,21 +781,12 @@ body {
 
 .ai-status {
     font-size: 0.8rem;
-    color: var(--purple);
+    color: var(--gold);
     font-weight: bold;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: 'Orbitron', sans-serif;
-}
-
-.pulse-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--purple);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--purple);
-    animation: pulse 1.5s infinite;
+    font-family: var(--font-majestic);
 }
 
 #close-concierge {
@@ -790,8 +822,8 @@ body {
 }
 
 .chat-msg.user {
-    background: var(--purple);
-    color: var(--bg);
+    background: var(--royal-purple-light);
+    color: #ffffff;
     align-self: flex-end;
     font-weight: 500;
 }
@@ -814,8 +846,8 @@ body {
 }
 
 .ai-input button {
-    background: var(--purple);
-    color: var(--bg);
+    background: var(--premium-gold);
+    color: var(--royal-purple);
     border: none;
     width: 40px;
     border-radius: 50%;
@@ -823,7 +855,6 @@ body {
     font-size: 16px;
 }
 
-/* Typing Indicator */
 .typing-indicator {
     display: flex;
     gap: 5px;
@@ -837,7 +868,7 @@ body {
 .typing-indicator span {
     width: 8px;
     height: 8px;
-    background: var(--purple);
+    background: var(--gold);
     border-radius: 50%;
     animation: typing 1.4s infinite;
 }
@@ -851,9 +882,8 @@ body {
 }
 
 /* ==========================================
-   BRAND SOVEREIGNTY: REMOVE NETLIFY BADGE
+   BRAND SOVEREIGNTY: HIDE NETLIFY BADGE
    ========================================== */
-/* Hide Netlify Badge & Identity Widget */
 #netlify-badge,
 .netlify-badge,
 div[id*="netlify"],
@@ -869,7 +899,6 @@ iframe[src*="netlify"],
     overflow: hidden !important;
 }
 
-/* Ensure Footer is Clean */
 footer {
     position: relative;
     z-index: 10;
@@ -892,7 +921,7 @@ footer {
 }
 
 .footer-col h4 {
-    color: var(--gold);
+    color: var(--premium-gold);
     margin-bottom: 20px;
     font-size: 1rem;
 }
@@ -906,13 +935,13 @@ footer {
 }
 
 .footer-col a {
-    color: #94a3b8;
+    color: var(--text-muted);
     text-decoration: none;
     transition: 0.3s;
 }
 
 .footer-col a:hover {
-    color: var(--purple);
+    color: var(--gold);
 }
 
 .social-icons {
@@ -925,26 +954,50 @@ footer {
     text-align: center;
     padding-top: 20px;
     border-top: 1px solid var(--border);
-    color: #64748b;
+    color: var(--text-muted);
     font-size: 0.8rem;
 }
 
 .footer-bottom a {
-    color: #64748b;
+    color: var(--text-muted);
     text-decoration: none;
 }
 
 .footer-bottom a:hover {
-    color: var(--purple);
+    color: var(--gold);
 }
 
 #year {
     font-weight: bold;
-    color: var(--purple);
+    color: var(--gold);
+}
+
+.footer-message {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(255, 215, 0, 0.05));
+    border-radius: 15px;
+}
+
+.footer-message h2 {
+    font-size: 2rem;
+    color: var(--gold);
+    letter-spacing: 3px;
+}
+
+.scroll-top {
+    color: var(--gold-light);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 20px;
+    font-size: 0.85rem;
 }
 
 /* ==========================================
-   17. ANIMATIONS
+   17. ANIMATIONS (deduplicated)
    ========================================== */
 .fade-up {
     opacity: 0;
@@ -953,6 +1006,23 @@ footer {
 }
 
 @keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -985,6 +1055,20 @@ footer {
     }
 }
 
+@keyframes pulseRing {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 12px rgba(255, 215, 0, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
 @keyframes typing {
 
     0%,
@@ -1000,82 +1084,14 @@ footer {
 }
 
 /* ==========================================
-   18. RESPONSIVE BREAKPOINTS
+   18. HERO EXTRAS: PRAYER COUNTER
    ========================================== */
-@media (max-width: 900px) {
-
-    .grid-2,
-    .grid-3,
-    .footer-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background: rgba(5, 5, 10, 0.98);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: 0.3s;
-    }
-
-    .nav-links.active {
-        left: 0;
-    }
-
-    /* Change hamburger to X icon when open */
-    .hamburger[aria-expanded="true"] .fa-bars::before {
-        content: "\f00d";
-    }
-
-    #ai-widget {
-        width: 90%;
-        right: 5%;
-        bottom: 90px;
-        height: 60vh;
-    }
-}
-/* ==========================================
-   4D GLOBE STYLING
-   ========================================== */
-#globe-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.4;
-}
-
-.hero {
-    position: relative;
-    z-index: 2;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 3;
-}
-
-/* Prayer Counter */
 .prayer-counter {
     display: inline-flex;
     align-items: center;
     gap: 15px;
     background: var(--glass);
-    border: 1px solid var(--border);
+    border: 1px solid var(--glass-border);
     padding: 20px 40px;
     border-radius: 50px;
     margin-bottom: 40px;
@@ -1091,7 +1107,7 @@ footer {
     font-size: 2.5rem;
     font-weight: 900;
     color: var(--gold);
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-majestic);
 }
 
 .counter-label {
@@ -1101,28 +1117,9 @@ footer {
     letter-spacing: 1px;
 }
 
-/* Salvation Button */
-.btn-salvation {
-    background: linear-gradient(135deg, var(--gold), #FFA500);
-    color: var(--bg);
-    padding: 15px 30px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 600;
-    font-family: 'Orbitron', sans-serif;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-    transition: 0.3s;
-}
-
-.btn-salvation:hover {
-    box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
-    transform: translateY(-2px);
-}
-
-/* Teaching Content */
+/* ==========================================
+   19. TEACHING / DOCTRINE / BIBLE STUDY
+   ========================================== */
 .teaching-content {
     max-width: 900px;
     margin: 0 auto;
@@ -1152,7 +1149,7 @@ footer {
 }
 
 .doctrine-point:hover {
-    border-color: var(--cyan);
+    border-color: var(--premium-gold);
     transform: translateY(-5px);
 }
 
@@ -1163,12 +1160,11 @@ footer {
 }
 
 .doctrine-point h4 {
-    color: var(--cyan);
+    color: var(--gold-light);
     margin-bottom: 15px;
     font-size: 1.1rem;
 }
 
-/* Bible Study Card */
 .bible-study-card {
     text-align: center;
     max-width: 800px;
@@ -1197,10 +1193,12 @@ footer {
 
 .feature i {
     font-size: 2rem;
-    color: var(--cyan);
+    color: var(--royal-purple-light);
 }
 
-/* Scripture Search */
+/* ==========================================
+   20. SCRIPTURE SEARCH
+   ========================================== */
 .search-card {
     max-width: 800px;
     margin: 0 auto;
@@ -1215,7 +1213,7 @@ footer {
 .search-input-group input {
     flex: 1;
     background: rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--border);
+    border: 1px solid var(--glass-border);
     padding: 15px 20px;
     border-radius: 8px;
     color: white;
@@ -1224,7 +1222,8 @@ footer {
 
 .search-input-group input:focus {
     outline: none;
-    border-color: var(--cyan);
+    border-color: var(--premium-gold);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
 }
 
 .search-results {
@@ -1246,577 +1245,11 @@ footer {
 }
 
 .no-results {
-    color: #94a3b8;
-    text-align: center;
-    padding: 20px;
-}
-
-/* Partnership */
-.partnership-card {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.partner-logos {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.partner-logo {
-    text-align: center;
-}
-
-.partner-logo i {
-    font-size: 4rem;
-    color: var(--gold);
-    margin-bottom: 15px;
-}
-
-.partner-connector {
-    font-size: 3rem;
-    color: var(--cyan);
-}
-
-.partnership-desc {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.partnership-footer {
-    margin-top: 15px;
-    font-size: 0.85rem;
-    color: #94a3b8;
-}
-
-.partnership-footer i {
-    color: var(--gold);
-    margin-right: 8px;
-}
-
-/* Calendar */
-.calendar-card {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-.calendar-event {
-    background: rgba(138, 43, 226, 0.05);
-    border: 1px solid var(--border);
-    border-radius: 15px;
-    padding: 30px;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.calendar-event:hover {
-    border-color: var(--cyan);
-    transform: translateY(-5px);
-}
-
-.event-date-badge {
-    display: inline-block;
-    background: var(--gold);
-    color: var(--bg);
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: 900;
-    font-family: 'Orbitron', sans-serif;
-    margin-bottom: 20px;
-}
-
-/* Live Stream */
-.stream-card {
-    text-align: center;
-    padding: 50px 30px;
-}
-
-.stream-icon {
-    font-size: 4rem;
-    color: var(--cyan);
-    margin-bottom: 20px;
-}
-
-/* Salvation Section */
-.salvation-section {
-    background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(255, 215, 0, 0.05));
-}
-
-.salvation-card {
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.salvation-title {
-    font-size: 3rem;
-    color: var(--gold);
-    margin-bottom: 30px;
-}
-
-.salvation-verse {
-    font-size: 1.3rem;
-    font-style: italic;
-    line-height: 1.8;
-    color: var(--text);
-    margin-bottom: 50px;
-    padding: 0 20px;
-}
-
-.salvation-steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-bottom: 50px;
-}
-
-.step {
-    padding: 30px;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 15px;
-    border: 1px solid var(--border);
-}
-
-.step-number {
-    width: 60px;
-    height: 60px;
-    background: var(--gold);
-    color: var(--bg);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: 900;
-    margin: 0 auto 20px;
-    font-family: 'Orbitron', sans-serif;
-}
-
-.step h4 {
-    color: var(--cyan);
-    margin-bottom: 15px;
-    font-size: 1.3rem;
-}
-
-.prayer-of-salvation {
-    background: rgba(138, 43, 226, 0.1);
-    padding: 40px;
-    border-radius: 15px;
-    margin-bottom: 40px;
-}
-
-.prayer-of-salvation h3 {
-    color: var(--gold);
-    margin-bottom: 20px;
-}
-
-.prayer-text {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    font-style: italic;
-}
-
-/* AI Quick Actions */
-.ai-quick-actions {
-    max-width: 800px;
-    margin: 0 auto 50px;
-    text-align: center;
-}
-
-.ai-quick-actions h3 {
-    color: var(--cyan);
-    margin-bottom: 30px;
-    font-size: 1.5rem;
-}
-
-.quick-action-buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-.quick-btn {
-    background: var(--glass);
-    border: 1px solid var(--border);
-    padding: 25px 20px;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    color: var(--text);
-}
-
-.quick-btn:hover {
-    border-color: var(--cyan);
-    background: rgba(138, 43, 226, 0.1);
-    transform: translateY(-5px);
-}
-
-.quick-btn i {
-    font-size: 2.5rem;
-    color: var(--gold);
-}
-
-.quick-btn span {
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-/* Footer Enhancements */
-.footer-message {
-    text-align: center;
-    margin-bottom: 50px;
-    padding: 40px;
-    background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(255, 215, 0, 0.05));
-    border-radius: 15px;
-}
-
-.footer-message h2 {
-    font-size: 2rem;
-    color: var(--gold);
-    letter-spacing: 3px;
-}
-
-
-.scroll-top {
-    color: var(--cyan);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-left: 20px;
-    font-size: 0.85rem;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-
-    .doctrine-points,
-    .course-features,
-    .calendar-grid,
-    .salvation-steps,
-    .quick-action-buttons {
-        grid-template-columns: 1fr;
-    }
-
-    .partner-logos {
-        flex-direction: column;
-    }
-
-    .search-input-group {
-        flex-direction: column;
-    }
-}
-
-/* ==========================================
-   CONTACT FORM SPECIFIC STYLES
-   ========================================== */
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    color: var(--premium-gold);
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--glass-border);
-    padding: 15px;
-    border-radius: 12px;
-    color: var(--text-primary);
-    font-family: var(--font-modern);
-    font-size: 1rem;
-    outline: none;
-    transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-    border-color: var(--premium-gold);
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-}
-
-.form-group select option {
-    background: var(--deep-space);
-    color: var(--text-primary);
-}
-
-.hidden {
-    display: none !important;
-}
-
-/* ==========================================
-   MODAL ARCHITECTURE (Glassmorphic Overlay)
-   ========================================== */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(5, 1, 10, 0.85);
-    backdrop-filter: blur(10px);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-content {
-    position: relative;
-    max-width: 600px;
-    width: 90%;
-    padding: 40px;
-    background: rgba(42, 10, 74, 0.95);
-    border: 1px solid var(--premium-gold);
-    border-radius: 20px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    transform: translateY(30px);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.modal-overlay.active .modal-content {
-    transform: translateY(0);
-}
-
-.modal-close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: none;
-    border: none;
     color: var(--text-muted);
-    font-size: 2rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.modal-close:hover {
-    color: var(--premium-gold);
-    transform: rotate(90deg);
-}
-
-/* ==========================================
-   ARCHIVE MODAL SPECIFIC STYLES (SEO & UX OPTIMIZED)
-   ========================================== */
-.archive-list {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-}
-
-.archive-list li {
-    background: rgba(212, 175, 55, 0.05);
-    border-left: 3px solid var(--premium-gold);
-    padding: 15px 20px;
-    margin-bottom: 12px;
-    border-radius: 0 8px 8px 0;
-    color: var(--text-primary);
-    font-size: 0.95rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    transition: transform 0.2s ease;
-}
-
-.archive-list li:hover {
-    transform: translateX(5px);
-    background: rgba(212, 175, 55, 0.1);
-}
-
-.archive-list li i {
-    color: var(--premium-gold);
-    margin-top: 4px;
-    font-size: 1.1rem;
-}
-
-.archive-highlight {
-    background: rgba(42, 10, 74, 0.4);
-    border: 1px solid var(--premium-gold);
+    text-align: center;
     padding: 20px;
-    border-radius: 12px;
-    margin: 25px 0;
-    font-style: italic;
-    color: var(--text-primary);
-    text-align: center;
-    font-family: var(--font-majestic);
-    font-size: 1.1rem;
-    line-height: 1.6;
 }
 
-/* ==========================================
-   EPICENTER & INTELLIGENCE FEED STYLES
-   ========================================== */
-.epicenter-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255, 215, 0, 0.1);
-    border: 1px solid var(--gold);
-    padding: 8px 20px;
-    border-radius: 30px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--gold);
-    margin-bottom: 25px;
-    font-family: 'Orbitron', sans-serif;
-}
-
-.epicenter-badge .pulse-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--gold);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--gold);
-    animation: pulse 1.5s infinite;
-}
-
-.main-title {
-    font-size: clamp(2.5rem, 7vw, 5.5rem);
-    line-height: 1.05;
-    margin-bottom: 25px;
-}
-
-/* Intelligence Ticker */
-.ticker-section {
-    background: #020205;
-    padding: 40px 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
-}
-
-.ticker-header {
-    text-align: center;
-    margin-bottom: 25px;
-    padding: 0 20px;
-}
-
-.ticker-header h3 {
-    color: var(--cyan);
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.ticker-header p {
-    color: #94a3b8;
-    font-size: 0.9rem;
-}
-
-.ticker-track-wrapper {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-
-.ticker-track {
-    display: flex;
-    gap: 40px;
-    width: max-content;
-    animation: scroll-ticker 40s linear infinite;
-}
-
-.ticker-track:hover {
-    animation-play-state: paused;
-}
-
-.ticker-item {
-    background: var(--glass);
-    border: 1px solid var(--border);
-    padding: 15px 25px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    white-space: nowrap;
-    transition: 0.3s;
-}
-
-.ticker-item:hover {
-    border-color: var(--gold);
-    background: rgba(255, 215, 0, 0.05);
-}
-
-.ticker-region {
-    background: var(--cyan);
-    color: var(--bg);
-    padding: 4px 12px;
-    border-radius: 5px;
-    font-size: 0.75rem;
-    font-weight: 800;
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 1px;
-}
-
-.ticker-msg {
-    color: var(--text);
-    font-size: 0.95rem;
-    font-weight: 500;
-}
-
-@keyframes scroll-ticker {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-@media (max-width: 768px) {
-    .ticker-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        white-space: normal;
-        min-width: 280px;
-    }
-}
-
-/* ==========================================
-   AI SCRIPTURE SEARCH STYLES
-   ========================================== */
 .quick-tag {
     background: rgba(212, 175, 55, 0.1);
     border: 1px solid var(--glass-border);
@@ -1836,7 +1269,7 @@ footer {
 }
 
 .verse-result-card {
-    background: rgba(42, 10, 74, 0.4);
+    background: rgba(60, 9, 108, 0.4);
     border-left: 4px solid var(--premium-gold);
     padding: 25px;
     margin-bottom: 20px;
@@ -1887,10 +1320,195 @@ footer {
 }
 
 /* ==========================================
-   PROPHETIC PRAYER TRIAGE STYLES
+   21. PARTNERSHIP / CALENDAR / STREAMS
+   ========================================== */
+.partnership-card {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.partner-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.partner-logo {
+    text-align: center;
+}
+
+.partner-logo i {
+    font-size: 4rem;
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.partner-connector {
+    font-size: 3rem;
+    color: var(--premium-gold);
+}
+
+.partnership-desc {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.partnership-footer {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.partnership-footer i {
+    color: var(--gold);
+    margin-right: 8px;
+}
+
+.calendar-card {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.calendar-event {
+    background: rgba(138, 43, 226, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.calendar-event:hover {
+    border-color: var(--premium-gold);
+    transform: translateY(-5px);
+}
+
+.event-date-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--royal-purple);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 900;
+    font-family: var(--font-majestic);
+    margin-bottom: 20px;
+}
+
+.stream-card {
+    text-align: center;
+    padding: 50px 30px;
+}
+
+.stream-icon {
+    font-size: 4rem;
+    color: var(--royal-purple-light);
+    margin-bottom: 20px;
+}
+
+/* ==========================================
+   22. SALVATION SECTION
+   ========================================== */
+.salvation-section {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(255, 215, 0, 0.05));
+}
+
+.salvation-card {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.salvation-title {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 30px;
+}
+
+.salvation-verse {
+    font-size: 1.3rem;
+    font-style: italic;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 50px;
+    padding: 0 20px;
+}
+
+.salvation-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.step {
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    border: 1px solid var(--border);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: var(--gold);
+    color: var(--royal-purple);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 900;
+    margin: 0 auto 20px;
+    font-family: var(--font-majestic);
+}
+
+.step h4 {
+    color: var(--gold-light);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.prayer-of-salvation {
+    background: rgba(138, 43, 226, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+.prayer-of-salvation h3 {
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.prayer-of-salvation .prayer-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-style: italic;
+}
+
+/* ==========================================
+   23. PRAYER TRIAGE QUICK ACTIONS (merged)
    ========================================== */
 .ai-quick-actions {
-    margin-bottom: 40px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.ai-quick-actions h3 {
+    color: var(--premium-gold);
+    margin-bottom: 25px;
+    font-size: 1.4rem;
 }
 
 .quick-action-buttons {
@@ -1904,7 +1522,7 @@ footer {
     background: rgba(212, 175, 55, 0.08);
     border: 1px solid var(--glass-border);
     color: var(--text-secondary);
-    padding: 15px 25px;
+    padding: 18px 25px;
     border-radius: 12px;
     font-family: var(--font-modern);
     font-size: 0.9rem;
@@ -1923,63 +1541,260 @@ footer {
     color: var(--premium-gold);
 }
 
-.quick-btn:hover {
-    background: rgba(212, 175, 55, 0.15);
+.quick-btn span {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.quick-btn:hover,
+.quick-btn.active-prayer {
+    background: rgba(212, 175, 55, 0.18);
     color: var(--premium-gold);
     transform: translateY(-3px);
     border-color: var(--premium-gold);
-}
-
-.quick-btn.active-prayer {
-    background: rgba(212, 175, 55, 0.2);
-    border-color: var(--premium-gold);
-    color: var(--premium-gold);
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
-.form-group {
+/* ==========================================
+   24. MODALS (Royal Purple glass + Gold trim)
+   ========================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 1, 10, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    color: var(--premium-gold);
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.form-group input,
-.form-group textarea {
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--glass-border);
-    padding: 15px;
-    border-radius: 12px;
-    color: var(--text-primary);
-    font-family: var(--font-modern);
-    font-size: 1rem;
-    outline: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
     transition: all 0.3s ease;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: var(--premium-gold);
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+    padding: 40px;
+    background: rgba(60, 9, 108, 0.92);
+    border: 1px solid var(--premium-gold);
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    transform: translateY(30px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-close:hover {
+    color: var(--premium-gold);
+    transform: rotate(90deg);
+}
+
+.archive-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.archive-list li {
+    background: rgba(212, 175, 55, 0.05);
+    border-left: 3px solid var(--premium-gold);
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border-radius: 0 8px 8px 0;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    transition: transform 0.2s ease;
+}
+
+.archive-list li:hover {
+    transform: translateX(5px);
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.archive-list li i {
+    color: var(--premium-gold);
+    margin-top: 4px;
+    font-size: 1.1rem;
+}
+
+.archive-highlight {
+    background: rgba(60, 9, 108, 0.4);
+    border: 1px solid var(--premium-gold);
+    padding: 20px;
+    border-radius: 12px;
+    margin: 25px 0;
+    font-style: italic;
+    color: var(--text-primary);
+    text-align: center;
+    font-family: var(--font-majestic);
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 /* ==========================================
-   M-PESA MODAL SPECIFIC STYLES
+   25. EPICENTER BADGE & INTELLIGENCE TICKER
+   ========================================== */
+.epicenter-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid var(--premium-gold);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 25px;
+    font-family: var(--font-majestic);
+}
+
+.main-title {
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    margin-bottom: 25px;
+}
+
+.ticker-section {
+    background: #020205;
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.ticker-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 0 20px;
+}
+
+.ticker-header h3 {
+    color: var(--gold-light);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.ticker-header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.ticker-track-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.ticker-track {
+    display: flex;
+    gap: 40px;
+    width: max-content;
+    animation: scroll-ticker 40s linear infinite;
+}
+
+.ticker-track:hover {
+    animation-play-state: paused;
+}
+
+.ticker-item {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    padding: 15px 25px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.ticker-item:hover {
+    border-color: var(--gold);
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.ticker-region {
+    background: var(--royal-purple-light);
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    font-family: var(--font-majestic);
+    letter-spacing: 1px;
+}
+
+.ticker-msg {
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+@keyframes scroll-ticker {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .ticker-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        white-space: normal;
+        min-width: 280px;
+    }
+}
+
+/* ==========================================
+   26. M-PESA MODAL & COPY TOAST
    ========================================== */
 #mpesa-paybill:hover {
     color: var(--gold-light);
     transition: color 0.2s ease;
 }
 
-/* Toast Notification for Copy */
 .copy-toast {
     position: fixed;
     bottom: 30px;
@@ -2000,11 +1815,21 @@ footer {
 }
 
 /* ==========================================
-   GLOBAL PRAYER WALL STYLES
+   27. GLOBAL PRAYER WALL (merged)
    ========================================== */
+.prayer-wall-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
 .prayer-card {
-    transition: all 0.4s ease;
+    background: var(--glass);
+    padding: 30px;
+    border-radius: 15px;
     border: 1px solid var(--glass-border);
+    transition: all 0.4s ease;
 }
 
 .prayer-card:hover {
@@ -2013,13 +1838,67 @@ footer {
     box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
 }
 
+.prayer-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.prayer-header i {
+    font-size: 1.5rem;
+    color: var(--gold);
+}
+
+.prayer-category {
+    background: rgba(138, 43, 226, 0.2);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gold-light);
+}
+
+.prayer-card .prayer-text {
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 20px;
+    min-height: 80px;
+}
+
+.prayer-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prayer-author {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.pray-btn {
+    background: var(--premium-gold);
+    color: var(--royal-purple);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: 0.3s;
+}
+
 .pray-btn:hover {
-    background: var(--gold-light) !important;
+    background: var(--gold-light);
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
 }
 
-/* The Golden Pulse Animation for the Form when scrolled to */
 @keyframes formPulse {
     0% {
         box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
@@ -2043,10 +1922,8 @@ footer {
 }
 
 /* ==========================================
-   NEW FEATURES STYLES
+   28. LEADERSHIP / IMPACT / TIMELINE
    ========================================== */
-
-/* Leadership Section */
 .leadership-grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -2088,21 +1965,21 @@ footer {
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    color: var(--bg);
+    color: var(--royal-purple);
     box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
 }
 
 .leader-badge {
     display: inline-block;
-    background: var(--cyan);
-    color: var(--bg);
+    background: var(--royal-purple-light);
+    color: #ffffff;
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 2px;
     margin-bottom: 15px;
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-majestic);
 }
 
 .leader-content h3 {
@@ -2112,7 +1989,7 @@ footer {
 }
 
 .leader-location {
-    color: var(--cyan);
+    color: var(--gold-light);
     margin-bottom: 20px;
     font-size: 1.1rem;
 }
@@ -2141,7 +2018,7 @@ footer {
     background: var(--glass);
     padding: 10px 20px;
     border-radius: 30px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--glass-border);
     font-size: 0.9rem;
 }
 
@@ -2149,7 +2026,6 @@ footer {
     color: var(--gold);
 }
 
-/* Impact Dashboard */
 .impact-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -2169,7 +2045,7 @@ footer {
 
 .stat-icon {
     font-size: 3rem;
-    color: var(--cyan);
+    color: var(--royal-purple-light);
     margin-bottom: 20px;
 }
 
@@ -2177,7 +2053,7 @@ footer {
     font-size: 3.5rem;
     font-weight: 900;
     color: var(--gold);
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-majestic);
     margin-bottom: 10px;
 }
 
@@ -2198,11 +2074,10 @@ footer {
 
 .bar-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--cyan), var(--gold));
+    background: linear-gradient(90deg, var(--royal-purple-light), var(--premium-gold));
     transition: width 1.5s ease;
 }
 
-/* Timeline */
 .timeline-container {
     position: relative;
     max-width: 800px;
@@ -2230,15 +2105,15 @@ footer {
     left: -50px;
     width: 40px;
     height: 40px;
-    background: var(--cyan);
-    color: var(--bg);
+    background: var(--royal-purple-light);
+    color: #ffffff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 900;
     font-size: 0.8rem;
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-majestic);
     box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
 }
 
@@ -2262,88 +2137,8 @@ footer {
 
 .timeline-item.future .timeline-marker {
     background: var(--gold);
+    color: var(--royal-purple);
     animation: pulse 2s infinite;
-}
-
-/* Prayer Wall */
-.prayer-wall-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.prayer-card {
-    background: var(--glass);
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px solid var(--border);
-    transition: 0.3s;
-}
-
-.prayer-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--cyan);
-}
-
-.prayer-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.prayer-header i {
-    font-size: 1.5rem;
-    color: var(--gold);
-}
-
-.prayer-category {
-    background: rgba(138, 43, 226, 0.2);
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--cyan);
-}
-
-.prayer-text {
-    font-style: italic;
-    line-height: 1.6;
-    color: var(--text);
-    margin-bottom: 20px;
-    min-height: 80px;
-}
-
-.prayer-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.prayer-author {
-    font-size: 0.85rem;
-    color: #94a3b8;
-}
-
-.pray-btn {
-    background: var(--cyan);
-    color: var(--bg);
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: 0.3s;
-}
-
-.pray-btn:hover {
-    background: var(--gold);
-    transform: scale(1.05);
 }
 
 /* Scripture Daily */
@@ -2351,7 +2146,7 @@ footer {
     background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(255, 215, 0, 0.05));
     padding: 60px 40px;
     border-radius: 20px;
-    border: 2px solid var(--gold);
+    border: 2px solid var(--premium-gold);
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
@@ -2364,7 +2159,7 @@ footer {
 }
 
 .scripture-daily-card h3 {
-    color: var(--cyan);
+    color: var(--gold-light);
     font-size: 1.5rem;
     margin-bottom: 30px;
 }
@@ -2392,34 +2187,8 @@ footer {
     justify-content: center;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-    .leadership-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .impact-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .prayer-wall-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .timeline-container {
-        padding-left: 40px;
-    }
-
-    .timeline-marker {
-        left: -40px;
-        width: 35px;
-        height: 35px;
-        font-size: 0.7rem;
-    }
-}
-
 /* ==========================================
-   GLOBAL ENGAGEMENTS GALLERY STYLES
+   29. ENGAGEMENTS GALLERY
    ========================================== */
 .filter-btn {
     background: transparent;
@@ -2460,19 +2229,88 @@ footer {
     transform: scale(1.05);
 }
 
-/* Animation for filtering */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+.engagement-card.hidden {
+    display: none;
+}
+
+/* ==========================================
+   30. RESPONSIVE BREAKPOINTS
+   ========================================== */
+@media (max-width: 900px) {
+
+    .grid-2,
+    .grid-3,
+    .footer-grid,
+    .doctrine-points,
+    .course-features,
+    .calendar-grid,
+    .salvation-steps {
+        grid-template-columns: 1fr;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .leadership-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .impact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .prayer-wall-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .partner-logos {
+        flex-direction: column;
+    }
+
+    .search-input-group {
+        flex-direction: column;
+    }
+
+    .timeline-container {
+        padding-left: 40px;
+    }
+
+    .timeline-marker {
+        left: -40px;
+        width: 35px;
+        height: 35px;
+        font-size: 0.7rem;
     }
 }
 
-.engagement-card.hidden {
-    display: none;
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(5, 5, 10, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .hamburger[aria-expanded="true"] .fa-bars::before {
+        content: "\f00d";
+    }
+
+    #ai-widget {
+        width: 90%;
+        right: 5%;
+        bottom: 90px;
+        height: 60vh;
+    }
 }
