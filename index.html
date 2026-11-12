@@ -50,50 +50,113 @@
 
     <style>
 
-    @media (max-width: 768px) {
-    .main-title, .hero-content h1 { font-size: 2.2rem !important; }
-    .sub-text { font-size: 0.95rem !important; letter-spacing: 2px !important; }
-    .hero-content blockquote { font-size: 1.05rem !important; }
-    .cta-group { flex-direction: column !important; gap: 12px !important; }
-    .cta-group a { width: 100% !important; display: block !important; text-align: center !important; }
-    .grid-2, .grid-3, .leadership-grid, .engagement-grid, .prayer-wall-grid, .impact-grid, .calendar-grid, .footer-grid {
-    grid-template-columns: 1fr !important; }
-    .search-input-group { flex-direction: column !important; }
-    .media-hero { height: auto !important; min-height: 350px !important; }
-    .engagement-card img { height: 280px !important; }
-    .partner-logos, .give-options, .salvation-steps { flex-direction: column !important; gap: 15px !important; }
-    .give-btn { width: 100% !important; }
-    .doctrine-points { grid-template-columns: 1fr !important; }
-    .prayer-counter { flex-wrap: wrap !important; justify-content: center !important; }
-    .ui-panel { display: none !important; }
-    .container { padding-left: 16px !important; padding-right: 16px !important; }
-    .section { padding: 60px 0 !important; }
-    }
-    </style>
-
-    <!-- EMERGENCY SCROLL FIX -->
-    <style>
-        .hero {
-            min-height: 25vh !important;
-            height: auto !important;
-            position: relative !important;
-        }
-
-        #globe-4d-wrapper {
-            height: 100vh !important;
-            position: relative !important;
-        }
-
-        body,
-        html {
+        /* GLOBAL SCROLL & LAYOUT FIXES */
+        body, html {
             overflow-x: hidden !important;
             overflow-y: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
         }
 
         section {
             position: relative !important;
             z-index: 10 !important;
         }
+
+        /* EMERGENCY BUTTON FIX: Prevent Globe from Blocking Clicks */
+        #globe-container, #globe-canvas-container, #bg-canvas {
+            pointer-events: none !important;
+            z-index: 0 !important;
+        }
+        
+        a, button, input, textarea, select, .btn-neon, .btn-glass, .btn-primary, .btn-outline {
+            pointer-events: auto !important;
+            position: relative !important;
+            z-index: 25 !important;
+            cursor: pointer !important;
+        }
+        
+        .glass-card, .hero-content, .cta-group, .engagement-filters {
+            position: relative !important;
+            z-index: 20 !important;
+        }
+
+        /* ========================================== */
+        /* MOBILE RESPONSIVE FIXES (THE CORRECT BLOCK) */
+        /* ========================================== */
+        @media (max-width: 768px) {
+            /* 1. RESTORE FULL HEIGHT SO THE GLOBE ISN'T SQUISHED */
+            .hero {
+                min-height: 100vh !important;
+                height: 100% !important;
+                position: relative !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
+            /* 2. FORCE GLOBE CONTAINERS TO BE FULL SCREEN ON MOBILE */
+            #globe-4d-wrapper, 
+            #globe-canvas-container, 
+            #globe-container {
+                position: fixed !important;
+                width: 100vh !important;
+                height: 100vh !important;
+                top: 0 !important;            /* Push down 50% */
+                left: 0 !important;           /* Push right 50% */
+                z-index: 0 !important;
+                pointer-events: none !important;
+            }
+
+            /* 3. ENSURE TEXT SITS CLEANLY ON TOP OF THE GLOBE */
+            .hero-content {
+                z-index: 10 !important;
+                position: relative !important;
+                width: 100% !important;
+                padding: 100px 20px 60px !important;
+                text-align: center !important;
+                text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9) !important;
+            }
+
+            /* 4. EXISTING MOBILE TWEAKS (Preserved) */
+            .main-title, .hero-content h1 { font-size: 2.2rem !important; }
+            .sub-text { font-size: 0.95rem !important; letter-spacing: 2px !important; }
+            .hero-content blockquote { font-size: 1.05rem !important; }
+            .cta-group { flex-direction: column !important; gap: 12px !important; }
+            .cta-group a { width: 100% !important; display: block !important; text-align: center !important; }
+            .grid-2, .grid-3, .leadership-grid, .engagement-grid, .prayer-wall-grid, .impact-grid, .calendar-grid, .footer-grid { grid-template-columns: 1fr !important; }
+            .search-input-group { flex-direction: column !important; }
+            .media-hero { height: auto !important; min-height: 350px !important; }
+            .engagement-card img { height: 280px !important; }
+            .partner-logos, .give-options, .salvation-steps { flex-direction: column !important; gap: 15px !important; }
+            .give-btn { width: 100% !important; }
+            .doctrine-points { grid-template-columns: 1fr !important; }
+            .prayer-counter { flex-wrap: wrap !important; justify-content: center !important; }
+            .ui-panel { display: none !important; }
+            .container { padding-left: 16px !important; padding-right: 16px !important; }
+            .section { padding: 60px 0 !important; }
+        }
+    </style>
+    <style>
+    /* ========================================== */
+    /* EMERGENCY BUTTON FIX: Prevent Globe from Blocking Clicks */
+    /* ========================================== */
+    #globe-container, #globe-canvas-container, #bg-canvas {
+    pointer-events: none !important;
+    z-index: 0 !important;
+    }
+    
+    a, button, input, textarea, select, .btn-neon, .btn-glass, .btn-primary, .btn-outline {
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 25 !important;
+    cursor: pointer !important;
+    }
+    
+    .glass-card, .hero-content, .cta-group, .engagement-filters {
+    position: relative !important;
+    z-index: 20 !important;
+    }
     </style>
 
     <!-- CRITICAL: Load the Three.js Engine FIRST -->
@@ -131,7 +194,7 @@
           "sameAs": [
             "https://www.facebook.com/yeshuapropheticaltar",
             "https://www.youtube.com/@yeshuapropheticaltar",
-            "https://open.spotify.com/show/yeshuapropheticaltar"
+            "https://www.tiktok.com/@yeshuaprophetic"
           ]
         },
         {
@@ -177,10 +240,6 @@
             </div>
         </div>
 
-
-        <!-- Accessibility: Skip to Content -->
-        <a href="#main-content" class="skip-link">Skip to main content</a>
-
         <!-- Particle Background Canvas -->
         <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
@@ -191,9 +250,9 @@
         <!-- ========================================== -->
         <!-- HERO SECTION WITH 4D GLOBE -->
         <!-- ========================================== -->
-        <header id="home" class="hero" style="min-height: 100vh; position: relative;">
+        <header id="home" class="hero" style="min-height: 10vh; position: relative;">
             <div id="globe-container"
-                style="position: absolute; top: 0; left: 0; width: 60%; height: 60%; z-index: 1; pointer-events: none;"></div>
+                style="position: absolute; top: 0; left: 0; width: 90vh; height: 90vh; z-index: 1; pointer-events: none;"></div>
             <div class="hero-content fade-up" style="position: relative; z-index: 2;">
                 <div class="epicenter-badge">
                     <span class="epicenter-badge"><span class="pulse-dot"></span> DIVINE PATTERN</span>
@@ -1708,47 +1767,7 @@
             </div>
         </section>
         
-                        <!-- ========================================== -->
-                        <!-- PAST EVENTS ARCHIVE TEASER -->
-                        <!-- ========================================== -->
-                        <section class="section">
-                            <div class="container">
-                                <h2 class="section-title" data-aos="fade-up">Prophetic Archives</h2>
-                                <p class="section-desc" data-aos="fade-up" data-aos-delay="100">Missed a gathering? The anointing is
-                                    still available. Access past teachings and service replays.</p>
-                
-                                <div class="archive-grid" data-aos="fade-up" data-aos-delay="200">
-                                    <div class="archive-card">
-                                        <div class="archive-overlay"><i class="fas fa-play-circle"></i></div>
-                                        <h4>2025 Global Fire Conference</h4>
-                                        <p>3-Part Series on Prophetic Governance</p>
-                                        <a href="media.html" class="text-link" style="color: var(--cyan); text-decoration: none;">Watch
-                                            Replay →</a>
-                                    </div>
-                                    <div class="archive-card">
-                                        <div class="archive-overlay"><i class="fas fa-play-circle"></i></div>
-                                        <h4>Nairobi Night of Fire 2025</h4>
-                                        <p>Full Service Recording & Impartation</p>
-                                        <a href="media.html" class="text-link" style="color: var(--cyan); text-decoration: none;">Watch
-                                            Replay →</a>
-                                    </div>
-                                    <div class="archive-card">
-                                        <div class="archive-overlay"><i class="fas fa-play-circle"></i></div>
-                                        <h4>Apostolic Foundations Course</h4>
-                                        <p>12-Week Recorded Discipleship Matrix</p>
-                                        <a href="media.html" class="text-link" style="color: var(--cyan); text-decoration: none;">Access
-                                            Course →</a>
-                                    </div>
-                                </div>
-                
-                                <div class="text-center" style="margin-top: 40px;" data-aos="fade-up">
-                                    <a href="media.html" class="btn-glass">View Full Media Archive</a>
-                                </div>
-                            </div>
-                        </section>
-                
-                    </main>
-                
+                                  
                     <div id="site-footer"></div>
                     <div id="ai-container"></div>
                 
@@ -1821,74 +1840,7 @@
         </div>
     </noscript>
 
-    <!-- ==========================================
-     FOOTER (BRAND RECLAMATION)
-     ========================================== -->
-    <footer class="footer"
-        style="background: #020205; padding: 60px 20px 20px; border-top: 1px solid var(--glass-border);">
-        <div class="container">
-            <div class="footer-grid"
-                style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px;">
-                <div class="footer-col">
-                    <h4
-                        style="color: var(--premium-gold); margin-bottom: 20px; font-family: var(--font-majestic); font-size: 1.2rem;">
-                        YESHUA PROPHETIC ALTAR
-                    </h4>
-                    <p style="color: var(--text-muted); line-height: 1.6;">
-                        A digital apostolic altar broadcasting from Nairobi, Kenya to the nations. Equipping the saints
-                        for
-                        the work of the ministry.
-                    </p>
-                    <div class="social-icons" style="display: flex; gap: 15px; margin-top: 20px;">
-                        <a href="#" style="color: var(--premium-gold); font-size: 1.5rem;"><i
-                                class="fab fa-facebook"></i></a>
-                        <a href="#" style="color: var(--premium-gold); font-size: 1.5rem;"><i
-                                class="fab fa-youtube"></i></a>
-                        <a href="#" style="color: var(--premium-gold); font-size: 1.5rem;"><i
-                                class="fab fa-spotify"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4 style="color: var(--premium-gold); margin-bottom: 20px;">Quick Links</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 10px;"><a href="#home"
-                                style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">Home</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#about"
-                                style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">About</a>
-                        </li>
-                        <li style="margin-bottom: 10px;"><a href="#media"
-                                style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">Media</a>
-                        </li>
-                        <li style="margin-bottom: 10px;"><a href="#give"
-                                style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">Give</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4 style="color: var(--premium-gold); margin-bottom: 20px;">Connect</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 10px;"><a href="#contact"
-                                style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">Contact
-                                Us</a>
-                        </li>
-                        <li style="margin-bottom: 10px;"><a href="#prayer"
-                                style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">Prayer
-                                Request</a></li>
-                        <li style="margin-bottom: 10px;"><a href="https://wa.me/254718501642" target="_blank"
-                                style="color: var(--text-muted); text-decoration: none; transition: 0.3s;">WhatsApp</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom"
-                style="text-align: center; padding-top: 20px; border-top: 1px solid var(--glass-border); color: var(--text-muted); font-size: 0.85rem;">
-                <p>&copy; <span id="year"></span> Yeshua Prophetic Altar. All rights reserved.</p>
-                <p style="margin-top: 10px; font-size: 0.75rem; color: var(--premium-gold);">
-                    <i class="fas fa-globe-africa"></i> Broadcasting from Nairobi, Kenya to the Nations
-                </p>
-            </div>
-        </div>
-    </footer>
+    
 
     <!-- ========================================================== -->
     <!-- M-PESA SECURE GIVING MODAL (Place right before </body>) -->
@@ -2068,6 +2020,113 @@
                 });
             });
         });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // 1. SMOOTH SCROLL FOR ALL ANCHOR LINKS (Guaranteed to work)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#' || targetId === '') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // 2. WORSHIP AUDIO TOGGLE (Inline guarantee)
+            window.toggleWorshipAudio = function () {
+                const audio = document.getElementById('heroWorshipAudio');
+                const icon = document.getElementById('worshipAudioIcon');
+                const text = document.getElementById('worshipAudioText');
+                const btn = document.getElementById('worshipAudioBtn');
+                if (!audio) return;
+
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        audio.volume = 0.4;
+                        icon.className = 'fas fa-pause';
+                        text.textContent = 'Pause Worship Audio';
+                        btn.style.background = 'rgba(212, 175, 55, 0.2)';
+                    }).catch(err => console.log('Audio play blocked:', err));
+                } else {
+                    audio.pause();
+                    icon.className = 'fas fa-play';
+                    text.textContent = 'Enable Worship Audio';
+                    btn.style.background = 'transparent';
+                }
+            };
+
+            // 3. MODAL HANDLING (M-Pesa & Insight Modals)
+            const mpesaBtn = document.getElementById('openMpesaModal');
+            const mpesaModal = document.getElementById('mpesa-modal');
+            if (mpesaBtn && mpesaModal) {
+                mpesaBtn.addEventListener('click', () => {
+                    mpesaModal.style.display = 'flex';
+                    mpesaModal.setAttribute('aria-hidden', 'false');
+                });
+            }
+
+            document.querySelectorAll('.modal-close').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const modal = this.closest('.modal-overlay');
+                    if (modal) {
+                        modal.style.display = 'none';
+                        modal.setAttribute('aria-hidden', 'true');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.addEventListener('click', function (e) {
+                    if (e.target === this) {
+                        this.style.display = 'none';
+                        this.setAttribute('aria-hidden', 'true');
+                    }
+                });
+            });
+
+            // 4. PRAYER FORM SUBMISSION FEEDBACK
+            const prayerForm = document.getElementById('prayerForm');
+            if (prayerForm) {
+                prayerForm.addEventListener('submit', function () {
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    if (submitBtn) {
+                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                        submitBtn.disabled = true;
+                    }
+                });
+            }
+
+            // 5. REVEAL SCRIPTURE BUTTONS (Simple, bulletproof fallback)
+            document.querySelectorAll('.insight-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const id = this.getAttribute('data-id');
+                    let message = "Scripture revealed!";
+                    if (id === 'guidance') message = "Proverbs 3:5-6 - Trust in the Lord with all your heart...";
+                    if (id === 'vessels') message = "Jeremiah 1:5 - Before I formed you in the womb I knew you...";
+                    if (id === 'pattern') message = "Amos 3:7 - Surely the Lord God does nothing, unless He reveals His secret to His servants the prophets.";
+                    alert(message);
+                });
+            });
+        });
+    </script>
+
+    <script>
+        // Disable Right Click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+        document.onkeydown = function (e) {
+            if (e.keyCode == 123) return false; // F12
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false; // Ctrl+Shift+I
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false; // Ctrl+Shift+J
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; // Ctrl+U (View Source)
+        }
     </script>
 
     <!-- Scripts -->

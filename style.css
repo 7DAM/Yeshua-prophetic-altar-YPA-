@@ -2233,6 +2233,18 @@ footer {
     display: none;
 }
 
+body {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+/* Allow selection only inside inputs and textareas so forms still work */
+input, textarea {
+    -webkit-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
+}
+
 /* ==========================================
    30. RESPONSIVE BREAKPOINTS
    ========================================== */

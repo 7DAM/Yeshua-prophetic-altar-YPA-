@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function initGlobe() {
         scene = new THREE.Scene();
         camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-        camera.position.z = isMobile ? 5.5 : 6; // Slightly closer on mobile for better impact
+        camera.position.z = isMobile ? 8 : 6; // Slightly closer on mobile for better impact
 
         renderer = new THREE.WebGLRenderer({ antialias: !isMobile, alpha: true }); // Disable AA on low-end mobile for performance
         renderer.setSize(container.clientWidth, container.clientHeight);

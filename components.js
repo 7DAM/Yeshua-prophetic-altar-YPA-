@@ -24,7 +24,7 @@ const headerTemplate = `
 `;
 
 // ==========================================
-// FOOTER TEMPLATE
+// FOOTER 
 // ==========================================
 const footerTemplate = `
     <footer class="footer" role="contentinfo">
@@ -43,7 +43,10 @@ const footerTemplate = `
                         <li><a href="/events.html">Events</a></li>
                         <li><a href="/donate.html">Give</a></li>
                         <li><a href="/contact.html">Contact</a></li>
-                        <li><a href="/nehemiah-protocol.html">Marketplace</a></li>
+                        <li><a href="/give.html">Give</a></li>
+                        <li><a href="/bible-study.html">Bible</a></li>
+                        <li><a href="/Donate.html">Donate</a></li>
+                        <li><a href="/nehemiah-protocol.html">Nehemiah Protocol</a></li>
                         <li><a href="/three-voice-rule.html">Discernment</a></li>
                         <li><a href="/goliath-projects.html">Warfare</a></li>
                         <li><a href="/bloodline-audit.html">Generational Healing</a></li>
@@ -54,10 +57,14 @@ const footerTemplate = `
                 </div>
                 <div class="footer-col">
                     <h4>Connect</h4>
+                    <ul>
+                        <li><a href="/contact.html">Contact Us</a></li>
+                        <li><a href="/prayer.html">Prayer Request</a></li>
+                    </ul>
                     <div class="social-icons">
                         <a href="https://facebook.com/yeshuapropheticaltar" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                         <a href="https://youtube.com/@yeshuapropheticaltar" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="https://open.spotify.com" target="_blank" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+                        <a href="https://tiktok.com/@yeshuaprophetic" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                         <a href="https://wa.me/+254718501642" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         <a href="mailto:yeshuapropheticaltar7@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
