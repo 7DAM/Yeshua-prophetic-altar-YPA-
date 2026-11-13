@@ -2326,7 +2326,64 @@ input, textarea {
         height: 60vh;
     }
 }
+/* ═══ MOBILE RESCUE — keep at the very end of style.css ═══ */
+html,
+body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    height: auto !important;
+    min-height: 100% !important;
+    touch-action: pan-y pinch-zoom !important;
+}
 
+#globe-4d-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+#globe-canvas-container,
+#globe-container,
+#bg-canvas {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+.hero,
+.hero-content {
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+@media (max-width: 640px) {
+    .hero {
+        padding: 100px 16px 60px;
+    }
+
+    .cta-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cta-group a {
+        width: 100%;
+    }
+
+    .prayer-counter {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
 /* Restore text selection: let visitors copy verses, prayers, giving numbers */
 body {
     -webkit-user-select: text;

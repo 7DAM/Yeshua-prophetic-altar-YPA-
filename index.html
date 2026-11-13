@@ -133,62 +133,79 @@ body{margin:0;background:#0a0612}
 
 
         /* ========================================== */
-        /* MOBILE RESPONSIVE FIXES (THE CORRECT BLOCK) */
-        /* ========================================== */
-        @media (max-width: 768px) {
-            /* 1. RESTORE FULL HEIGHT SO THE GLOBE ISN'T SQUISHED */
-            .hero {
-                min-height: 100vh !important;
-                height: 100% !important;
-                position: relative !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
+/* MOBILE RESPONSIVE FIXES (CORRECTED) */
+/* ========================================== */
+@media (max-width: 768px) {
 
-            /* 2. FORCE GLOBE CONTAINERS TO BE FULL SCREEN ON MOBILE */
-            #globe-4d-wrapper, 
-            #globe-canvas-container, 
-            #globe-container {
-                position: fixed !important;
-                width: 100vh !important;
-                height: 100vh !important;
-                top: 0 !important;            /* Push down 50% */
-                left: 0 !important;           /* Push right 50% */
-                z-index: 0 !important;
-                pointer-events: none !important;
-            }
+    /* 0. Never allow horizontal overflow */
+    html, body {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
 
-            /* 3. ENSURE TEXT SITS CLEANLY ON TOP OF THE GLOBE */
-            .hero-content {
-                z-index: 10 !important;
-                position: relative !important;
-                width: 100% !important;
-                padding: 100px 20px 60px !important;
-                text-align: center !important;
-                text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9) !important;
-            }
+    /* 1. Full-height hero, in normal page flow */
+    .hero {
+        min-height: 100vh !important;
+        height: auto !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
 
-            /* 4. EXISTING MOBILE TWEAKS (Preserved) */
-            .main-title, .hero-content h1 { font-size: 2.2rem !important; }
-            .sub-text { font-size: 0.95rem !important; letter-spacing: 2px !important; }
-            .hero-content blockquote { font-size: 1.05rem !important; }
-            .cta-group { flex-direction: column !important; gap: 12px !important; }
-            .cta-group a { width: 100% !important; display: block !important; text-align: center !important; }
-            .grid-2, .grid-3, .leadership-grid, .engagement-grid, .prayer-wall-grid, .impact-grid, .calendar-grid, .footer-grid { grid-template-columns: 1fr !important; }
-            .search-input-group { flex-direction: column !important; }
-            .media-hero { height: auto !important; min-height: 350px !important; }
-            .engagement-card img { height: 280px !important; }
-            .partner-logos, .give-options, .salvation-steps { flex-direction: column !important; gap: 15px !important; }
-            .give-btn { width: 100% !important; }
-            .doctrine-points { grid-template-columns: 1fr !important; }
-            .prayer-counter { flex-wrap: wrap !important; justify-content: center !important; }
-            .ui-panel { display: none !important; }
-            .container { padding-left: 16px !important; padding-right: 16px !important; }
-            .section { padding: 60px 0 !important; }
-        }
-    </style>
-    <style>
+    /* 2a. Globe CANVAS layers: fixed + true viewport width (100vw, NOT 100vh) */
+    #globe-canvas-container,
+    #globe-container {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: 100vh !important;
+        z-index: 0 !important;
+        pointer-events: none !important;
+    }
+
+    /* 2b. The WRAPPER stays in normal flow (fixed = trapped content + overlap) */
+    #globe-4d-wrapper {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: auto !important;
+        min-height: 0 !important;
+        pointer-events: auto !important;
+    }
+
+    /* 3. Text sits cleanly on top of the globe */
+    .hero-content {
+        z-index: 10 !important;
+        position: relative !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        padding: 100px 20px 60px !important;
+        text-align: center !important;
+        text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9) !important;
+    }
+
+    /* 4. EXISTING MOBILE TWEAKS (preserved) */
+    .main-title, .hero-content h1 { font-size: 2.2rem !important; }
+    .sub-text { font-size: 0.95rem !important; letter-spacing: 2px !important; }
+    .hero-content blockquote { font-size: 1.05rem !important; }
+    .cta-group { flex-direction: column !important; gap: 12px !important; }
+    .cta-group a { width: 100% !important; display: block !important; text-align: center !important; }
+    .grid-2, .grid-3, .leadership-grid, .engagement-grid, .prayer-wall-grid, .impact-grid, .calendar-grid, .footer-grid { grid-template-columns: 1fr !important; }
+    .search-input-group { flex-direction: column !important; }
+    .media-hero { height: auto !important; min-height: 350px !important; }
+    .engagement-card img { height: 280px !important; }
+    .partner-logos, .give-options, .salvation-steps { flex-direction: column !important; gap: 15px !important; }
+    .give-btn { width: 100% !important; }
+    .doctrine-points { grid-template-columns: 1fr !important; }
+    .prayer-counter { flex-wrap: wrap !important; justify-content: center !important; }
+    .ui-panel { display: none !important; }
+    .container { padding-left: 16px !important; padding-right: 16px !important; }
+    .section { padding: 60px 0 !important; }
+}
+
     /* ========================================== */
     /* EMERGENCY BUTTON FIX: Prevent Globe from Blocking Clicks */
     /* ========================================== */

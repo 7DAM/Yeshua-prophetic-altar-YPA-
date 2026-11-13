@@ -1717,7 +1717,31 @@ if (document.readyState === 'loading') {
                     submitBtn.textContent = 'Transmit Securely';
                     submitBtn.disabled = false;
                 }
+
+                
             });
         });
     }
 });
+/* ═══ MOBILE RESCUE — unlock touch scrolling (keep at end of script.js) ═══ */
+(function () {
+    // The globe listens for "touchmove" on document and calls preventDefault(),
+    // which kills all scrolling. This capture-phase listener stops the event
+    // BEFORE it reaches that handler, so the page scrolls normally again.
+    window.addEventListener('touchmove', function (e) {
+        e.stopPropagation();
+    }, { capture: true, passive: true });
+
+    function unlockScroll() {
+        var d = document.documentElement, b = document.body;
+        d.style.overflowY = 'auto';  b.style.overflowY = 'auto';
+        d.style.overflowX = 'hidden'; b.style.overflowX = 'hidden';
+        d.style.height = 'auto';      b.style.height = 'auto';
+        b.style.touchAction = 'pan-y pinch-zoom';
+    }
+    unlockScroll();
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', unlockScroll);
+    }
+    window.addEventListener('load', unlockScroll);
+})();
