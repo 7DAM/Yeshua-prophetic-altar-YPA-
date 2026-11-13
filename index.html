@@ -41,14 +41,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;900&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="style.css">
 
+    
+
     <style>
+
+/* ══════════════════════════════════════════════════════════════
+   PREVIEW SHELL — merge scrollbar rules into your global CSS;
+   everything else below is scoped and safe to paste as-is.
+   ══════════════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:#7c3aed #0a0612}
+body{margin:0;background:#0a0612}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#0a0612}
+::-webkit-scrollbar-thumb{background:linear-gradient(#7c3aed,#d4a017);border-radius:8px;border:2px solid #0a0612}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(#a78bfa,#f5d061)}
+
 
         /* GLOBAL SCROLL & LAYOUT FIXES */
         body, html {
@@ -79,7 +94,43 @@
         .glass-card, .hero-content, .cta-group, .engagement-filters {
             position: relative !important;
             z-index: 20 !important;
+
         }
+
+        #globe-4d-wrapper {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100vh;
+    top: auto !important;
+    left: auto !important;
+    z-index: auto !important;
+    pointer-events: auto !important;
+}
+
+/* Correct units: 100vw wide (not 100vh), full height, behind content */
+#globe-canvas-container, #globe-container {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+#bg-canvas {
+    position: fixed !important;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none !important;
+}
+
+/* Reveal the stats now that the panel has real data */
+.ui-stats { display: flex !important; }
+
+
 
         /* ========================================== */
         /* MOBILE RESPONSIVE FIXES (THE CORRECT BLOCK) */
@@ -234,11 +285,6 @@
     <div id="globe-canvas-container"></div>
     <div id="globe-4d-wrapper">
 
-        <div class="globe-ui-overlay">
-            <div class="ui-panel">
-              <div class="ui-stats"></div>
-            </div>
-        </div>
 
         <!-- Particle Background Canvas -->
         <canvas id="bg-canvas" aria-hidden="true"></canvas>
@@ -250,19 +296,20 @@
         <!-- ========================================== -->
         <!-- HERO SECTION WITH 4D GLOBE -->
         <!-- ========================================== -->
-        <header id="home" class="hero" style="min-height: 10vh; position: relative;">
-            <div id="globe-container"
-                style="position: absolute; top: 0; left: 0; width: 90vh; height: 90vh; z-index: 1; pointer-events: none;"></div>
-            <div class="hero-content fade-up" style="position: relative; z-index: 2;">
+        <header id="home" class="hero">
+            <div id="globe-container" aria-hidden="true"></div>
+
+            <div class="hero-content fade-up">
                 <div class="epicenter-badge">
-                    <span class="epicenter-badge"><span class="pulse-dot"></span> DIVINE PATTERN</span>
+                    <span class="pulse-dot"></span> DIVINE PATTERN
                 </div>
-                <p class="sub-text" style="color: var(--gold); font-size: 1.1rem; letter-spacing: 3px; margin-bottom: 15px;">
-            </div> ALL OVER THE WORLD, THE SPIRIT IS MOVING
+
+                <p class="sub-text">ALL OVER THE WORLD, THE SPIRIT IS MOVING
         </p>
             <h1 class="main-title">The Global Epicenter of <span class="glow">Apostolic Intelligence</span></h1>
-            <blockquote
-                style="font-size: 1.3rem; font-style: italic; color: var(--gold); margin: 30px auto; max-width: 700px; line-height: 1.6;">
+
+          
+               <blockquote class="hero-verse">
                 "Not by might, nor by power, but by my spirit, saith the Lord of hosts."
                 <cite style="display: block; margin-top: 5px; font-size: 1rem; color: var(--text); font-style: normal;">— Zechariah 4:6</cite>
             </blockquote>
@@ -284,171 +331,246 @@
         </div>
     </header>
 
-    <!-- ==========================================
-             SECTION: PROPHETIC MEDIA & WORSHIP SANCTUARY
-             ========================================== -->
-    <section id="media" class="section dark-alt">
-        <div class="container">
-            <div class="text-center" style="margin-bottom: 50px;">
-                <span class="epicenter-badge"><span class="pulse-dot"></span> DIGITAL SANCTUARY</span>
-                <h2>Prophetic Media & Worship Streams</h2>
-                <p class="section-desc" style="max-width: 800px; margin: 0 auto;">
-                    Experience the moving of the Spirit from anywhere in the world. Access our library of
-                    <strong>apostolic teaching videos</strong>, <strong>prophetic worship music online</strong>,
-                    and <strong>Holy Ghost revival streams</strong> broadcasted from the
-                    <strong>Yeshua Prophetic Altar in Nairobi, Kenya</strong>.
-                </p>
-            </div>
-
-            <!-- 1. CINEMATIC VIDEO & AUDIO EXPERIENCE -->
-            <div class="glass-card media-hero"
-                style="position: relative; overflow: hidden; border-radius: 20px; margin-bottom: 60px; padding: 0; height: 500px;">
-
-                <!-- REPLACED BROKEN VIDEO WITH OPTIMIZED FALLBACK IMAGE -->
-                <img src="assets/media/image/kenya-revival.webp"
-                    alt="Prophetic worship and revival streams at Yeshua Prophetic Altar Nairobi" loading="lazy"
-                    style="width: 100%; max-width: 800px; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin: 0 auto; display: block;">
-
-
-                <!-- WORSHIP AUDIO TOGGLE -->
-                <div style="text-align: center; margin-top: 25px;">
-                    <audio id="heroWorshipAudio" loop src="assets/media/Yeshuamusic.mp3"></audio>
-                    <button onclick="toggleWorshipAudio()" id="worshipAudioBtn"
-                        style="background: transparent; border: 2px solid var(--premium-gold, #D4AF37); color: var(--premium-gold, #D4AF37); padding: 12px 30px; border-radius: 50px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s;">
-                        <i class="fas fa-play" id="worshipAudioIcon"></i>
-                        <span id="worshipAudioText">Enable Worship Audio</span>
-                    </button>
-                </div>
-
-                <script>
-                    function toggleWorshipAudio() {
-                        const audio = document.getElementById('heroWorshipAudio');
-                        const icon = document.getElementById('worshipAudioIcon');
-                        const text = document.getElementById('worshipAudioText');
-                        const btn = document.getElementById('worshipAudioBtn');
-
-                        if (audio.paused) {
-                            audio.play().then(() => {
-                                audio.volume = 0.4;
-                                icon.className = 'fas fa-pause';
-                                text.textContent = 'Pause Worship Audio';
-                                btn.style.background = 'rgba(212, 175, 55, 0.2)';
-                            }).catch(err => console.log('Audio blocked:', err));
-                        } else {
-                            audio.pause();
-                            icon.className = 'fas fa-play';
-                            text.textContent = 'Enable Worship Audio';
-                            btn.style.background = 'transparent';
-                        }
-                    }
-                </script>
-
-                <!-- Overlay Content -->
-                <div
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(5,1,10,0.9), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; z-index: 2;">
-                    <h3
-                        style="color: var(--premium-gold); font-family: var(--font-majestic); font-size: 2rem; margin-bottom: 10px;">
-                        Live Apostolic Broadcasts</h3>
-                    <p style="color: var(--text-secondary); max-width: 600px; margin-bottom: 20px;">Join thousands in
-                        <strong>online Christian intercession</strong> and prophetic impartation.
-                    </p>
-
-                    <!-- The Elegant Audio Trigger (Solves the Autoplay Block) -->
-                    <button id="audioToggleBtn" class="btn-primary"
-                        style="width: fit-content; display: flex; align-items: center; gap: 10px;">
-                        <i class="fas fa-play" id="audioIcon"></i>
-                        <span id="audioText">Enable Worship Audio</span>
-                    </button>
-
-                    <!-- Hidden Audio Element -->
-                    <audio id="worshipAudio" loop>
-                        <source src="assets/media/Yeshuamusic.mp3" type="audio/mp3">
-                    </audio>
-                </div>
-            </div>
-
-            <!-- 2. SEO-OPTIMIZED MEDIA GALLERY -->
-            <div class="grid-3">
-                <figure class="glass-card media-card" style="padding: 0; overflow: hidden;">
-                    <img src="assets/media/image/kenya-ministry4.webp"
-                        alt="Apostle Joshua and Prophetess Lillian leading prophetic worship music online in Nairobi"
-                        loading="lazy" decoding="async"
-                        style="width: 100%; height: 150px; object-fit: cover; transition: transform 0.5s ease;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <figcaption style="padding: 20px; text-align: center;">
-                        <h4 style="color: var(--premium-gold); margin-bottom: 10px;">Revival Gatherings</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">Witness the transformative anointing
-                            during
-                            our global <strong>apostolic teaching videos</strong> and crusades.</p>
-                    </figcaption>
-                </figure>
-
-                <figure class="glass-card media-card" style="padding: 0; overflow: hidden;">
-                    <img src="assets/media/image/rwanda-crusade-revival4.webp"
-                        alt="Holy Ghost revival streams and Christian media ministry Rwanda"
-                        style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.5s ease;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <figcaption style="padding: 20px; text-align: center;">
-                        <h4 style="color: var(--premium-gold); margin-bottom: 10px;">Prophetic Impartation</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">Access archived <strong>Holy Ghost
-                                revival
-                                streams</strong> and discipleship matrices.</p>
-                    </figcaption>
-                </figure>
-
-                <figure class="glass-card media-card" style="padding: 0; overflow: hidden;">
-                    <img src="assets/media/image/kenya-ministry2.webp"
-                        alt="Yeshua Prophetic Altar global missions and prayer"
-                        style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <figcaption style="padding: 20px; text-align: center;">
-                        <h4 style="color: var(--premium-gold); margin-bottom: 10px;">Global Missions</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">Follow our <strong>Christian media
-                                ministry</strong> as we take the gospel to the nations.</p>
-                    </figcaption>
-                </figure>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- ========================================== -->
     <!-- LEADERSHIP SECTION -->
     <!-- ========================================== -->
-    <section id="leadership" class="section">
-        <div class="container">
-            <h2 class="section-title">Apostolic Leadership</h2>
-            <div class="leadership-grid">
-                <div class="leader-card" data-aos="fade-right">
-                    <div class="leader-image-wrapper">
-                        <img src="assets/media/image/leaders.webp" alt="Apostle Joshua & Prophetess Lillian"
-                        style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%) contrast(120%);"
-                            class="leader-image">
-                        <div class="leader-overlay-badge">
-                            <i class="fas fa-crown"></i>
-                        </div>
-                    </div>
-                    <div class="leader-content">
-                        <div class="leader-badge">APOSTLE & PROPHETESS</div>
-                        <h3>Joshua & Lillian</h3>
-                        <p class="leader-location"><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
-                        <p class="leader-intro">
-                            Apostle Joshua and Prophetess Lillian are called to minister to the nations through The Yeshua Apostolic and Prophetic Altar. Both walk in a mighty breakthrough Holy Ghost anointing,
-                            withstanding all obstacles and releasing Transformative Anointing into the body of Christ
-                            with signs following.
-                        </p>
-                        <div class="leader-attributes">
-                            <div class="attribute"><i class="fas fa-fire"></i> Breakthrough Anointing</div>
-                            <div class="attribute"><i class="fas fa-globe"></i> Global Ministry</div>
-                            <div class="attribute"><i class="fas fa-scroll"></i> Prophetic Authority</div>
-                        </div>
-                        <a href="about.html" class="btn-glass" style="margin-top: 20px; display: inline-block;">Learn
-                            More
-                            →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <style>
+    .ypa-leadership{
+  --bg:#0a0612; --surface:#1a1128;
+  --royal-purple: #3C096C; --purple: #8A2BE2; --royal-purple-light: #7B2CBF;
+  --gold:#e8b923; --gold-2:#f5d061;
+  --ink:#efeaf7; --muted:#b7b0c8; --line:rgba(232,185,35,.28);
+  position:relative; isolation:isolate; overflow-x:clip;
+  min-height:100vh; min-height:100svh;
+  display:grid; place-items:center;
+  padding:clamp(4rem,9vh,6.5rem) clamp(1.25rem,5vw,4rem);
+  background:radial-gradient(120% 90% at 50% 0%,#170d29 0%,var(--bg) 55%) var(--bg);
+  color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,sans-serif;
+}
+/* ── decorative background: behind everything, never interactive ── */
+.ypa-leadership__bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.ypa-aurora{position:absolute;border-radius:50%;filter:blur(90px)}
+.ypa-aurora--violet{width:55vmax;height:55vmax;top:-20vmax;right:-15vmax;
+  background:radial-gradient(circle at 30% 30%,rgba(124,58,237,.5),rgba(124,58,237,0) 70%);
+  animation:ypa-drift 18s ease-in-out infinite alternate}
+.ypa-aurora--gold{width:45vmax;height:45vmax;bottom:-18vmax;left:-12vmax;
+  background:radial-gradient(circle at 60% 60%,rgba(232,185,35,.24),rgba(232,185,35,0) 70%);
+  animation:ypa-drift 22s ease-in-out infinite alternate-reverse}
+.ypa-stars{position:absolute;inset:0;opacity:.55;animation:ypa-twinkle 7s ease-in-out infinite alternate;
+  background-image:
+    radial-gradient(1.5px 1.5px at 18% 22%,rgba(255,255,255,.9) 50%,transparent 51%),
+    radial-gradient(1px 1px at 64% 12%,rgba(196,181,253,.9) 50%,transparent 51%),
+    radial-gradient(1.5px 1.5px at 84% 58%,rgba(245,208,97,.8) 50%,transparent 51%),
+    radial-gradient(1px 1px at 38% 74%,rgba(255,255,255,.7) 50%,transparent 51%),
+    radial-gradient(1px 1px at 8% 88%,rgba(196,181,253,.7) 50%,transparent 51%),
+    radial-gradient(1.5px 1.5px at 52% 44%,rgba(255,255,255,.6) 50%,transparent 51%);
+  background-size:480px 480px}
+.ypa-grain{position:absolute;inset:0;opacity:.06;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E")}
+
+/* ── layout: single column mobile → two columns desktop ── */
+.ypa-leadership__inner{position:relative;z-index:1;width:100%;max-width:1180px;
+  display:grid;gap:clamp(2.5rem,6vw,4.5rem);align-items:center}
+@media (min-width:1024px){
+  .ypa-leadership__inner{grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
+}
+
+/* ── portrait ── */
+.ypa-media{margin:0;display:grid;justify-items:center}
+.ypa-media__frame{position:relative;width:100%;max-width:460px;aspect-ratio:4/5;
+  border-radius:22px;overflow:hidden;background:var(--surface);
+  border:1px solid rgba(167,139,250,.25);
+  box-shadow:0 30px 80px -20px rgba(0,0,0,.7),0 0 60px -10px rgba(124,58,237,.35)}
+.ypa-media__frame img,.ypa-media__fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ypa-media__frame::after{content:"";position:absolute;left:0;right:0;bottom:0;height:38%;
+  background:linear-gradient(to top,rgba(10,6,18,.85),transparent);pointer-events:none}
+.ypa-badge{position:relative;z-index:2;margin-top:-1.35rem;
+  font-family:Orbitron,sans-serif;font-weight:700;font-size:clamp(.72rem,2vw,.85rem);
+  letter-spacing:.28em;text-transform:uppercase;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#5b21b6);
+  padding:.8rem 1.6rem;border-radius:999px;border:1px solid rgba(196,181,253,.4);
+  box-shadow:0 10px 30px -8px rgba(124,58,237,.6),inset 0 1px 0 rgba(255,255,255,.25)}
+
+/* ── content: pure vertical flow, nothing floats over anything ── */
+.ypa-content{display:grid;gap:clamp(1rem,2.5vw,1.4rem);justify-items:center;text-align:center}
+@media (min-width:1024px){.ypa-content{justify-items:start;text-align:left}}
+.ypa-eyebrow{display:inline-flex;align-items:center;gap:.6rem;margin:0;
+  font-family:Orbitron,sans-serif;font-size:.7rem;font-weight:600;
+  letter-spacing:.32em;text-transform:uppercase;color:var(--gold-2);
+  border:1px solid var(--line);padding:.65rem 1.3rem;border-radius:999px;
+  background:rgba(232,185,35,.06)}
+.ypa-eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;
+  background:var(--gold);box-shadow:0 0 12px var(--gold);animation:ypa-pulse 2.4s infinite}
+.ypa-names{margin:0;font-family:Orbitron,sans-serif;font-weight:800;
+  font-size:clamp(2.1rem,7.5vw,4.3rem);line-height:1.08;text-wrap:balance;
+  background:linear-gradient(120deg,#f7dc82 0%,var(--gold) 45%,#c98f12 100%);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent}
+.ypa-names .ypa-amp{font-weight:600}
+.ypa-location{margin:0;display:inline-flex;align-items:center;gap:.5rem;
+  font-family:Orbitron,sans-serif;font-weight:600;font-size:clamp(.85rem,2.2vw,1rem);
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold-2)}
+.ypa-location svg{width:1em;height:1em;flex:none}
+.ypa-title{margin:0;font-family:Orbitron,sans-serif;font-weight:700;
+  font-size:clamp(1.5rem,4.6vw,2.6rem);line-height:1.25;color:var(--ink);text-wrap:balance}
+.ypa-title em{font-style:normal;
+  background:linear-gradient(120deg,var(--violet-3),var(--violet-2) 40%,var(--violet));
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+/* the old floating "ALL OVER THE WORLD…" text → now a designed divider in flow */
+.ypa-kicker{margin:.4rem 0 0;display:flex;align-items:center;gap:1rem;width:100%;max-width:560px;
+  font-family:Orbitron,sans-serif;font-size:clamp(.62rem,1.8vw,.72rem);font-weight:600;
+  letter-spacing:.34em;text-transform:uppercase;color:var(--muted);text-align:center;line-height:1.9}
+.ypa-kicker::before,.ypa-kicker::after{content:"";height:1px;flex:1;min-width:16px;
+  background:linear-gradient(90deg,transparent,var(--violet-2),var(--gold))}
+.ypa-kicker::after{background:linear-gradient(90deg,var(--gold),var(--violet-2),transparent)}
+.ypa-body{margin:0;max-width:60ch;font-size:clamp(1rem,2.4vw,1.125rem);line-height:1.85;color:var(--muted)}
+.ypa-body strong{color:var(--ink);font-weight:600}
+
+/* ── actions ── */
+.ypa-actions{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center;margin-top:.6rem}
+@media (min-width:1024px){.ypa-actions{justify-content:flex-start}}
+.ypa-btn{display:inline-flex;align-items:center;gap:.6rem;min-height:52px;
+  padding:.9rem 1.9rem;border-radius:999px;cursor:pointer;text-decoration:none;
+  font-family:Orbitron,sans-serif;font-weight:600;font-size:.82rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  transition:transform .25s,box-shadow .25s,background .25s,color .25s}
+.ypa-btn--gold{color:var(--gold-2);border:1.5px solid rgba(232,185,35,.65);background:rgba(232,185,35,.05)}
+.ypa-btn--gold:hover{color:#1a1128;background:linear-gradient(120deg,var(--gold-2),var(--gold));
+  box-shadow:0 12px 34px -8px rgba(232,185,35,.55);transform:translateY(-2px)}
+.ypa-btn--ghost{color:var(--violet-3);border:1.5px solid rgba(167,139,250,.5);background:rgba(124,58,237,.08)}
+.ypa-btn--ghost:hover{color:#fff;background:linear-gradient(120deg,var(--violet),#5b21b6);
+  box-shadow:0 12px 34px -8px rgba(124,58,237,.55);transform:translateY(-2px)}
+.ypa-btn:focus-visible{outline:2px solid var(--gold-2);outline-offset:3px}
+.ypa-btn svg{width:1em;height:1em;transition:transform .25s}
+.ypa-btn:hover svg{transform:translateX(4px)}
+
+/* ── staged entrance (JS-gated: fully visible without JS) ── */
+.ypa-js .ypa-reveal{opacity:0;transform:translateY(26px);
+  transition:opacity .8s ease var(--ypa-d,0ms),transform .8s cubic-bezier(.22,1,.36,1) var(--ypa-d,0ms)}
+.ypa-js .ypa-reveal.is-in{opacity:1;transform:none}
+
+@keyframes ypa-drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(4vmax,-3vmax,0) scale(1.08)}}
+@keyframes ypa-twinkle{from{opacity:.35}to{opacity:.7}}
+@keyframes ypa-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){
+  .ypa-aurora,.ypa-stars,.ypa-eyebrow::before{animation:none}
+  .ypa-js .ypa-reveal{opacity:1;transform:none;transition:none}
+  .ypa-btn,.ypa-btn svg{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ FIX #1 · DROP-IN BLOCK START ═══════════════ -->
+<section class="ypa-leadership" id="leadership" aria-labelledby="ypa-names">
+  <div class="ypa-leadership__bg" aria-hidden="true">
+    <div class="ypa-aurora ypa-aurora--violet"></div>
+    <div class="ypa-aurora ypa-aurora--gold"></div>
+    <div class="ypa-stars"></div>
+    <div class="ypa-grain"></div>
+  </div>
+
+  <div class="ypa-leadership__inner">
+
+    <figure class="ypa-media ypa-reveal">
+      <div class="ypa-media__frame">
+        <!-- Designed fallback: renders if the photo path is wrong, so a broken-image icon can never appear -->
+        <svg class="ypa-media__fallback" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="ypaBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1130"/><stop offset="1" stop-color="#0c0716"/></linearGradient>
+            <linearGradient id="ypaGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7dc82"/><stop offset="1" stop-color="#c98f12"/></linearGradient>
+            <linearGradient id="ypaRobe" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#4c1d95"/></linearGradient>
+            <radialGradient id="ypaHalo" cx=".5" cy=".35" r=".65"><stop offset="0" stop-color="rgba(167,139,250,.35)"/><stop offset="1" stop-color="rgba(167,139,250,0)"/></radialGradient>
+          </defs>
+          <rect width="400" height="500" fill="url(#ypaBg)"/>
+          <rect width="400" height="500" fill="url(#ypaHalo)"/>
+          <g fill="#fff" opacity=".5">
+            <circle cx="60" cy="60" r="1.4"/><circle cx="330" cy="48" r="1.2"/><circle cx="352" cy="150" r="1.4"/>
+            <circle cx="44" cy="180" r="1.1"/><circle cx="90" cy="120" r="1"/><circle cx="300" cy="96" r="1"/>
+          </g>
+          <path d="M70 480 V210 Q70 90 200 90 Q330 90 330 210 V480" fill="none" stroke="url(#ypaGold)" stroke-width="2.5" opacity=".65"/>
+          <path d="M84 480 V214 Q84 104 200 104 Q316 104 316 214 V480" fill="none" stroke="#a78bfa" stroke-width="1" opacity=".35"/>
+          <g stroke="url(#ypaGold)" stroke-width="1" opacity=".45">
+            <line x1="200" y1="102" x2="200" y2="80"/><line x1="176" y1="108" x2="164" y2="90"/>
+            <line x1="224" y1="108" x2="236" y2="90"/><line x1="160" y1="124" x2="142" y2="112"/>
+            <line x1="240" y1="124" x2="258" y2="112"/>
+          </g>
+          <path d="M200 118 C214 138 220 150 220 163 A20 20 0 0 1 180 163 C180 150 186 138 200 118 Z" fill="url(#ypaGold)"/>
+          <path d="M200 138 C207 149 210 156 210 163 A10 10 0 0 1 190 163 C190 156 193 149 200 138 Z" fill="#7c3aed"/>
+          <circle cx="152" cy="262" r="34" fill="#241a38"/>
+          <path d="M96 480 Q96 336 152 326 Q208 336 208 480 Z" fill="#171026"/>
+          <path d="M152 332 L152 402" stroke="url(#ypaGold)" stroke-width="3" opacity=".8"/>
+          <circle cx="252" cy="256" r="34" fill="#33234f"/>
+          <path d="M196 480 Q196 330 252 320 Q312 330 312 480 Z" fill="url(#ypaRobe)"/>
+          <g fill="url(#ypaGold)" opacity=".85">
+            <circle cx="240" cy="360" r="3"/><circle cx="266" cy="382" r="3"/><circle cx="250" cy="412" r="3"/>
+            <circle cx="280" cy="432" r="3"/><circle cx="230" cy="442" r="3"/><circle cx="268" cy="458" r="3"/>
+          </g>
+          <ellipse cx="205" cy="404" rx="16" ry="10" fill="#2b1f42"/>
+          <circle cx="205" cy="402" r="3" fill="url(#ypaGold)"/>
+        </svg>
+        <!-- ⬇ REPLACE src WITH YOUR REAL PHOTO PATH -->
+        <img src="assets/media/image/leaders.webp"
+             alt="Apostle Joshua and Prophetess Lillian seated together — The Yeshua Apostolic and Prophetic Altar, Nairobi, Kenya"
+             loading="lazy" decoding="async" onerror="this.remove()">
+      </div>
+      <figcaption class="ypa-badge">Apostle &amp; Prophetess</figcaption>
+    </figure>
+
+    <div class="ypa-content">
+      <p class="ypa-eyebrow ypa-reveal">The Apostolic Pattern</p>
+      <h2 class="ypa-names ypa-reveal" id="ypa-names">Joshua <span class="ypa-amp">&amp;</span> Lillian</h2>
+      <p class="ypa-location ypa-reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        Nairobi, Kenya
+      </p>
+      <h3 class="ypa-title ypa-reveal">The Global Epicenter of <em>Apostolic Intelligence</em></h3>
+      <p class="ypa-kicker ypa-reveal"><span>All over the world, the Spirit is moving</span></p>
+      <p class="ypa-body ypa-reveal">
+        Apostle Joshua and Prophetess Lillian are called to minister to the nations through
+        <strong>The Yeshua Apostolic and Prophetic Altar</strong>. Both walk in a mighty breakthrough
+        Holy Ghost anointing, withstanding all obstacles and releasing <strong>Transformative Anointing</strong>
+        into the body of Christ with signs following.
+      </p>
+      <div class="ypa-actions ypa-reveal">
+        <a href="#breakthrough" class="ypa-btn ypa-btn--gold">
+          Breakthrough Anointing
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#media" class="ypa-btn ypa-btn--ghost">Prophetic Media</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══════════════ FIX #1 · DROP-IN BLOCK END ═══════════════ -->
+
+<script>
+(function () {
+  var section = document.getElementById('leadership');
+  if (!section) return;
+  var items = section.querySelectorAll('.ypa-reveal');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('is-in'); });
+    return;
+  }
+  section.classList.add('ypa-js');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
+  items.forEach(function (el, i) {
+    el.style.setProperty('--ypa-d', (i * 110) + 'ms');
+    io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
 
     <!-- ========================================== -->
     <!--  APOSTOLIC INTELLIGENCE TICKER -->
@@ -2133,6 +2255,9 @@
     <script src="components.js"></script>
     <script src="globe.js"></script>
     <script src="script.js"></script>
+    
+    <!-- Hardening JavaScript LAST -->
+    <script src="ypa-hardening.js"></script>
 </body>
 
 </html>

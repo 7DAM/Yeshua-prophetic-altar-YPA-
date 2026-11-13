@@ -1396,7 +1396,7 @@ footer {
 .event-date-badge {
     display: inline-block;
     background: var(--gold);
-    color: var(--royal-purple);
+    color: var(--light-purple);
     padding: 10px 20px;
     border-radius: 8px;
     font-weight: 900;
@@ -2325,4 +2325,16 @@ input, textarea {
         bottom: 90px;
         height: 60vh;
     }
+}
+
+/* Restore text selection: let visitors copy verses, prayers, giving numbers */
+body {
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* Correct close (✕) icon when the mobile menu is open */
+.hamburger[aria-expanded="true"] .fa-bars::before {
+    content: "\f00d";
 }
